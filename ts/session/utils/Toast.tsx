@@ -2,6 +2,8 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import { SessionIconType } from '../../components/session/icon';
 import { SessionToast, SessionToastType } from '../../components/session/SessionToast';
+import { SessionSettingCategory } from '../../components/session/settings/SessionSettings';
+import { SectionType, showLeftPaneSection, showSettingsSection } from '../../state/ducks/section';
 
 // if you push a toast manually with toast...() be sure to set the type attribute of the SessionToast component
 export function pushToastError(id: string, title: string, description?: string) {
@@ -142,25 +144,46 @@ export function pushedMissedCall(conversationName: string) {
   pushToastInfo(
     'missedCall',
     window.i18n('callMissedTitle'),
-    window.i18n('callMissedTitle', conversationName)
+    window.i18n('callMissed', conversationName)
   );
 }
 
-export function pushMicAndCameraPermissionNeeded(onClicked: () => void) {
+const openPrivacySettings = () => {
+  window.inboxStore?.dispatch(showLeftPaneSection(SectionType.Settings));
+  window.inboxStore?.dispatch(showSettingsSection(SessionSettingCategory.Privacy));
+};
+
+export function pushedMissedCallCauseOfPermission(conversationName: string) {
+  const id = 'missedCallPermission';
+  toast.info(
+    <SessionToast
+      title={window.i18n('callMissedTitle')}
+      description={window.i18n('callMissedCausePermission', conversationName)}
+      type={SessionToastType.Info}
+      onToastClick={openPrivacySettings}
+    />,
+    { toastId: id, updateId: id, autoClose: 10000 }
+  );
+}
+
+export function pushVideoCallPermissionNeeded() {
   pushToastInfo(
-    'micAndCameraPermissionNeeded',
-    window.i18n('micAndCameraPermissionNeededTitle'),
-    window.i18n('micAndCameraPermissionNeeded'),
-    onClicked
+    'videoCallPermissionNeeded',
+    window.i18n('cameraPermissionNeededTitle'),
+    window.i18n('cameraPermissionNeeded'),
+    openPrivacySettings
   );
 }
 
-export function pushAudioPermissionNeeded(onClicked: () => void) {
+export function pushAudioPermissionNeeded() {
   pushToastInfo(
     'audioPermissionNeeded',
     window.i18n('audioPermissionNeededTitle'),
     window.i18n('audioPermissionNeeded'),
-    onClicked
+    () => {
+      window.inboxStore?.dispatch(showLeftPaneSection(SectionType.Settings));
+      window.inboxStore?.dispatch(showSettingsSection(SessionSettingCategory.Privacy));
+    }
   );
 }
 
@@ -234,4 +257,12 @@ export function pushUserRemovedFromModerators() {
 
 export function pushInvalidPubKey() {
   pushToastSuccess('invalidPubKey', window.i18n('invalidPubkeyFormat'));
+}
+
+export function pushNoCameraFound() {
+  pushToastWarning('noCameraFound', window.i18n('noCameraFound'));
+}
+
+export function pushNoAudioInputFound() {
+  pushToastWarning('noAudioInputFound', window.i18n('noAudioInputFound'));
 }

@@ -13,10 +13,17 @@ import {
   PropsForDataExtractionNotification,
 } from '../../models/messageType';
 import { LightBoxOptions } from '../../components/session/conversation/SessionConversation';
-import { ReplyingToMessageProps } from '../../components/session/conversation/SessionCompositionBox';
+import { ReplyingToMessageProps } from '../../components/session/conversation/composition/CompositionBox';
 import { QuotedAttachmentType } from '../../components/conversation/Quote';
 import { perfEnd, perfStart } from '../../session/utils/Performance';
 import { omit } from 'lodash';
+
+export type PropsForMissedCallNotification = {
+  isMissedCall: boolean;
+  messageId: string;
+  receivedAt: number;
+  isUnread: boolean;
+};
 
 export type MessageModelPropsWithoutConvoProps = {
   propsForMessage: PropsForMessageWithoutConvoProps;
@@ -24,6 +31,7 @@ export type MessageModelPropsWithoutConvoProps = {
   propsForTimerNotification?: PropsForExpirationTimer;
   propsForDataExtractionNotification?: PropsForDataExtractionNotification;
   propsForGroupNotification?: PropsForGroupUpdate;
+  propsForMissedCall?: PropsForMissedCallNotification;
 };
 
 export type MessageModelPropsWithConvoProps = SortedMessageModelProps & {
@@ -201,6 +209,7 @@ export type PropsForMessageWithConvoProps = PropsForMessageWithoutConvoProps & {
   weAreAdmin: boolean;
   isSenderAdmin: boolean;
   isDeletable: boolean;
+  isDeletableForEveryone: boolean;
   isBlocked: boolean;
   isDeleted?: boolean;
 };
@@ -268,6 +277,7 @@ export type ConversationsStateType = {
   quotedMessage?: ReplyingToMessageProps;
   areMoreMessagesBeingFetched: boolean;
   haveDoneFirstScroll: boolean;
+  callIsInFullScreen: boolean;
 
   showScrollButton: boolean;
   animateQuotedMessageId?: string;
@@ -362,6 +372,7 @@ export function getEmptyConversationState(): ConversationsStateType {
     mentionMembers: [],
     firstUnreadMessageId: undefined,
     haveDoneFirstScroll: false,
+    callIsInFullScreen: false,
   };
 }
 
@@ -687,6 +698,8 @@ const conversationsSlice = createSlice({
 
       return {
         conversationLookup: state.conversationLookup,
+        callIsInFullScreen: state.callIsInFullScreen,
+
         selectedConversation: action.payload.id,
         areMoreMessagesBeingFetched: false,
         messages: action.payload.initialMessages,
@@ -841,6 +854,10 @@ const conversationsSlice = createSlice({
       void foundConvo.commit();
       return state;
     },
+    setFullScreenCall(state: ConversationsStateType, action: PayloadAction<boolean>) {
+      state.callIsInFullScreen = action.payload;
+      return state;
+    },
   },
   extraReducers: (builder: any) => {
     // Add reducers for additional action types here, and handle loading state as needed
@@ -906,6 +923,7 @@ export const {
   answerCall,
   callConnected,
   startingCallWith,
+  setFullScreenCall,
 } = actions;
 
 export async function openConversationWithMessages(args: {
