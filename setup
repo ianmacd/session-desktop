@@ -1,0 +1,20 @@
+#!/bin/bash
+
+apt update
+apt upgrade
+apt install python2 git-lfs build-essential curl make rpm less
+
+git lfs install
+
+# install nvm by following their github README
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+nvm install # install the current node version used in this project
+nvm use # use the current node version used in this project
+npm install -g yarn # install yarn globally for this node version
+yarn install --frozen-lockfile # install all dependecies of this project
+yarn appImage
