@@ -9,6 +9,8 @@ const settingsStartInTray = 'start-in-tray-setting';
 const settingsOpengroupPruning = 'prune-setting';
 const settingsNotification = 'notification-setting';
 
+const settingsShowFullId = 'show-full-id';
+
 export const SettingsKey = {
   settingsReadReceipt,
   settingsTypingIndicator,
@@ -19,4 +21,5 @@ export const SettingsKey = {
   settingsStartInTray,
   settingsOpengroupPruning,
   settingsNotification,
+  settingsShowFullId
 };

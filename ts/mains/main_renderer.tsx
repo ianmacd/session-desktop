@@ -136,6 +136,11 @@ Storage.onready(async () => {
       window.setMenuBarVisibility(!value);
     },
 
+    getShowFullId: () => Storage.get('show-full-id', true),
+    setShowFullId: async (value: boolean) => {
+      await Storage.put('show-full-id', value);
+    },
+
     getSpellCheck: () => Storage.get('spell-check', true),
     setSpellCheck: async (value: boolean) => {
       await Storage.put('spell-check', value);
@@ -291,6 +296,12 @@ async function start() {
     }
 
     window.Events.setHideMenuBar(!current);
+  };
+
+  window.toggleFullId = () => {
+    const currentValue = window.getSettingValue('show-full-id');
+    const newValue = currentValue !== undefined ? !currentValue : true;
+    window.Events.setShowFullId(newValue);
   };
 
   window.toggleSpellCheck = () => {
