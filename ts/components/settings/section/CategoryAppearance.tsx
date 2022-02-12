@@ -57,6 +57,11 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? true
         : window.getSettingValue(SettingsKey.settingsMenuBar);
 
+    const isShowFullIdActive =
+      window.getSettingValue(SettingsKey.settingsShowFullId) === undefined
+        ? false
+        : window.getSettingValue(SettingsKey.settingsShowFullId);
+
     const isSpellCheckActive =
       window.getSettingValue(SettingsKey.settingsSpellCheck) === undefined
         ? true
@@ -78,6 +83,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
             active={isHideMenuBarActive}
           />
         )}
+        <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.toggleFullId();
+            forceUpdate();
+          }}
+          title={window.i18n('showFullIdTitle')}
+          description={window.i18n('showFullIdDescription')}
+          active={isShowFullIdActive}
+        />
         <SessionToggleWithDescription
           onClickToggle={() => {
             window.toggleSpellCheck();
