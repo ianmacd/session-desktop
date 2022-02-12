@@ -54,6 +54,7 @@ declare global {
     toggleCallMediaPermissionsTo: (enabled: boolean) => Promise<void>;
     getCallMediaPermissions: () => boolean;
     toggleMenuBar: () => void;
+    toggleFullId: () => void;
     toggleSpellCheck: any;
     primaryColor: PrimaryColorStateType;
     theme: ThemeStateType;

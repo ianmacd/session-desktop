@@ -10,6 +10,8 @@ const settingsOpengroupPruning = 'prune-setting';
 const settingsNotification = 'notification-setting';
 const settingsAudioNotification = 'audio-notification-setting';
 
+const settingsShowFullId = 'show-full-id';
+
 export const SettingsKey = {
   settingsReadReceipt,
   settingsTypingIndicator,
@@ -21,4 +23,5 @@ export const SettingsKey = {
   settingsOpengroupPruning,
   settingsNotification,
   settingsAudioNotification,
+  settingsShowFullId
 };
