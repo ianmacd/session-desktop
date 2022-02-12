@@ -80,7 +80,7 @@ export class PubKey {
       throw new Error('PubkKey.shorten was given an invalid PubKey to shorten.');
     }
 
-    return `(${pk.substring(0, 4)}...${pk.substring(pk.length - 4)})`;
+    return window.getSettingValue('show-full-id') ? `(${pk})`: `(${pk.substring(0, 4)}...${pk.substring(pk.length - 4)})`;
   }
 
   /**
