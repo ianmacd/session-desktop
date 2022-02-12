@@ -19,6 +19,8 @@ const latestUserProfileEnvelopeTimestamp = 'latestUserProfileEnvelopeTimestamp';
 const latestUserGroupEnvelopeTimestamp = 'latestUserGroupEnvelopeTimestamp';
 const latestUserContactsEnvelopeTimestamp = 'latestUserContactsEnvelopeTimestamp';
 
+const settingsShowFullId = 'show-full-id';
+
 export const SettingsKey = {
   settingsReadReceipt,
   settingsTypingIndicator,
@@ -37,6 +39,7 @@ export const SettingsKey = {
   latestUserProfileEnvelopeTimestamp,
   latestUserGroupEnvelopeTimestamp,
   latestUserContactsEnvelopeTimestamp,
+  settingsShowFullId
 } as const;
 
 export const KNOWN_BLINDED_KEYS_ITEM = 'KNOWN_BLINDED_KEYS_ITEM';

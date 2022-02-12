@@ -17,9 +17,24 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? true
         : window.getSettingValue(SettingsKey.settingsMenuBar);
 
+
+    const isShowFullIdActive =
+      window.getSettingValue(SettingsKey.settingsShowFullId) === undefined
+	? false
+	: window.getSettingValue(SettingsKey.settingsShowFullId);
+
     return (
       <>
         <SettingsThemeSwitcher />
+	<SessionToggleWithDescription
+	  onClickToggle={() => {
+	    window.toggleFullId();
+	    forceUpdate();
+	  }}
+	  title={window.i18n('showFullIdTitle')}
+	  description={window.i18n('showFullIdDescription')}
+	  active={isShowFullIdActive}
+	/>
         <ZoomingSessionSlider />
         {isHideMenuBarSupported() && (
           <SessionToggleWithDescription

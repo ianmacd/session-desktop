@@ -507,4 +507,6 @@ export type LocalizerKeys =
   | 'reactionPopupThree'
   | 'reactionPopupMany'
   | 'reactionListCountSingular'
-  | 'reactionListCountPlural';
+  | 'reactionListCountPlural'
+  | 'showFullIdDescription'
+  | 'showFullIdTitle';

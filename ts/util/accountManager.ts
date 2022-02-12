@@ -173,6 +173,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   await Storage.put(SettingsKey.settingsOpengroupPruning, true);
   await window.setOpengroupPruning(true);
 
+  // Disable display of full Session id by default.
+  await Storage.put(SettingsKey.settingsShowFullId, false);
+
   await setLocalPubKey(pubKeyString);
 }
 
