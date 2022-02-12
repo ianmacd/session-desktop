@@ -200,6 +200,8 @@
   "noteToSelf": "Note to Self",
   "hideMenuBarTitle": "Hide Menu Bar",
   "hideMenuBarDescription": "Toggle system menu bar visibility",
+  "showFullIdTitle": "Full Session Id",
+  "showFullIdDescription": "Display author's full Session id in messages",
   "startConversation": "Start New Conversation",
   "invalidNumberError": "Invalid Session ID or ONS Name",
   "failedResolveOns": "Failed to resolve ONS name",
