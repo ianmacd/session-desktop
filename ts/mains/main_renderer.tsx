@@ -143,6 +143,11 @@ Storage.onready(async () => {
       await Storage.put('show-full-id', value);
     },
 
+    getFrequentTimestamps: () => Storage.get('frequent-timestamps', true),
+    setFrequentTimestamps: async (value: boolean) => {
+      await Storage.put('frequent-timestamps', value);
+    },
+
     getSpellCheck: () => Storage.get('spell-check', true),
     setSpellCheck: async (value: boolean) => {
       await Storage.put('spell-check', value);
@@ -312,6 +317,12 @@ async function start() {
     const currentValue = window.getSettingValue('show-full-id');
     const newValue = currentValue !== undefined ? !currentValue : true;
     window.Events.setShowFullId(newValue);
+  };
+
+  window.toggleFrequentTimestamps= () => {
+    const currentValue = window.getSettingValue('frequent-timestamps');
+    const newValue = currentValue !== undefined ? !currentValue : true;
+    window.Events.setFrequentTimestamps(newValue);
   };
 
   window.toggleSpellCheck = () => {

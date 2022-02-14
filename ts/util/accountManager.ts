@@ -175,6 +175,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Disable display of full Session id by default.
   await Storage.put(SettingsKey.settingsShowFullId, false);
 
+  // Disable frequent timestamps by default.
+  await Storage.put(SettingsKey.settingsFrequentTimestamps, false);
+
   await setLocalPubKey(pubKeyString);
 }
 
