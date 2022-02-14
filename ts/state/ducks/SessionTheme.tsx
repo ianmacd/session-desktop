@@ -31,6 +31,7 @@ const darkColorSessionBorderColor = borderDarkThemeColor;
 const darkColorRecoveryPhraseBannerBg = '#1f1f1f';
 const darkColorPillDivider = '#353535';
 const darkColorLastSeenIndicator = accentDarkTheme;
+const darkColorLastSeenIndicatorText = 'LemonChiffon';
 const darkColorQuoteBottomBarBg = '#404040';
 const darkColorCellBackground = '#1b1b1b';
 const darkColorReceivedMessageBg = '#2d2d2d';
