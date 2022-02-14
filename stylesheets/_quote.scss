@@ -9,6 +9,7 @@
   overflow: hidden;
   border-left-width: 4px;
   border-left-style: solid;
+  border-left-color: LightYellow;
 
   &__primary__type-label {
     border-color: var(--color-text);
@@ -38,7 +39,7 @@
 
   &--incoming {
     .module-quote__primary__author {
-      color: var(--color-received-message-text);
+      color: LightYellow;
 
       font-weight: bold;
       .module-contact-name {
