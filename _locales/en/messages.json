@@ -202,6 +202,8 @@
   "hideMenuBarDescription": "Toggle system menu bar visibility",
   "showFullIdTitle": "Full Session Id",
   "showFullIdDescription": "Display author's full Session id in messages",
+  "frequentTimestampsTitle": "Frequent Timestamps",
+  "frequentTimestampsDescription": "Reduce time between timestamps in conversations",
   "startConversation": "Start New Conversation",
   "invalidNumberError": "Invalid Session ID or ONS Name",
   "failedResolveOns": "Failed to resolve ONS name",

@@ -46,6 +46,7 @@ async function toggleStartInTray() {
   }
 }
 
+// tslint:disable: max-func-body-length
 export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null }) => {
   const dispatch = useDispatch();
   const forceUpdate = useUpdate();
@@ -61,6 +62,11 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
       window.getSettingValue(SettingsKey.settingsShowFullId) === undefined
         ? false
         : window.getSettingValue(SettingsKey.settingsShowFullId);
+
+    const isFrequentTimestampsActive =
+      window.getSettingValue(SettingsKey.settingsFrequentTimestamps) === undefined
+        ? false
+        : window.getSettingValue(SettingsKey.settingsFrequentTimestamps);
 
     const isSpellCheckActive =
       window.getSettingValue(SettingsKey.settingsSpellCheck) === undefined
@@ -91,6 +97,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
           title={window.i18n('showFullIdTitle')}
           description={window.i18n('showFullIdDescription')}
           active={isShowFullIdActive}
+        />
+        <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.toggleFrequentTimestamps();
+            forceUpdate();
+          }}
+          title={window.i18n('frequentTimestampsTitle')}
+          description={window.i18n('frequentTimestampsDescription')}
+          active={isFrequentTimestampsActive}
         />
         <SessionToggleWithDescription
           onClickToggle={() => {
