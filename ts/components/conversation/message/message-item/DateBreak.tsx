@@ -17,6 +17,7 @@ const DateBreakText = styled.div`
 
 export const MessageDateBreak = (props: { timestamp: number; messageId: string }) => {
   const { timestamp, messageId } = props;
+  moment.locale('en-gb');
   const text = moment(timestamp).calendar(undefined, {
     sameElse: 'llll',
   });
