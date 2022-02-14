@@ -9,6 +9,7 @@ const settingsStartInTray = 'start-in-tray-setting';
 const settingsOpengroupPruning = 'prune-setting';
 
 const settingsShowFullId = 'show-full-id';
+const settingsFrequentTimestamps = 'frequent-timestamps';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -19,5 +20,6 @@ export const SettingsKey = {
   settingsLinkPreview,
   settingsStartInTray,
   settingsOpengroupPruning,
-  settingsShowFullId
+  settingsShowFullId,
+  settingsFrequentTimestamps
 };
