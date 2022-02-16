@@ -44,7 +44,7 @@ const darkUnreadBorder = `4px solid ${accentDarkTheme}`;
 const darkScrollbarThumb = '#767676';
 const darkFakeChatBubbleBg = '#212121';
 
-const darkInboxBackground = '#171717';
+const darkInboxBackground = black;
 const darkLeftPaneOverlayBg = darkInboxBackground;
 const darkConversationItemSelected = '#404040';
 const darkConversationItemHasUnread = '#2c2c2c';
