@@ -90,8 +90,9 @@ const AvatarImage = (props: {
   imageBroken: boolean;
   datatestId?: string;
   handleImageError: () => any;
+  pubkey?: string;
 }) => {
-  const { avatarPath, base64Data, name, imageBroken, datatestId, handleImageError } = props;
+  const { avatarPath, base64Data, name, imageBroken, datatestId, handleImageError, pubkey } = props;
 
   const disableDrag = useDisableDrag();
 
@@ -107,6 +108,7 @@ const AvatarImage = (props: {
       alt={window.i18n('contactAvatarAlt', [name || 'avatar'])}
       src={dataToDisplay}
       data-testid={datatestId}
+      title={pubkey}
     />
   );
 };
@@ -166,6 +168,7 @@ const AvatarInner = (props: Props) => {
           name={forcedName || name}
           handleImageError={handleImageError}
           datatestId={dataTestId ? `img-${dataTestId}` : undefined}
+          pubkey={pubkey}
         />
       ) : (
         <NoImage {...props} isClosedGroup={isClosedGroupAvatar} />

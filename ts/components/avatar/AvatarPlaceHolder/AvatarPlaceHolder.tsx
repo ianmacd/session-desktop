@@ -106,31 +106,33 @@ export const AvatarPlaceHolder = (props: Props) => {
   const bgColor = avatarPlaceholderColors[bgColorIndex];
 
   return (
-    <svg viewBox={viewBox}>
-      <g id="UrTavla">
-        <circle
-          cx={r}
-          cy={r}
-          r={rWithoutBorder}
-          fill={bgColor}
-          shapeRendering="geometricPrecision"
-          stroke={avatarBorderColor}
-          strokeWidth="1"
-        />
-        <text
-          fontSize={fontSize}
-          x="50%"
-          y="50%"
-          fill="white"
-          textAnchor="middle"
-          stroke="white"
-          strokeWidth={1}
-          alignmentBaseline="central"
-          height={fontSize}
-        >
-          {initials}
-        </text>
-      </g>
-    </svg>
+    <span title={pubkey}>
+      <svg viewBox={viewBox}>
+        <g id="UrTavla">
+          <circle
+            cx={r}
+            cy={r}
+            r={rWithoutBorder}
+            fill={bgColor}
+            shapeRendering="geometricPrecision"
+            stroke={avatarBorderColor}
+            strokeWidth="1"
+          />
+          <text
+            fontSize={fontSize}
+            x="50%"
+            y="50%"
+            fill="white"
+            textAnchor="middle"
+            stroke="white"
+            strokeWidth={1}
+            alignmentBaseline="central"
+	    height={fontSize}
+          >
+            {initials}
+          </text>
+        </g>
+      </svg>
+    </span>
   );
 };
