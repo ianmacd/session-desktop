@@ -219,6 +219,8 @@
   "hideMenuBarDescription": "Toggle system menu bar visibility.",
   "showFullIdTitle": "Full Session Id",
   "showFullIdDescription": "Display author's full Session id in messages.",
+  "perMessageTimestampsTitle": "Per Message Timestamps",
+  "perMessageTimestampsDescription": "Timestamp every message balloon instead of using captions.",
   "startConversation": "Start New Conversation",
   "invalidNumberError": "Invalid Session ID or ONS Name",
   "failedResolveOns": "Failed to resolve ONS name",

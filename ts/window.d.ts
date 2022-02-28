@@ -54,6 +54,7 @@ declare global {
     getCallMediaPermissions: () => boolean;
     toggleMenuBar: () => void;
     toggleFullId: () => void;
+    togglePerMessageTimestamps: () => void;
     toggleSpellCheck: any;
     setTheme: (newTheme: string) => Promise<void>;
     isDev?: () => boolean;

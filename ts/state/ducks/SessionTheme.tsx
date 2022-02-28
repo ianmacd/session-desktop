@@ -31,6 +31,8 @@ const darkColorSessionBorderColor = borderDarkThemeColor;
 const darkColorRecoveryPhraseBannerBg = '#1f1f1f';
 const darkColorPillDivider = '#353535';
 const darkColorLastSeenIndicator = accentDarkTheme;
+const darkColorLastSeenIndicatorText = 'LemonChiffon';
+const darkColorMessageTimestampText = '#8e9091';
 const darkColorQuoteBottomBarBg = '#404040';
 const darkColorCellBackground = '#1b1b1b';
 export const darkColorReceivedMessageBg = '#2d2d2d';
@@ -94,6 +96,14 @@ export const switchHtmlToDarkTheme = () => {
   document.documentElement.style.setProperty(
     '--color-last-seen-indicator',
     darkColorLastSeenIndicator
+  );
+  document.documentElement.style.setProperty(
+    '--color-last-seen-indicator-text',
+    darkColorLastSeenIndicatorText
+  );
+  document.documentElement.style.setProperty(
+    '--color-message-timestamp-text',
+    darkColorMessageTimestampText
   );
   document.documentElement.style.setProperty(
     '--color-quote-bottom-bar-background',
@@ -175,6 +185,8 @@ const lightColorSessionBorder = `1px solid ${lightColorSessionBorderColor}`;
 const lightColorRecoveryPhraseBannerBg = white;
 const lightColorPillDivider = `${black}1A`;
 const lightColorLastSeenIndicator = black;
+const lightColorLastSeenIndicatorText = '#070c14';
+const lightColorMessageTimestampText = '#070c14';
 const lightColorQuoteBottomBarBg = '#f0f0f0';
 const lightColorCellBackground = '#f9f9f9';
 export const lightColorReceivedMessageBg = '#f5f5f5';
@@ -243,6 +255,14 @@ export const switchHtmlToLightTheme = () => {
   document.documentElement.style.setProperty(
     '--color-last-seen-indicator',
     lightColorLastSeenIndicator
+  );
+  document.documentElement.style.setProperty(
+    '--color-last-seen-indicator-text',
+    lightColorLastSeenIndicatorText
+  );
+  document.documentElement.style.setProperty(
+    '--color-message-timestamp-text',
+    lightColorMessageTimestampText
   );
   document.documentElement.style.setProperty(
     '--color-quote-bottom-bar-background',
@@ -376,6 +396,8 @@ export const SessionGlobalStyles = createGlobalStyle`
     --color-recovery-phrase-banner-background: ${lightColorRecoveryPhraseBannerBg};
     --color-pill-divider:  ${lightColorPillDivider};
     --color-last-seen-indicator: ${lightColorLastSeenIndicator};
+    --color-last-seen-indicator-text:  ${lightColorLastSeenIndicatorText};
+    --color-message-timestamp-text:  ${lightColorMessageTimestampText};
     --color-quote-bottom-bar-background:  ${lightColorQuoteBottomBarBg};
     --color-cell-background: ${lightColorCellBackground};
     --color-pill-divider-text:  ${lightColorPillDividerText};

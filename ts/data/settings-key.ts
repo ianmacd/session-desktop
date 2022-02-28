@@ -10,6 +10,7 @@ const settingsOpengroupPruning = 'prune-setting';
 const settingsNotification = 'notification-setting';
 
 const settingsShowFullId = 'show-full-id';
+const settingsPerMessageTimestamps = 'per-message-timestamps';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -21,5 +22,6 @@ export const SettingsKey = {
   settingsStartInTray,
   settingsOpengroupPruning,
   settingsNotification,
-  settingsShowFullId
+  settingsShowFullId,
+  settingsPerMessageTimestamps
 };
