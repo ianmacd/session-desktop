@@ -41,7 +41,7 @@ export const MessageText = (props: Props) => {
     <div dir="auto" className={classNames('module-message__text')}>
       {isDeleted && <SessionIcon iconType="delete" iconSize="small" />}
       <MessageBody
-        text={contents || ''}
+        text={contents}
         disableLinks={multiSelectMode}
         disableJumbomoji={false}
         isGroup={conversationType === 'group'}

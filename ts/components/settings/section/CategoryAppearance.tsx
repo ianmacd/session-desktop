@@ -17,11 +17,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? true
         : window.getSettingValue(SettingsKey.settingsMenuBar);
 
-
     const isShowFullIdActive =
       window.getSettingValue(SettingsKey.settingsShowFullId) === undefined
-	? false
-	: window.getSettingValue(SettingsKey.settingsShowFullId);
+        ? false
+        : window.getSettingValue(SettingsKey.settingsShowFullId);
+
+    const isPerMessageTimestampsActive =
+      window.getSettingValue(SettingsKey.settingsPerMessageTimestamps) === undefined
+        ? true
+        : window.getSettingValue(SettingsKey.settingsPerMessageTimestamps);
 
     return (
       <>
@@ -35,6 +39,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
 	  description={window.i18n('showFullIdDescription')}
 	  active={isShowFullIdActive}
 	/>
+        <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.togglePerMessageTimestamps();
+            forceUpdate();
+          }}
+          title={window.i18n('perMessageTimestampsTitle')}
+          description={window.i18n('perMessageTimestampsDescription')}
+          active={isPerMessageTimestampsActive}
+        />
         <ZoomingSessionSlider />
         {isHideMenuBarSupported() && (
           <SessionToggleWithDescription

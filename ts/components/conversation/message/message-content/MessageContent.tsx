@@ -17,6 +17,7 @@ import { MessageQuote } from './MessageQuote';
 import { MessageText } from './MessageText';
 import { ScrollToLoadedMessageContext } from '../../SessionMessagesListContainer';
 import styled, { css } from 'styled-components';
+import { MessageClock } from '../../MessageClock';
 
 export type MessageContentSelectorProps = Pick<
   MessageRenderingProps,
@@ -179,6 +180,7 @@ export const MessageContent = (props: Props) => {
           gap: 'var(--margins-xs)',
         }}
       >
+      <div className={`module-message-clock--${direction}`}>
         <IsMessageVisibleContext.Provider value={isMessageVisible}>
           {hasContentAfterAttachmentAndQuote && (
             <StyledMessageOpaqueContent messageDirection={direction} highlight={highlight}>
@@ -202,6 +204,8 @@ export const MessageContent = (props: Props) => {
             />
           )}
         </IsMessageVisibleContext.Provider>
+	{window.getSettingValue('per-message-timestamps') && <MessageClock time={timestamp} />}
+	</div>
       </InView>
     </StyledMessageContent>
   );
