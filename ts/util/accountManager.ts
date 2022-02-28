@@ -176,6 +176,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Disable display of full Session id by default.
   await Storage.put(SettingsKey.settingsShowFullId, false);
 
+  // Enable per-message timestamps by default.
+  await Storage.put(SettingsKey.settingsPerMessageTimestamps, true);
+
   await setLocalPubKey(pubKeyString);
 }
 

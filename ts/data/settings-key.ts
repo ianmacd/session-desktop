@@ -20,6 +20,7 @@ const latestUserGroupEnvelopeTimestamp = 'latestUserGroupEnvelopeTimestamp';
 const latestUserContactsEnvelopeTimestamp = 'latestUserContactsEnvelopeTimestamp';
 
 const settingsShowFullId = 'show-full-id';
+const settingsPerMessageTimestamps = 'per-message-timestamps';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -39,7 +40,8 @@ export const SettingsKey = {
   latestUserProfileEnvelopeTimestamp,
   latestUserGroupEnvelopeTimestamp,
   latestUserContactsEnvelopeTimestamp,
-  settingsShowFullId
+  settingsShowFullId,
+  settingsPerMessageTimestamps
 } as const;
 
 export const KNOWN_BLINDED_KEYS_ITEM = 'KNOWN_BLINDED_KEYS_ITEM';

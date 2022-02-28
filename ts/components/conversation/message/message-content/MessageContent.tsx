@@ -17,6 +17,7 @@ import { MessageAttachment } from './MessageAttachment';
 import { MessageLinkPreview } from './MessageLinkPreview';
 import { MessageQuote } from './MessageQuote';
 import { MessageText } from './MessageText';
+import { MessageClock } from '../../MessageClock';
 
 export type MessageContentSelectorProps = Pick<
   MessageRenderingProps,
@@ -171,6 +172,7 @@ export const MessageContent = (props: Props) => {
           gap: 'var(--margins-xs)',
         }}
       >
+      <div className={`module-message-clock--${direction}`}>
         <IsMessageVisibleContext.Provider value={isMessageVisible}>
           {hasContentBeforeAttachment && (
             <StyledMessageOpaqueContent messageDirection={direction} highlight={highlight}>
@@ -195,6 +197,8 @@ export const MessageContent = (props: Props) => {
             />
           )}
         </IsMessageVisibleContext.Provider>
+	{window.getSettingValue('per-message-timestamps') && <MessageClock time={timestamp} />}
+	</div>
       </InView>
     </StyledMessageContent>
   );

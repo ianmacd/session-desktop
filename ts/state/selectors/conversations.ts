@@ -123,13 +123,18 @@ export const getSortedMessagesTypesOfSelectedConversation = createSelector(
           : sortedMessages[index + 1].propsForMessage.serverTimestamp ||
             sortedMessages[index + 1].propsForMessage.timestamp;
 
+      const hoursPreviousMessage = new Date(previousMessageTimestamp).getHours();
+      const hoursMessage = new Date(messageTimestamp).getHours();
       const showDateBreak =
-        messageTimestamp - previousMessageTimestamp > maxMessagesBetweenTwoDateBreaks * 60 * 1000
-          ? messageTimestamp
-	  // To omit the date break if we are the oldest message (no previous)
-	  // and smooth a bit the loading of older message (to avoid a jump once new
-	  // messages are rendered), change this to 'undefined'.
-          : messageTimestamp;
+	window.getSettingValue('per-message-timestamps')
+	  ? hoursMessage < hoursPreviousMessage ? messageTimestamp : undefined
+	  : messageTimestamp - previousMessageTimestamp >
+	    maxMessagesBetweenTwoDateBreaks * 60 * 1000
+	      ? messageTimestamp
+	      // To omit the date break if we are the oldest message (no previous)
+	      // and smooth a bit the loading of older message (to avoid a jump once new
+	      // messages are rendered), change this to 'undefined'.
+	      : messageTimestamp;
 
       const common = { showUnreadIndicator: isFirstUnread, showDateBreak };
 

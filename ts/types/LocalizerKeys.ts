@@ -509,4 +509,6 @@ export type LocalizerKeys =
   | 'reactionListCountSingular'
   | 'reactionListCountPlural'
   | 'showFullIdDescription'
-  | 'showFullIdTitle';
+  | 'showFullIdTitle'
+  | 'perMessageTimestampsDescription'
+  | 'perMessageTimestampsTitle';
