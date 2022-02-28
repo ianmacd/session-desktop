@@ -21,6 +21,13 @@
   }
 }
 
+.module-message-clock--incoming {
+  color: var(--color-message-timestamp-text);
+}
+.module-message-clock--outgoing {
+  color: var(--color-message-timestamp-text);
+}
+
 .module-message {
   position: relative;
   display: inline-flex;
@@ -58,6 +65,7 @@
     color: var(--color-received-message-text);
 
     .module-message__text {
+      color: var(--color-received-message-text);
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -75,6 +83,8 @@
 
   &__container--outgoing {
     .module-message__text {
+      color: var(--color-sent-message-text);
+
       a {
         color: var(--color-sent-message-text);
 
