@@ -21,6 +21,13 @@
   }
 }
 
+.module-message-clock--incoming {
+  color: var(--text-primary-color);
+}
+.module-message-clock--outgoing {
+  color: var(--text-primary-color);
+}
+
 .module-message {
   position: relative;
   display: inline-flex;

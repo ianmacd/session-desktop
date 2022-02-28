@@ -11,6 +11,7 @@ const settingsNotification = 'notification-setting';
 const settingsAudioNotification = 'audio-notification-setting';
 
 const settingsShowFullId = 'show-full-id';
+const settingsPerMessageTimestamps = 'per-message-timestamps';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -23,5 +24,6 @@ export const SettingsKey = {
   settingsOpengroupPruning,
   settingsNotification,
   settingsAudioNotification,
-  settingsShowFullId
+  settingsShowFullId,
+  settingsPerMessageTimestamps
 };
