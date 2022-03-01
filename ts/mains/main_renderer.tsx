@@ -148,6 +148,11 @@ Storage.onready(async () => {
       await Storage.put('frequent-timestamps', value);
     },
 
+    getPerMessageTimestamps: () => Storage.get('per-message-timestamps', true),
+    setPerMessageTimestamps: async (value: boolean) => {
+      await Storage.put('per-message-timestamps', value);
+    },
+
     getSpellCheck: () => Storage.get('spell-check', true),
     setSpellCheck: async (value: boolean) => {
       await Storage.put('spell-check', value);
@@ -323,6 +328,12 @@ async function start() {
     const currentValue = window.getSettingValue('frequent-timestamps');
     const newValue = currentValue !== undefined ? !currentValue : true;
     window.Events.setFrequentTimestamps(newValue);
+  };
+
+  window.togglePerMessageTimestamps= () => {
+    const currentValue = window.getSettingValue('per-message-timestamps');
+    const newValue = currentValue !== undefined ? !currentValue : true;
+    window.Events.setPerMessageTimestamps(newValue);
   };
 
   window.toggleSpellCheck = () => {
