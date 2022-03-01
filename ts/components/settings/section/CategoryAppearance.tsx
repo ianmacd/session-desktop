@@ -68,6 +68,11 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? false
         : window.getSettingValue(SettingsKey.settingsFrequentTimestamps);
 
+    const isPerMessageTimestampsActive =
+      window.getSettingValue(SettingsKey.settingsPerMessageTimestamps) === undefined
+        ? true
+        : window.getSettingValue(SettingsKey.settingsPerMessageTimestamps);
+
     const isSpellCheckActive =
       window.getSettingValue(SettingsKey.settingsSpellCheck) === undefined
         ? true
@@ -106,6 +111,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
           title={window.i18n('frequentTimestampsTitle')}
           description={window.i18n('frequentTimestampsDescription')}
           active={isFrequentTimestampsActive}
+        />
+        <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.togglePerMessageTimestamps();
+            forceUpdate();
+          }}
+          title={window.i18n('perMessageTimestampsTitle')}
+          description={window.i18n('perMessageTimestampsDescription')}
+          active={isPerMessageTimestampsActive}
         />
         <SessionToggleWithDescription
           onClickToggle={() => {
