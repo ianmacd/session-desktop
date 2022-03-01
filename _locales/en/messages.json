@@ -203,6 +203,8 @@
   "showFullIdDescription": "Display author's full Session id in messages",
   "frequentTimestampsTitle": "Frequent Timestamps",
   "frequentTimestampsDescription": "Reduce time between timestamps in conversations",
+  "perMessageTimestampsTitle": "Per Message Timestamps",
+  "perMessageTimestampsDescription": "Place timestamp in message bubble instead of between messages",
   "startConversation": "Start New Conversation",
   "invalidNumberError": "Invalid Session ID or ONS Name",
   "failedResolveOns": "Failed to resolve ONS name",

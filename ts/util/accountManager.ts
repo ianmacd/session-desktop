@@ -178,6 +178,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Disable frequent timestamps by default.
   await Storage.put(SettingsKey.settingsFrequentTimestamps, false);
 
+  // Enable per-message timestamps by default.
+  await Storage.put(SettingsKey.settingsPerMessageTimestamps, true);
+
   await setLocalPubKey(pubKeyString);
 }
 
