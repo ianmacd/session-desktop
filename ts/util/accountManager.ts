@@ -181,6 +181,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Enable per-message timestamps by default.
   await Storage.put(SettingsKey.settingsPerMessageTimestamps, true);
 
+  // Disable message formatting by default.
+  await Storage.put(SettingsKey.settingsMessageFormatting, false);
+
   await setLocalPubKey(pubKeyString);
 }
 
