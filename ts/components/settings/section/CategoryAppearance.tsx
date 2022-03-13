@@ -73,6 +73,11 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? true
         : window.getSettingValue(SettingsKey.settingsPerMessageTimestamps);
 
+    const isMessageFormattingActive =
+      window.getSettingValue(SettingsKey.settingsMessageFormatting) === undefined
+        ? false
+        : window.getSettingValue(SettingsKey.settingsMessageFormatting);
+
     const isSpellCheckActive =
       window.getSettingValue(SettingsKey.settingsSpellCheck) === undefined
         ? true
@@ -120,6 +125,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
           title={window.i18n('perMessageTimestampsTitle')}
           description={window.i18n('perMessageTimestampsDescription')}
           active={isPerMessageTimestampsActive}
+        />
+        <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.toggleMessageFormatting();
+            forceUpdate();
+          }}
+          title={window.i18n('messageFormattingTitle')}
+          description={window.i18n('messageFormattingDescription')}
+          active={isMessageFormattingActive}
         />
         <SessionToggleWithDescription
           onClickToggle={() => {
