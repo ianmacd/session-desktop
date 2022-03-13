@@ -206,6 +206,8 @@
   "frequentTimestampsDescription": "Reduce time between timestamps in conversations",
   "perMessageTimestampsTitle": "Per Message Timestamps",
   "perMessageTimestampsDescription": "Place timestamp in message bubble instead of between messages",
+  "messageFormattingTitle": "Message Formatting (Experimental)",
+  "messageFormattingDescription": "Apply basic in-line Markdown and SmartyPants formatting to messages",
   "startConversation": "Start New Conversation",
   "invalidNumberError": "Invalid Session ID or ONS Name",
   "failedResolveOns": "Failed to resolve ONS name",

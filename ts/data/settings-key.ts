@@ -11,6 +11,7 @@ const settingsOpengroupPruning = 'prune-setting';
 const settingsShowFullId = 'show-full-id';
 const settingsFrequentTimestamps = 'frequent-timestamps';
 const settingsPerMessageTimestamps = 'per-message-timestamps';
+const settingsMessageFormatting = 'message-formatting';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -23,5 +24,6 @@ export const SettingsKey = {
   settingsOpengroupPruning,
   settingsShowFullId,
   settingsFrequentTimestamps,
-  settingsPerMessageTimestamps
+  settingsPerMessageTimestamps,
+  settingsMessageFormatting
 };
