@@ -17,10 +17,21 @@ const DateBreakText = styled.div`
 
 export const MessageDateBreak = (props: { timestamp: number; messageId: string }) => {
   const { timestamp, messageId } = props;
-  moment.locale('en-gb');
-  const text = moment(timestamp).calendar(undefined, {
-    sameElse: 'llll',
-  });
+  let dateFormat;
+  if (window.getSettingValue('per-message-timestamps')) {
+    dateFormat = {
+      sameDay: '[Today]',
+      lastDay: '[Yesterday]',
+      lastWeek: 'LL',
+      sameElse: 'LL',
+    }
+  } else {
+    moment.locale('en-gb'); // for 24-hour clock
+    dateFormat = {
+      sameElse: 'llll',
+    }
+  }
+  const text = moment(timestamp).calendar(undefined, dateFormat);
 
   return (
     <DateBreakContainer id={`date-break-${messageId}`}>
