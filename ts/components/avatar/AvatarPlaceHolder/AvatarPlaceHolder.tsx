@@ -90,7 +90,9 @@ export const AvatarPlaceHolder = (props: Props) => {
 
   const initials = getInitials(name);
 
-  const fontSize = Math.floor(initials.length > 1 ? diameter * 0.4 : diameter * 0.5);
+  const fontSize = Math.floor(initials.length > 1
+    ? diameter * (0.45 - initials.length * 0.025)
+    : diameter * 0.5);
 
   const bgColorIndex = hash % avatarPlaceholderColors.length;
 
