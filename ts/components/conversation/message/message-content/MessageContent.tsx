@@ -214,7 +214,7 @@ export const MessageContent = (props: Props) => {
         flashGreen && 'flash-green-once'
       )}
       style={{
-        width: isShowingImage ? width : undefined,
+        minWidth: isShowingImage ? width : undefined,
       }}
       firstOfSeries={Boolean(firstMessageOfSeries || props.isDetailView)}
       lastOfSeries={Boolean(lastMessageOfSeries || props.isDetailView)}

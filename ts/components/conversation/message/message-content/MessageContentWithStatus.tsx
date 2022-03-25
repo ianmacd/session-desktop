@@ -113,7 +113,7 @@ export const MessageContentWithStatuses = (props: Props) => {
         onClick={onClickOnMessageOuterContainer}
         onDoubleClickCapture={onDoubleClickReplyToMessage}
         style={{
-          width: hasAttachments && isTrustedForAttachmentDownload ? 'min-content' : 'auto',
+          width: hasAttachments && isTrustedForAttachmentDownload ? 'auto' : 'auto',
         }}
         data-testid={dataTestId}
       >
