@@ -178,6 +178,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Enable per-message timestamps by default.
   await Storage.put(SettingsKey.settingsPerMessageTimestamps, true);
 
+  // Enable scroll-on-send by default.
+  await Storage.put(SettingsKey.settingsScrollOnSend, true);
+
   await setLocalPubKey(pubKeyString);
 }
 
