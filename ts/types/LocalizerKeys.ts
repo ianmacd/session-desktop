@@ -511,4 +511,6 @@ export type LocalizerKeys =
   | 'showFullIdDescription'
   | 'showFullIdTitle'
   | 'perMessageTimestampsDescription'
-  | 'perMessageTimestampsTitle';
+  | 'perMessageTimestampsTitle'
+  | 'scrollOnSendDescription'
+  | 'scrollOnSendTitle';
