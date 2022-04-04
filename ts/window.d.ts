@@ -59,6 +59,7 @@ declare global {
     toggleFrequentTimestamps: () => void;
     togglePerMessageTimestamps: () => void;
     toggleMessageFormatting: () => void;
+    toggleScrollOnSend: () => void;
     toggleSpellCheck: any;
     setTheme: (newTheme: string) => any;
     isDev?: () => boolean;
