@@ -22,6 +22,7 @@ const latestUserContactsEnvelopeTimestamp = 'latestUserContactsEnvelopeTimestamp
 const settingsShowFullId = 'show-full-id';
 const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsScrollOnSend = 'scroll-on-send';
+const settingsSendOnShiftEnter = 'send-on-shift-enter';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -43,7 +44,8 @@ export const SettingsKey = {
   latestUserContactsEnvelopeTimestamp,
   settingsShowFullId,
   settingsPerMessageTimestamps,
-  settingsScrollOnSend
+  settingsScrollOnSend,
+  settingsSendOnShiftEnter
 } as const;
 
 export const KNOWN_BLINDED_KEYS_ITEM = 'KNOWN_BLINDED_KEYS_ITEM';

@@ -59,6 +59,7 @@ declare global {
     toggleFullId: () => void;
     togglePerMessageTimestamps: () => void;
     toggleScrollOnSend: () => void;
+    toggleSendOnShiftEnter: () => void;
     toggleSpellCheck: any;
     primaryColor: PrimaryColorStateType;
     theme: ThemeStateType;

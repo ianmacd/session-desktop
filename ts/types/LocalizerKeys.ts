@@ -513,4 +513,6 @@ export type LocalizerKeys =
   | 'perMessageTimestampsDescription'
   | 'perMessageTimestampsTitle'
   | 'scrollOnSendDescription'
-  | 'scrollOnSendTitle';
+  | 'scrollOnSendTitle'
+  | 'sendOnShiftEnterDescription'
+  | 'sendOnShiftEnterTitle';
