@@ -184,6 +184,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Disable message formatting by default.
   await Storage.put(SettingsKey.settingsMessageFormatting, false);
 
+  // Enable scroll-on-send by default.
+  await Storage.put(SettingsKey.settingsScrollOnSend, true);
+
   await setLocalPubKey(pubKeyString);
 }
 

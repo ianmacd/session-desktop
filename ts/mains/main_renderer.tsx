@@ -155,6 +155,11 @@ Storage.onready(async () => {
       await Storage.put('message-formatting', value);
     },
 
+    getScrollOnSend: () => Storage.get('scroll-on-send', true),
+    setScrollOnSend: async (value: boolean) => {
+      await Storage.put('scroll-on-send', value);
+    },
+
     getSpellCheck: () => Storage.get('spell-check', true),
     setSpellCheck: async (value: boolean) => {
       await Storage.put('spell-check', value);
@@ -340,6 +345,12 @@ async function start() {
     const currentValue = window.getSettingValue('message-formatting');
     const newValue = currentValue !== undefined ? !currentValue : true;
     window.Events.setMessageFormatting(newValue);
+  };
+
+  window.toggleScrollOnSend = () => {
+    const currentValue = window.getSettingValue('scroll-on-send');
+    const newValue = currentValue !== undefined ? !currentValue : false;
+    window.Events.setScrollOnSend(newValue);
   };
 
   window.toggleSpellCheck = () => {

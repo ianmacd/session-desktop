@@ -78,6 +78,11 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? false
         : window.getSettingValue(SettingsKey.settingsMessageFormatting);
 
+    const isScrollOnSendActive =
+      window.getSettingValue(SettingsKey.settingsScrollOnSend) === undefined
+        ? true
+        : window.getSettingValue(SettingsKey.settingsScrollOnSend);
+
     const isSpellCheckActive =
       window.getSettingValue(SettingsKey.settingsSpellCheck) === undefined
         ? true
@@ -134,6 +139,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
           title={window.i18n('messageFormattingTitle')}
           description={window.i18n('messageFormattingDescription')}
           active={isMessageFormattingActive}
+        />
+        <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.toggleScrollOnSend();
+            forceUpdate();
+          }}
+          title={window.i18n('scrollOnSendTitle')}
+          description={window.i18n('scrollOnSendDescription')}
+          active={isScrollOnSendActive}
         />
         <SessionToggleWithDescription
           onClickToggle={() => {
