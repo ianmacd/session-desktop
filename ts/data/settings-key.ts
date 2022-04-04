@@ -13,6 +13,7 @@ const settingsFrequentTimestamps = 'frequent-timestamps';
 const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsMessageFormatting = 'message-formatting';
 const settingsScrollOnSend = 'scroll-on-send';
+const settingsSendOnShiftEnter = 'send-on-shift-enter';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -27,5 +28,6 @@ export const SettingsKey = {
   settingsFrequentTimestamps,
   settingsPerMessageTimestamps,
   settingsMessageFormatting,
-  settingsScrollOnSend
+  settingsScrollOnSend,
+  settingsSendOnShiftEnter
 };

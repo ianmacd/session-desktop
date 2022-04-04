@@ -83,6 +83,11 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? true
         : window.getSettingValue(SettingsKey.settingsScrollOnSend);
 
+    const isSendOnShiftEnterActive =
+      window.getSettingValue(SettingsKey.settingsSendOnShiftEnter) === undefined
+        ? false
+        : window.getSettingValue(SettingsKey.settingsSendOnShiftEnter);
+
     const isSpellCheckActive =
       window.getSettingValue(SettingsKey.settingsSpellCheck) === undefined
         ? true
@@ -150,6 +155,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
           active={isScrollOnSendActive}
         />
         <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.toggleSendOnShiftEnter();
+            forceUpdate();
+          }}
+          title={window.i18n('sendOnShiftEnterTitle')}
+          description={window.i18n('sendOnShiftEnterDescription')}
+          active={isSendOnShiftEnterActive}
+        />
+         <SessionToggleWithDescription
           onClickToggle={() => {
             window.toggleSpellCheck();
             forceUpdate();

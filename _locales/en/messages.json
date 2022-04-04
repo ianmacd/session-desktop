@@ -210,6 +210,8 @@
   "messageFormattingDescription": "Apply basic in-line Markdown and SmartyPants formatting to messages",
   "scrollOnSendTitle": "Scroll On Send",
   "scrollOnSendDescription": "Scroll to end of conversation after sending message",
+  "sendOnShiftEnterTitle": "Message Sending",
+  "sendOnShiftEnterDescription": "[Enter] sends message; [Shift] + [Enter] adds new line. Enable to reverse",
   "startConversation": "Start New Conversation",
   "invalidNumberError": "Invalid Session ID or ONS Name",
   "failedResolveOns": "Failed to resolve ONS name",
