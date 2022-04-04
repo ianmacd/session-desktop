@@ -12,6 +12,7 @@ const settingsShowFullId = 'show-full-id';
 const settingsFrequentTimestamps = 'frequent-timestamps';
 const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsMessageFormatting = 'message-formatting';
+const settingsScrollOnSend = 'scroll-on-send';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -25,5 +26,6 @@ export const SettingsKey = {
   settingsShowFullId,
   settingsFrequentTimestamps,
   settingsPerMessageTimestamps,
-  settingsMessageFormatting
+  settingsMessageFormatting,
+  settingsScrollOnSend
 };
