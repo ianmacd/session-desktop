@@ -187,6 +187,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Enable scroll-on-send by default.
   await Storage.put(SettingsKey.settingsScrollOnSend, true);
 
+  // Disable send on [Shift] + [Enter] by default.
+  await Storage.put(SettingsKey.settingsSendOnShiftEnter, false);
+
   await setLocalPubKey(pubKeyString);
 }
 
