@@ -207,6 +207,8 @@
   "perMessageTimestampsDescription": "Place timestamp in message bubble instead of between messages",
   "messageFormattingTitle": "Message Formatting (Experimental)",
   "messageFormattingDescription": "Apply basic in-line Markdown and SmartyPants formatting to messages",
+  "scrollOnSendTitle": "Scroll On Send",
+  "scrollOnSendDescription": "Scroll to end of conversation after sending message",
   "startConversation": "Start New Conversation",
   "invalidNumberError": "Invalid Session ID or ONS Name",
   "failedResolveOns": "Failed to resolve ONS name",
