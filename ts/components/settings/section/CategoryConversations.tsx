@@ -43,6 +43,26 @@ const CommunitiesPruningSetting = () => {
   );
 };
 
+const ScrollOnSendSetting = () => {
+  const forceUpdate = useUpdate();
+
+  const isScrollOnSendActive =
+    window.getSettingValue(SettingsKey.settingsScrollOnSend) === undefined
+      ? true
+      : window.getSettingValue(SettingsKey.settingsScrollOnSend);
+  return (
+    <SessionToggleWithDescription
+      onClickToggle={() => {
+        window.toggleScrollOnSend();
+        forceUpdate();
+      }}
+      title={window.i18n('scrollOnSendTitle')}
+      description={window.i18n('scrollOnSendDescription')}
+      active={isScrollOnSendActive}
+    />
+  );
+};
+
 const SpellCheckSetting = () => {
   const forceUpdate = useUpdate();
 
@@ -85,6 +105,7 @@ export const CategoryConversations = () => {
   return (
     <>
       <CommunitiesPruningSetting />
+      <ScrollOnSendSetting/>
       <SpellCheckSetting />
       <AudioMessageAutoPlaySetting />
 
