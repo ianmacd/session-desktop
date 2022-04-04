@@ -13,6 +13,7 @@ const settingsAudioNotification = 'audio-notification-setting';
 const settingsShowFullId = 'show-full-id';
 const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsScrollOnSend = 'scroll-on-send';
+const settingsSendOnShiftEnter = 'send-on-shift-enter';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -27,5 +28,6 @@ export const SettingsKey = {
   settingsAudioNotification,
   settingsShowFullId,
   settingsPerMessageTimestamps,
-  settingsScrollOnSend
+  settingsScrollOnSend,
+  settingsSendOnShiftEnter
 };

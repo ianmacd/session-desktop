@@ -157,6 +157,11 @@ Storage.onready(async () => {
       await Storage.put('scroll-on-send', value);
     },
 
+    getSendOnShiftEnter: () => Storage.get('send-on-shift-enter', true),
+    setSendOnShiftEnter: async (value: boolean) => {
+      await Storage.put('send-on-shift-enter', value);
+    },
+
     getSpellCheck: () => Storage.get('spell-check', true),
     setSpellCheck: async (value: boolean) => {
       await Storage.put('spell-check', value);
@@ -331,6 +336,12 @@ async function start() {
     const currentValue = window.getSettingValue('scroll-on-send');
     const newValue = currentValue !== undefined ? !currentValue : false;
     window.Events.setScrollOnSend(newValue);
+  };
+
+  window.toggleSendOnShiftEnter = () => {
+    const currentValue = window.getSettingValue('send-on-shift-enter');
+    const newValue = currentValue !== undefined ? !currentValue : true;
+    window.Events.setSendOnShiftEnter(newValue);
   };
 
   window.toggleSpellCheck = () => {

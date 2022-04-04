@@ -63,6 +63,26 @@ const ScrollOnSendSetting = () => {
   );
 };
 
+const SendOnShiftEnterSetting = () => {
+  const forceUpdate = useUpdate();
+
+  const isSendOnShiftEnterActive =
+    window.getSettingValue(SettingsKey.settingsSendOnShiftEnter) === undefined
+      ? false
+      : window.getSettingValue(SettingsKey.settingsSendOnShiftEnter);
+  return (
+    <SessionToggleWithDescription
+      onClickToggle={() => {
+        window.toggleSendOnShiftEnter();
+        forceUpdate();
+      }}
+      title={window.i18n('sendOnShiftEnterTitle')}
+      description={window.i18n('sendOnShiftEnterDescription')}
+      active={isSendOnShiftEnterActive}
+    />
+  );
+};
+
 const SpellCheckSetting = () => {
   const forceUpdate = useUpdate();
 
@@ -106,6 +126,7 @@ export const CategoryConversations = () => {
     <>
       <CommunitiesPruningSetting />
       <ScrollOnSendSetting/>
+      <SendOnShiftEnterSetting/>
       <SpellCheckSetting />
       <AudioMessageAutoPlaySetting />
 
