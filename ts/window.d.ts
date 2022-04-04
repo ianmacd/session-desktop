@@ -55,6 +55,7 @@ declare global {
     toggleMenuBar: () => void;
     toggleFullId: () => void;
     togglePerMessageTimestamps: () => void;
+    toggleScrollOnSend: () => void;
     toggleSpellCheck: any;
     setTheme: (newTheme: string) => Promise<void>;
     isDev?: () => boolean;
