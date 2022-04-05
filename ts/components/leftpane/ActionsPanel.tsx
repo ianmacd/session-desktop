@@ -182,7 +182,7 @@ const triggerAvatarReUploadIfNeeded = async () => {
   const lastTimeStampAvatarUpload =
     (await Data.getItemById(SettingsKey.lastAvatarUploadTimestamp))?.value || 0;
 
-  if (Date.now() - lastTimeStampAvatarUpload > DURATION.DAYS * 14) {
+  if (Date.now() - lastTimeStampAvatarUpload > DURATION.DAYS * 7) {
     window.log.info('Reuploading avatar...');
     // reupload the avatar
     await uploadOurAvatar();
@@ -283,7 +283,7 @@ export const ActionsPanel = () => {
   }, DURATION.MINUTES * 5);
 
   useInterval(() => {
-    // this won't be run every days, but if the app stays open for more than 10 days
+    // this won't be run every days, but if the app stays open for more than 7 days
     void triggerAvatarReUploadIfNeeded();
   }, DURATION.DAYS * 1);
 
