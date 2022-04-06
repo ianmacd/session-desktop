@@ -814,6 +814,9 @@ class CompositionBoxInner extends React.Component<Props, State> {
     if (event.key === 'Enter' && event.shiftKey === window.getSettingValue('send-on-shift-enter') && !event.nativeEvent.isComposing) {
       // If shift, newline. If in IME composing mode, leave it to IME. Else send message.
       event.preventDefault();
+      if (event.altKey) {
+	await window.setSettingValue('altkey-pressed', true);
+      }
       await this.onSendMessage();
     } else if (event.key === 'Escape' && this.state.showEmojiPanel) {
       this.hideEmojiPanel();

@@ -199,9 +199,10 @@ export class SessionConversation extends React.Component<Props, State> {
       // this needs to be awaited otherwise, the scrollToNow won't find the new message in the db.
       // and this make the showScrollButton to be visible (even if we just scrolled to now)
       await conversationModel.sendMessage(msg);
-      if (window.getSettingValue('scroll-on-send')) {
+      if (!window.getSettingValue('altkey-pressed')) {
 	await this.scrollToNow();
       }
+      await window.setSettingValue('altkey-pressed', false);
     };
 
     const recoveryPhrase = getCurrentRecoveryPhrase();
