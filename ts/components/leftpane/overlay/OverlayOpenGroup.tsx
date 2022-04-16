@@ -12,6 +12,7 @@ import { setOverlayMode } from '../../../state/ducks/section';
 import { joinOpenGroupV2WithUIEvents } from '../../../session/apis/open_group_api/opengroupV2/JoinOpenGroupV2';
 import { openGroupV2CompleteURLRegex } from '../../../session/apis/open_group_api/utils/OpenGroupUtils';
 import { ToastUtils } from '../../../session/utils';
+import { loadDefaultRooms } from '../../../session/apis/open_group_api/opengroupV2/ApiUtil';
 import useKey from 'react-use/lib/useKey';
 
 async function joinOpenGroup(serverUrl: string) {
@@ -41,6 +42,7 @@ export const OverlayOpenGroup = () => {
         return;
       }
       setLoading(true);
+      void loadDefaultRooms();
       const groupCreated = await joinOpenGroup(groupUrl);
       if (groupCreated) {
         closeOverlay();
