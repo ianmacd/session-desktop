@@ -102,7 +102,7 @@ type Props = {
 
 const highlightedMessageAnimation = keyframes`
   1% {
-      background-color: #00f782;
+      background-color: #33cdc2;
   }
 `;
 
