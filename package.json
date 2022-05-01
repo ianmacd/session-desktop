@@ -90,7 +90,6 @@
     "classnames": "2.2.5",
     "color": "^3.1.2",
     "config": "1.28.1",
-    "country-code-lookup": "^0.0.19",
     "curve25519-js": "https://github.com/oxen-io/curve25519-js",
     "dompurify": "^2.0.7",
     "electron-is-dev": "^1.1.0",
@@ -102,12 +101,14 @@
     "fs-extra": "9.0.0",
     "glob": "7.1.2",
     "image-type": "^4.1.0",
-    "ip2country": "1.0.1",
     "libsession_util_nodejs": "https://github.com/oxen-io/libsession-util-nodejs/releases/download/v0.2.2/libsession_util_nodejs-v0.2.2.tar.gz",
+    "jquery": "3.3.1",
+    "jsbn": "1.1.0",
     "libsodium-wrappers-sumo": "^0.7.9",
     "linkify-it": "^4.0.1",
     "lodash": "^4.17.21",
     "long": "^4.0.0",
+    "maxmind": "^4.3.6",
     "mic-recorder-to-mp3": "^2.2.2",
     "moment": "^2.29.4",
     "mustache": "2.3.0",
@@ -370,6 +371,9 @@
       "node_modules/better-sqlite3/build/Release/better_sqlite3.node",
       "ts/webworker/workers/node/libsession/*.node",
       "!dev-app-update.yml"
+    ],
+    "extraFiles": [
+      "mmdb/GeoLite2-City.mmdb"
     ]
   }
 }
