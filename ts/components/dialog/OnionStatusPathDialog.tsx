@@ -4,7 +4,7 @@ import { shell } from 'electron';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { CityResponse, Reader } from 'maxmind';
+import { AsnResponse, CityResponse, Reader } from 'maxmind';
 import { readFileSync } from 'fs-extra';
 import path from 'path';
 import { Snode } from '../../data/data';
@@ -102,8 +102,10 @@ const OnionPathModalInner = () => {
   const binPath = (process.env.NODE_APP_INSTANCE || '').startsWith('devprod')
     ? path.resolve(`${__dirname}/../../..`)
     : path.resolve(`${process.resourcesPath}/..`);
-  const buffer = readFileSync(`${binPath}/mmdb/GeoLite2-City.mmdb`);
-  const reader = new Reader<CityResponse>(buffer);
+  const cityBuffer = readFileSync(`${binPath}/mmdb/GeoLite2-City.mmdb`);
+  const cityReader = new Reader<CityResponse>(cityBuffer);
+  const asnBuffer = readFileSync(`${binPath}/mmdb/GeoLite2-ASN.mmdb`);
+  const asnReader = new Reader<AsnResponse>(asnBuffer);
   const lang = 'en';
 
   return (
@@ -130,15 +132,19 @@ const OnionPathModalInner = () => {
           </StyledLightsContainer>
           <Flex container={true} flexDirection="column" alignItems="flex-start">
             {nodes.map((snode: Snode | any) => {
-	      const geoLookup = reader.get(snode.ip || '0.0.0.0');
-	      const cityName = geoLookup?.city?.names[lang];
-	      const countryName = geoLookup?.country?.names[lang];
-	      const subDivisions = geoLookup?.subdivisions;
+	      const cityLookup = cityReader.get(snode.ip || '0.0.0.0');
+	      const cityName = cityLookup?.city?.names[lang];
+	      const countryName = cityLookup?.country?.names[lang];
+	      const subDivisions = cityLookup?.subdivisions;
 	      const subDivisionName = subDivisions
 		? subDivisions[0].names[lang]
 		: undefined
-	      //const isoCode = geoLookup?.country?.iso_code;
-	      window.log.info('geoLookup:', geoLookup);
+	      //const isoCode = cityLookup?.country?.iso_code;
+	      window.log.info('cityLookup:', cityLookup);
+
+	      const asnLookup = asnReader.get(snode.ip || '0.0.0.0');
+	      const asnOrganisation = asnLookup?.autonomous_system_organization;
+	      window.log.info('asnLookup:', asnLookup);
 
 	      // Show the city, subdivision and country if possible. If the
 	      // city or subdivision is unknown, or they match each other
@@ -152,9 +158,13 @@ const OnionPathModalInner = () => {
 		    : `${cityName}, ${countryName}`
 		: countryName
 
+	      const networkData = asnOrganisation
+		? `${snode.ip}: ${asnOrganisation}`
+		: `${snode.ip}`
+
               let labelText = snode.label
                 ? snode.label
-                : `${cityCountry} [${snode.ip}]`
+                : `${cityCountry}\n${networkData}`
               if (!labelText) {
                 labelText = window.i18n('unknownCountry');
               }
