@@ -372,6 +372,7 @@
       "!dev-app-update.yml"
     ],
     "extraFiles": [
+      "mmdb/GeoLite2-ASN.mmdb",
       "mmdb/GeoLite2-City.mmdb"
     ]
   }
