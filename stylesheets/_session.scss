@@ -1076,7 +1076,7 @@ input {
 }
 
 .onion__description {
-  min-width: 400px;
+  min-width: 500px;
   width: 0;
 }
 
@@ -1112,7 +1112,7 @@ input {
   }
   .onion__node__country {
     margin: $session-margin-sm;
-    min-width: 150px;
+    min-width: 400px;
   }
 
   .onion__growing-icon {

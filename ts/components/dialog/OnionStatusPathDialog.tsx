@@ -100,19 +100,28 @@ const OnionPathModalInner = () => {
 	      const geoLookup = reader.get(snode.ip || '0.0.0.0');
 	      const cityName = geoLookup?.city?.names[lang];
 	      const countryName = geoLookup?.country?.names[lang];
+	      const subDivisions = geoLookup?.subdivisions;
+	      const subDivisionName = subDivisions
+		? subDivisions[0].names[lang]
+		: undefined
 	      //const isoCode = geoLookup?.country?.iso_code;
+	      window.log.info('geoLookup:', geoLookup);
 
-	      // If the city is unknown, or the city and country are identical
-	      // (e.g. Luxembourg or Singapore), use just the country.
+	      // Show the city, subdivision and country if possible. If the
+	      // city or subdivision is unknown, or they match each other
+	      // (e.g. Luxembourg or Singapore) or the country, they are
+	      // omitted.
 	      const cityCountry = cityName
 		? cityName === countryName
 		  ? countryName
-		  : `${cityName}, ${countryName}`
+		  : subDivisionName && subDivisionName !== cityName
+		    ? `${cityName}, ${subDivisionName}, ${countryName}`
+		    : `${cityName}, ${countryName}`
 		: countryName
 
               let labelText = snode.label
                 ? snode.label
-                : cityCountry
+                : `${cityCountry} [${snode.ip}]`
               if (!labelText) {
                 labelText = window.i18n('unknownCountry');
               }
