@@ -184,6 +184,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Disable send on [Shift] + [Enter] by default.
   await Storage.put(SettingsKey.settingsSendOnShiftEnter, false);
 
+  // Enable deletion confirmations by default.
+  await Storage.put(SettingsKey.settingsConfirmDeletions, true);
+
   await setLocalPubKey(pubKeyString);
 }
 
