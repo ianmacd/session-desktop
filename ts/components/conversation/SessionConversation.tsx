@@ -57,6 +57,7 @@ import { MessageDetail } from './message/message-item/MessageDetail';
 
 import styled from 'styled-components';
 import { SessionSpinner } from '../basic/SessionSpinner';
+import { deleteMessagesByIdForEveryone } from '../../interactions/conversations/unsendingInteractions';
 // tslint:disable: jsx-curly-spacing
 
 interface State {
@@ -343,6 +344,12 @@ export class SessionConversation extends React.Component<Props, State> {
         case 'Escape':
           if (selectionMode) {
             window.inboxStore?.dispatch(resetSelectedMessageIds());
+          }
+	  break;
+        case 'Backspace':
+        case 'Delete':
+          if (selectionMode) {
+            void deleteMessagesByIdForEveryone(this.props.selectedMessages, this.props.selectedConversationKey);
           }
           break;
         default:
