@@ -13,6 +13,7 @@ const settingsShowFullId = 'show-full-id';
 const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsScrollOnSend = 'scroll-on-send';
 const settingsSendOnShiftEnter = 'send-on-shift-enter';
+const settingsConfirmDeletions = 'confirm-deletions';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -27,5 +28,6 @@ export const SettingsKey = {
   settingsShowFullId,
   settingsPerMessageTimestamps,
   settingsScrollOnSend,
-  settingsSendOnShiftEnter
+  settingsSendOnShiftEnter,
+  settingsConfirmDeletions
 };

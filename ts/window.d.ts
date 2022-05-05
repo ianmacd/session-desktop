@@ -57,6 +57,7 @@ declare global {
     togglePerMessageTimestamps: () => void;
     toggleScrollOnSend: () => void;
     toggleSendOnShiftEnter: () => void;
+    toggleConfirmDeletions: () => void;
     toggleSpellCheck: any;
     setTheme: (newTheme: string) => Promise<void>;
     isDev?: () => boolean;
