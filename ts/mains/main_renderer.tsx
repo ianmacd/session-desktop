@@ -162,6 +162,11 @@ Storage.onready(async () => {
       await Storage.put('send-on-shift-enter', value);
     },
 
+    getConfirmDeletions: () => Storage.get('confirm-deletions', true),
+    setConfirmDeletions: async (value: boolean) => {
+      await Storage.put('confirm-deletions', value);
+    },
+
     getSpellCheck: () => Storage.get('spell-check', true),
     setSpellCheck: async (value: boolean) => {
       await Storage.put('spell-check', value);
@@ -347,6 +352,12 @@ async function start() {
     const currentValue = window.getSettingValue('send-on-shift-enter');
     const newValue = currentValue !== undefined ? !currentValue : true;
     window.Events.setSendOnShiftEnter(newValue);
+  };
+
+  window.toggleConfirmDeletions = () => {
+    const currentValue = window.getSettingValue('confirm-deletions');
+    const newValue = currentValue !== undefined ? !currentValue : false;
+    window.Events.setConfirmDeletions(newValue);
   };
 
   window.toggleSpellCheck = () => {

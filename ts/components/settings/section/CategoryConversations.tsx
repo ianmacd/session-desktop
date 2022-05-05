@@ -83,6 +83,26 @@ const SendOnShiftEnterSetting = () => {
   );
 };
 
+const ConfirmDeletionsSetting = () => {
+  const forceUpdate = useUpdate();
+
+  const isConfirmDeletionsActive =
+    window.getSettingValue(SettingsKey.settingsConfirmDeletions) === undefined
+      ? true
+      : window.getSettingValue(SettingsKey.settingsConfirmDeletions);
+  return (
+    <SessionToggleWithDescription
+      onClickToggle={() => {
+        window.toggleConfirmDeletions();
+        forceUpdate();
+      }}
+      title={window.i18n('confirmDeletionsTitle')}
+      description={window.i18n('confirmDeletionsDescription')}
+      active={isConfirmDeletionsActive}
+    />
+  );
+};
+
 const SpellCheckSetting = () => {
   const forceUpdate = useUpdate();
 
@@ -127,6 +147,7 @@ export const CategoryConversations = () => {
       <CommunitiesPruningSetting />
       <ScrollOnSendSetting/>
       <SendOnShiftEnterSetting/>
+      <ConfirmDeletionsSetting/>
       <SpellCheckSetting />
       <AudioMessageAutoPlaySetting />
 
