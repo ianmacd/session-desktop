@@ -61,6 +61,7 @@ declare global {
     toggleMessageFormatting: () => void;
     toggleScrollOnSend: () => void;
     toggleSendOnShiftEnter: () => void;
+    toggleConfirmDeletions: () => void;
     toggleSpellCheck: any;
     setTheme: (newTheme: string) => any;
     isDev?: () => boolean;
