@@ -211,6 +211,8 @@
   "scrollOnSendDescription": "Scroll to end of conversation after sending message",
   "sendOnShiftEnterTitle": "Message Sending",
   "sendOnShiftEnterDescription": "[Enter] sends message; [Shift] + [Enter] adds new line. Enable to reverse",
+  "confirmDeletionsTitle": "Confirm Deletions",
+  "confirmDeletionsDescription": "Ask before deleting messages",
   "startConversation": "Start New Conversation",
   "invalidNumberError": "Invalid Session ID or ONS Name",
   "failedResolveOns": "Failed to resolve ONS name",

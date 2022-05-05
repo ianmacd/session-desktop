@@ -14,6 +14,7 @@ const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsMessageFormatting = 'message-formatting';
 const settingsScrollOnSend = 'scroll-on-send';
 const settingsSendOnShiftEnter = 'send-on-shift-enter';
+const settingsConfirmDeletions = 'confirm-deletions';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -29,5 +30,6 @@ export const SettingsKey = {
   settingsPerMessageTimestamps,
   settingsMessageFormatting,
   settingsScrollOnSend,
-  settingsSendOnShiftEnter
+  settingsSendOnShiftEnter,
+  settingsConfirmDeletions
 };
