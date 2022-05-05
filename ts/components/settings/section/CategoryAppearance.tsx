@@ -88,6 +88,11 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? false
         : window.getSettingValue(SettingsKey.settingsSendOnShiftEnter);
 
+    const isConfirmDeletionsActive =
+      window.getSettingValue(SettingsKey.settingsConfirmDeletions) === undefined
+        ? true
+        : window.getSettingValue(SettingsKey.settingsConfirmDeletions);
+
     const isSpellCheckActive =
       window.getSettingValue(SettingsKey.settingsSpellCheck) === undefined
         ? true
@@ -162,6 +167,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
           title={window.i18n('sendOnShiftEnterTitle')}
           description={window.i18n('sendOnShiftEnterDescription')}
           active={isSendOnShiftEnterActive}
+        />
+        <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.toggleConfirmDeletions();
+            forceUpdate();
+          }}
+          title={window.i18n('confirmDeletionsTitle')}
+          description={window.i18n('confirmDeletionsDescription')}
+          active={isConfirmDeletionsActive}
         />
          <SessionToggleWithDescription
           onClickToggle={() => {
