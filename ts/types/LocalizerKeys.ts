@@ -515,4 +515,6 @@ export type LocalizerKeys =
   | 'scrollOnSendDescription'
   | 'scrollOnSendTitle'
   | 'sendOnShiftEnterDescription'
-  | 'sendOnShiftEnterTitle';
+  | 'sendOnShiftEnterTitle'
+  | 'confirmDeletionsDescription'
+  | 'confirmDeletionsTitle';
