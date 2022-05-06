@@ -26,7 +26,7 @@
   transition: transform 0.3s ease-in-out;
   transform: translateX(100%);
   will-change: transform;
-  width: 25vw;
+  min-width: 25vw;
   z-index: 5;
 
   background-color: var(--background-primary-color);

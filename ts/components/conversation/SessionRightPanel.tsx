@@ -28,6 +28,7 @@ import { MediaItemType } from '../lightbox/LightboxGallery';
 import { MediaGallery } from './media-gallery/MediaGallery';
 import { getAbsoluteAttachmentPath } from '../../types/MessageAttachment';
 import styled from 'styled-components';
+import { OnionPathModalInner } from '../dialog/OnionStatusPathDialog';
 
 async function getMediaGalleryProps(
   conversationId: string
@@ -275,6 +276,7 @@ export const SessionRightPanelWithDetails = () => {
       };
   return (
     <div className="group-settings">
+      <OnionPathModalInner />
       <HeaderItem />
       <h2 data-testid="right-panel-group-name">{displayNameInProfile}</h2>
       {showMemberCount && (
