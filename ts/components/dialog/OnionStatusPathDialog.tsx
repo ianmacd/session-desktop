@@ -47,7 +47,7 @@ const OnionCountryDisplay = ({
   return hoverable;
 };
 
-const OnionPathModalInner = () => {
+export const OnionPathModalInner = () => {
   const onionPath = useSelector(getFirstOnionPath);
   const isOnline = useSelector(getIsOnline);
   // including the device and destination in calculation
