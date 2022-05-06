@@ -77,7 +77,7 @@ const OnionCountryDisplay = ({ labelText, snodeIp }: { snodeIp?: string; labelTe
   return hoverable;
 };
 
-const OnionPathModalInner = () => {
+export const OnionPathModalInner = () => {
   const onionPath = useSelector(getFirstOnionPath);
   const isOnline = useSelector(getIsOnline);
   // including the device and destination in calculation
