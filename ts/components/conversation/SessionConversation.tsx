@@ -264,7 +264,7 @@ export class SessionConversation extends React.Component<Props, State> {
           <>
             <div
               // if you change the classname, also update it on onKeyDown
-              className={classNames('conversation-content', selectionMode && 'selection-mode')}
+              className={classNames('conversation-content', isRightPanelShowing && 'shrink', selectionMode && 'selection-mode')}
               tabIndex={0}
               onKeyDown={this.onKeyDown}
               role="navigation"
