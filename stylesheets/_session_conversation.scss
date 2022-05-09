@@ -98,6 +98,11 @@
   position: relative;
   outline: none;
 
+  &.shrink {
+    width: calc(75vw - 440px);
+    min-width: 300px;
+  }
+
   .conversation-messages {
     display: flex;
     flex-direction: column;
