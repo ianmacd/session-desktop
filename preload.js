@@ -1,6 +1,8 @@
 const { clipboard, ipcRenderer, webFrame } = require('electron/main');
 const { Storage } = require('./ts/util/storage');
 
+const path = require('path');
+const { readFileSync } = require('fs');
 const url = require('url');
 
 const config = url.parse(window.location.toString(), true).query;
@@ -253,6 +255,14 @@ window.getSeedNodeList = () =>
         'https://storage.seed3.loki.network:4433/',
         'https://public.loki.foundation:4433/',
       ];
+
+// Ensure we can always find the GeoLite2 database, regardless of whether
+// this is a dev or a prod build.
+const binPath = (process.env.NODE_APP_INSTANCE || '').startsWith('devprod')
+  ? path.resolve(__dirname)
+  : path.resolve(`${process.resourcesPath}/..`);
+window.mmdbCityBuffer = readFileSync(`${binPath}/mmdb/GeoLite2-City.mmdb`);
+window.mmdbASNBuffer = readFileSync(`${binPath}/mmdb/GeoLite2-ASN.mmdb`);
 
 const { locale: localFromEnv } = config;
 window.i18n = setupi18n(localFromEnv || 'en', localeMessages);
