@@ -5,8 +5,6 @@ import { shell } from 'electron';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AsnResponse, CityResponse, Reader } from 'maxmind';
-import { readFileSync } from 'fs-extra';
-import path from 'path';
 import { Snode } from '../../data/data';
 import { onionPathModal } from '../../state/ducks/modalDialog';
 import {
@@ -78,6 +76,10 @@ const OnionCountryDisplay = ({ labelText, snodeIp }: { snodeIp?: string; labelTe
   return hoverable;
 };
 
+const cityReader = new Reader<CityResponse>(window.mmdbCityBuffer);
+const asnReader = new Reader<AsnResponse>(window.mmdbASNBuffer);
+const lang = 'en';
+
 export const OnionPathModalInner = () => {
   const onionPath = useSelector(getFirstOnionPath);
   const isOnline = useSelector(getIsOnline);
@@ -96,17 +98,6 @@ export const OnionPathModalInner = () => {
       label: window.i18n('destination'),
     },
   ];
-
-  // Ensure we can always find the GeoLite2 database, regardless of whether
-  // this is a dev or a prod build.
-  const binPath = (process.env.NODE_APP_INSTANCE || '').startsWith('devprod')
-    ? path.resolve(`${__dirname}/../../..`)
-    : path.resolve(`${process.resourcesPath}/..`);
-  const cityBuffer = readFileSync(`${binPath}/mmdb/GeoLite2-City.mmdb`);
-  const cityReader = new Reader<CityResponse>(cityBuffer);
-  const asnBuffer = readFileSync(`${binPath}/mmdb/GeoLite2-ASN.mmdb`);
-  const asnReader = new Reader<AsnResponse>(asnBuffer);
-  const lang = 'en';
 
   return (
     <>
@@ -140,11 +131,9 @@ export const OnionPathModalInner = () => {
 		? subDivisions[0].names[lang]
 		: undefined
 	      //const isoCode = cityLookup?.country?.iso_code;
-	      window.log.info('cityLookup:', cityLookup);
 
 	      const asnLookup = asnReader.get(snode.ip || '0.0.0.0');
 	      const asnOrganisation = asnLookup?.autonomous_system_organization;
-	      window.log.info('asnLookup:', asnLookup);
 
 	      // Show the city, subdivision and country if possible. If the
 	      // city or subdivision is unknown, or they match each other
