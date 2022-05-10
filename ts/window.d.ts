@@ -50,6 +50,8 @@ declare global {
     persistStore?: Persistor;
     restart: any;
     getSeedNodeList: () => Array<string> | undefined;
+    mmdbCityBuffer: Buffer;
+    mmdbASNBuffer: Buffer;
     setPassword: any;
     isOnline: boolean;
     toggleMediaPermissions: () => Promise<void>;

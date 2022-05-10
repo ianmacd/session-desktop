@@ -1,6 +1,8 @@
 const { clipboard, ipcRenderer, webFrame } = require('electron/main');
 const { Storage } = require('./ts/util/storage');
 
+const path = require('path');
+const { readFileSync } = require('fs');
 const url = require('url');
 
 const _ = require('lodash');
@@ -258,6 +260,14 @@ window.getSeedNodeList = () =>
         'https://seed2.getsession.org:4443/',
         'https://seed3.getsession.org:4443/',
       ];
+
+// Ensure we can always find the GeoLite2 database, regardless of whether
+// this is a dev or a prod build.
+const binPath = (process.env.NODE_APP_INSTANCE || '').startsWith('devprod')
+  ? path.resolve(__dirname)
+  : path.resolve(`${process.resourcesPath}/..`);
+window.mmdbCityBuffer = readFileSync(`${binPath}/mmdb/GeoLite2-City.mmdb`);
+window.mmdbASNBuffer = readFileSync(`${binPath}/mmdb/GeoLite2-ASN.mmdb`);
 
 const { locale: localFromEnv } = config;
 window.i18n = setupi18n(localFromEnv || 'en', localeMessages);
