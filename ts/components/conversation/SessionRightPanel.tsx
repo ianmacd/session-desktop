@@ -103,16 +103,8 @@ async function getMediaGalleryProps(
   };
 }
 
-const HeaderItem = () => {
-  const selectedConversation = useSelector(getSelectedConversation);
+const ChevronButton = () => {
   const dispatch = useDispatch();
-
-  if (!selectedConversation) {
-    return null;
-  }
-  const { id, isGroup, isKickedFromGroup, isBlocked, left } = selectedConversation;
-
-  const showInviteContacts = isGroup && !isKickedFromGroup && !isBlocked && !left;
 
   return (
     <div className="group-settings-header">
@@ -126,6 +118,22 @@ const HeaderItem = () => {
         style={{ position: 'absolute' }}
         dataTestId="back-button-conversation-options"
       />
+    </div>
+  );
+};
+
+const HeaderItem = () => {
+  const selectedConversation = useSelector(getSelectedConversation);
+
+  if (!selectedConversation) {
+    return null;
+  }
+  const { id, isGroup, isKickedFromGroup, isBlocked, left } = selectedConversation;
+
+  const showInviteContacts = isGroup && !isKickedFromGroup && !isBlocked && !left;
+
+  return (
+    <div className="group-settings-header">
       <Avatar size={AvatarSize.XL} pubkey={id} />
       {showInviteContacts && (
         <SessionIconButton
@@ -276,6 +284,7 @@ export const SessionRightPanelWithDetails = () => {
       };
   return (
     <div className="group-settings">
+      <ChevronButton />
       <OnionPathModalInner />
       <HeaderItem />
       <h2 data-testid="right-panel-group-name">{displayNameInProfile}</h2>
