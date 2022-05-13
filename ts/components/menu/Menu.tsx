@@ -24,6 +24,7 @@ import {
   clearNickNameByConvoId,
   copyPublicKeyByConvoId,
   declineConversationWithConfirm,
+  deleteAllMessagesByConvoIdNoConfirmation,
   deleteAllMessagesByConvoIdWithConfirmation,
   markAllReadByConvoId,
   setDisappearingMessagesByConvoId,
@@ -602,7 +603,9 @@ export const DeleteMessagesMenuItem = () => {
   return (
     <Item
       onClick={() => {
-        deleteAllMessagesByConvoIdWithConfirmation(convoId);
+	window.getSettingValue('confirm-deletions')
+	  ? deleteAllMessagesByConvoIdWithConfirmation(convoId)
+	  : deleteAllMessagesByConvoIdNoConfirmation(convoId)
       }}
     >
       {window.i18n('deleteMessages')}
