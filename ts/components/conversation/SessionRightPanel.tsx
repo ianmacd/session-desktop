@@ -6,6 +6,7 @@ import useInterval from 'react-use/lib/useInterval';
 import { useDispatch, useSelector } from 'react-redux';
 import { Data } from '../../data/data';
 import {
+  deleteAllMessagesByConvoIdNoConfirmation,
   deleteAllMessagesByConvoIdWithConfirmation,
   setDisappearingMessagesByConvoId,
   showAddModeratorsByConvoId,
@@ -237,7 +238,9 @@ export const SessionRightPanelWithDetails = () => {
 
   const deleteConvoAction = isPublic
     ? () => {
-        deleteAllMessagesByConvoIdWithConfirmation(id);
+	window.getSettingValue('confirm-deletions')
+	  ? deleteAllMessagesByConvoIdWithConfirmation(id)
+	  : deleteAllMessagesByConvoIdNoConfirmation(id)
       }
     : () => {
         showLeaveGroupByConvoId(id);
