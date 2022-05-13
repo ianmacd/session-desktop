@@ -112,6 +112,13 @@ export const DeletePrivateContactMenuItem = () => {
       dispatch(updateConfirmModal(null));
     };
 
+    const onClickOk = async () => {
+      await getConversationController().delete1o1(convoId, {
+        fromSyncMessage: false,
+        justHidePrivate: false,
+      });
+    };
+
     const showConfirmationModal = () => {
       dispatch(
         updateConfirmModal({
@@ -120,16 +127,17 @@ export const DeletePrivateContactMenuItem = () => {
           onClickClose,
           okTheme: SessionButtonColor.Danger,
           onClickOk: async () => {
-            await getConversationController().delete1o1(convoId, {
-              fromSyncMessage: false,
-              justHidePrivate: false,
-            });
+	    await onClickOk();
           },
         })
       );
     };
 
-    return <Item onClick={showConfirmationModal}>{menuItemText}</Item>;
+    if (window.getSettingValue('confirm-deletions')) {
+      return <Item onClick={showConfirmationModal}>{menuItemText}</Item>;
+    }
+
+    return <Item onClick={onClickOk}>{menuItemText}</Item>;
   }
   return null;
 };
@@ -152,6 +160,19 @@ export const DeleteGroupOrCommunityMenuItem = () => {
       dispatch(updateConfirmModal(null));
     };
 
+    const onClickOk = async () => {
+      if (isPublic) {
+        await getConversationController().deleteCommunity(convoId, {
+          fromSyncMessage: false,
+        });
+      } else {
+        await getConversationController().deleteClosedGroup(convoId, {
+          fromSyncMessage: false,
+          sendLeaveMessage: true,
+        });
+      }
+    };
+
     const showConfirmationModal = () => {
       dispatch(
         updateConfirmModal({
@@ -160,22 +181,17 @@ export const DeleteGroupOrCommunityMenuItem = () => {
           onClickClose,
           okTheme: SessionButtonColor.Danger,
           onClickOk: async () => {
-            if (isPublic) {
-              await getConversationController().deleteCommunity(convoId, {
-                fromSyncMessage: false,
-              });
-            } else {
-              await getConversationController().deleteClosedGroup(convoId, {
-                fromSyncMessage: false,
-                sendLeaveMessage: true,
-              });
-            }
+            await onClickOk();
           },
         })
       );
     };
 
-    return <Item onClick={showConfirmationModal}>{menuItemText}</Item>;
+    if (window.getSettingValue('confirm-deletions')) {
+      return <Item onClick={showConfirmationModal}>{menuItemText}</Item>;
+    }
+
+    return <Item onClick={onClickOk}>{menuItemText}</Item>;
   }
   return null;
 };
