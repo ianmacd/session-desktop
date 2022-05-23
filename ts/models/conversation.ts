@@ -22,7 +22,7 @@ import { ToastUtils, UserUtils } from '../session/utils';
 import { BlockedNumberController } from '../util';
 import { leaveClosedGroup } from '../session/group/closed-group';
 import { SignalService } from '../protobuf';
-import { MessageModel, sliceQuoteText } from './message';
+import { MessageModel } from './message';
 import { MessageAttributesOptionals, MessageDirection } from './messageType';
 import autoBind from 'auto-bind';
 import { Data } from '../../ts/data/data';
@@ -583,7 +583,7 @@ export class ConversationModel extends Backbone.Model<ConversationAttributes> {
       author: msgSource,
       id: `${quotedMessage.get('sent_at')}` || '',
       // no need to quote the full message length.
-      text: sliceQuoteText(body),
+      text: (body || '').length >= 320 ? `${body?.slice(0, 320)}…` : body,
       attachments: quotedAttachments,
       timestamp: quotedMessage.get('sent_at') || 0,
       convoId: this.id,
