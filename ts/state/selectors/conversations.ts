@@ -992,7 +992,6 @@ export const getMessageTextProps = createSelector(getMessagePropsByMessageId, (p
     'text',
     'isDeleted',
     'conversationType',
-    'timestamp',
   ]);
 
   return msgProps;
