@@ -187,6 +187,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Enable deletion confirmations by default.
   await Storage.put(SettingsKey.settingsConfirmDeletions, true);
 
+  // Enable discarding of message requests by default.
+  await Storage.put(SettingsKey.settingsDiscardMessageRequests, true);
+
   await setLocalPubKey(pubKeyString);
 }
 
