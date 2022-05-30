@@ -70,6 +70,16 @@ export const SettingsCategoryPrivacy = (props: {
         />
         <SessionToggleWithDescription
           onClickToggle={async () => {
+            const old = Boolean(window.getSettingValue(SettingsKey.settingsDiscardMessageRequests));
+	    await window.setSettingValue(SettingsKey.settingsDiscardMessageRequests, !old);
+	    forceUpdate();
+          }}
+          title={window.i18n('discardRequestsTitle')}
+          description={window.i18n('discardRequestsDescription')}
+          active={Boolean(window.getSettingValue(SettingsKey.settingsDiscardMessageRequests))}
+        />
+        <SessionToggleWithDescription
+          onClickToggle={async () => {
             await toggleLinkPreviews();
             forceUpdate();
           }}
