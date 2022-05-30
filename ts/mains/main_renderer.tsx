@@ -173,6 +173,11 @@ Storage.onready(async () => {
       await Storage.put('confirm-deletions', value);
     },
 
+    getDiscardMessageRequests: () => Storage.get('discard-requests', true),
+    setDiscardMessageRequests: async (value: boolean) => {
+      await Storage.put('discard-requests', value);
+    },
+
     getSpellCheck: () => Storage.get('spell-check', true),
     setSpellCheck: async (value: boolean) => {
       await Storage.put('spell-check', value);
@@ -378,6 +383,12 @@ async function start() {
     const currentValue = window.getSettingValue('confirm-deletions');
     const newValue = currentValue !== undefined ? !currentValue : false;
     window.Events.setConfirmDeletions(newValue);
+  };
+
+  window.toggleDiscardMessageRequests = () => {
+    const currentValue = window.getSettingValue('discard-requests');
+    const newValue = currentValue !== undefined ? !currentValue : false;
+    window.Events.setDiscardMessageRequests(newValue);
   };
 
   window.toggleSpellCheck = () => {
