@@ -201,7 +201,7 @@ async function queryMessages(query: string): Promise<Array<MessageResultProps>> 
     const trimmedQuery = query.trim();
     const normalized = cleanSearchTerm(trimmedQuery);
     // 200 on a large database is already pretty slow
-    const limit = Math.min((trimmedQuery.length || 2) * 50, 200);
+    const limit = 1000;
     return Data.searchMessages(normalized, limit);
   } catch (e) {
     window.log.warn('queryMessages failed with', e.message);
