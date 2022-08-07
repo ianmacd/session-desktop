@@ -69,7 +69,7 @@ const StyledGrowingIcon = styled.div`
 
 const OnionCountryDisplay = ({ latLong, labelText }: { latLong?: string, labelText: string }) => {
   const element = (hovered: boolean) => (
-    <StyledCountry>{hovered && latLong ? latLong : labelText}</StyledCountry>
+    <StyledCountry>{hovered && latLong ? labelText : labelText}</StyledCountry>
   );
   const [hoverable] = useHover(element);
 
