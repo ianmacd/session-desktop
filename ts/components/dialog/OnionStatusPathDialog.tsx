@@ -29,15 +29,15 @@ export type StatusLightType = {
 const OnionCountryDisplay = ({
   index,
   labelText,
-  snodeIp,
+  latLong,
 }: {
-  snodeIp?: string;
+  latLong?: string;
   labelText: string;
   index: number;
 }) => {
   const element = (hovered: boolean) => (
     <div className="onion__node__country" key={`country-${index}`}>
-      {hovered && snodeIp ? snodeIp : labelText}
+      {hovered && latLong ? latLong : labelText}
     </div>
   );
   const [hoverable] = useHover(element);
@@ -97,10 +97,24 @@ export const OnionPathModalInner = () => {
 	      const subDivisionName = subDivisions
 		? subDivisions[0].names[lang]
 		: undefined
-	      //const isoCode = cityLookup?.country?.iso_code;
-
+	      const isoCode = cityLookup?.country?.iso_code;
+	      const latitude = cityLookup?.location?.latitude;
+	      const longitude = cityLookup?.location?.longitude;
+	      const latLong = latitude
+		? `${latitude}°, ${longitude}°`
+		: ''
 	      const asnLookup = asnReader.get(snode.ip || '0.0.0.0');
 	      const asnOrganisation = asnLookup?.autonomous_system_organization;
+
+	      const letterA = 'a'.codePointAt(0) || 0;
+	      const regionalIndicatorA = '🇦'.codePointAt(0) || 0;
+	      const toRegionalIndicator = (char: any) => String.fromCodePoint(
+	          (char.codePointAt(0) - letterA) + regionalIndicatorA
+	      );
+	      const flag = isoCode?.toLowerCase()
+	        .split('')
+	        .map(toRegionalIndicator)
+	        .join('');
 
 	      // Show the city, subdivision and country if possible. If the
 	      // city or subdivision is unknown, or they match each other
@@ -108,11 +122,11 @@ export const OnionPathModalInner = () => {
 	      // omitted.
 	      const cityCountry = cityName
 		? cityName === countryName
-		  ? countryName
+		  ? `${countryName}  ${flag}`
 		  : subDivisionName && subDivisionName !== cityName
-		    ? `${cityName}, ${subDivisionName}, ${countryName}`
-		    : `${cityName}, ${countryName}`
-		: countryName
+		    ? `${cityName}, ${subDivisionName}, ${countryName}  ${flag}`
+		    : `${cityName}, ${countryName}  ${flag}`
+		: `${countryName}  ${flag}`
 
 	      const networkData = asnOrganisation
 		? `${snode.ip}: ${asnOrganisation}`
@@ -125,7 +139,7 @@ export const OnionPathModalInner = () => {
                 labelText = window.i18n('unknownCountry');
               }
               return labelText ? (
-                <OnionCountryDisplay index={index} labelText={labelText} snodeIp={snode.ip} />
+                <OnionCountryDisplay index={index} labelText={labelText} latLong={latLong} />
               ) : null;
             })}
           </Flex>
