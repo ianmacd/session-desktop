@@ -37,7 +37,7 @@ const OnionCountryDisplay = ({
 }) => {
   const element = (hovered: boolean) => (
     <div className="onion__node__country" key={`country-${index}`}>
-      {hovered && latLong ? latLong : labelText}
+      {hovered && latLong ? labelText : labelText}
     </div>
   );
   const [hoverable] = useHover(element);
