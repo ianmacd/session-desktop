@@ -240,7 +240,7 @@ class SessionMessagesListContainerInner extends React.Component<Props> {
     }
     messageContainer.scrollBy({
       top: Math.floor(-messageContainer.clientHeight * 2) / 3,
-      behavior: 'smooth',
+      behavior: 'auto',
     });
   }
 
@@ -253,7 +253,7 @@ class SessionMessagesListContainerInner extends React.Component<Props> {
     // tslint:disable-next-line: restrict-plus-operands
     messageContainer.scrollBy({
       top: Math.floor(+messageContainer.clientHeight * 2) / 3,
-      behavior: 'smooth',
+      behavior: 'auto',
     });
   }
 
