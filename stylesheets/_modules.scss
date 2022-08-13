@@ -254,6 +254,11 @@
   overflow-y: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  // Make it possible to copy display names and ids from message headers.
+  * {
+    user-select: text;
+  }
 }
 .module-conversation__user__profile-name,
 .module-message__author__profile-name {
