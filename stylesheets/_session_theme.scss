@@ -66,10 +66,6 @@
       flex-direction: row;
       align-items: center;
 
-      * {
-	user-select: text;
-      }
-
       svg {
         margin-right: $session-margin-xs;
       }
