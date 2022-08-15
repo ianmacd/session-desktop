@@ -1392,7 +1392,9 @@ export function sliceQuoteText(quotedText: string | undefined | null) {
   if (!quotedText || isEmpty(quotedText)) {
     return '';
   }
-  return quotedText.slice(0, QUOTED_TEXT_MAX_LENGTH);
+  return quotedText.length > QUOTED_TEXT_MAX_LENGTH
+    ? `${quotedText.slice(0, QUOTED_TEXT_MAX_LENGTH-1)}…`
+    : quotedText;
 }
 
 const throttledAllMessagesDispatch = debounce(
