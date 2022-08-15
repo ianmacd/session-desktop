@@ -72,9 +72,8 @@ export const MessageAvatar = (props: Props) => {
         // we want to not allow users to open user details dialog when that's the case.
         // to handle this case, we can drop the click on avatar if the conversation with that user is not active.
         window.log.info(
-          'onMessageAvatarClick: public unblinded message and sender convo is not active. Dropping click event'
+          'onMessageAvatarClick: public unblinded message and sender convo is not active.'
         );
-        return;
       }
     }
 
