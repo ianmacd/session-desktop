@@ -100,6 +100,7 @@ const AvatarImage = (props: {
     return null;
   }
   const dataToDisplay = base64Data ? `data:image/jpeg;base64,${base64Data}` : avatarPath;
+  const label = `${name}: ${pubkey}`;
 
   return (
     <img
@@ -108,7 +109,7 @@ const AvatarImage = (props: {
       alt={window.i18n('contactAvatarAlt', [name || 'avatar'])}
       src={dataToDisplay}
       data-testid={datatestId}
-      title={pubkey}
+      title={label}
     />
   );
 };
