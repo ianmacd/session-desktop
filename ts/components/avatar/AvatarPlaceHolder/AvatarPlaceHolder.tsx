@@ -107,8 +107,10 @@ export const AvatarPlaceHolder = (props: Props) => {
 
   const bgColor = avatarPlaceholderColors[bgColorIndex];
 
+  const label = `${name}: ${pubkey}`;
+
   return (
-    <span title={pubkey}>
+    <span title={label}>
       <svg viewBox={viewBox}>
         <g id="UrTavla">
           <circle
