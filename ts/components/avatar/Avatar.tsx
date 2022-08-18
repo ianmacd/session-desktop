@@ -88,9 +88,10 @@ const AvatarImage = (
     name?: string; // display name, profileName or pubkey, whatever is set first
     imageBroken: boolean;
     handleImageError: () => any;
+    pubkey?: string;
   }
 ) => {
-  const { avatarPath, base64Data, imageBroken, dataTestId, handleImageError } = props;
+  const { avatarPath, name, base64Data, imageBroken, dataTestId, handleImageError, pubkey } = props;
 
   const disableDrag = useDisableDrag();
 
@@ -99,6 +100,8 @@ const AvatarImage = (
   }
   const dataToDisplay = base64Data ? `data:image/jpeg;base64,${base64Data}` : avatarPath;
 
+  const label = `${name}: ${pubkey}`;
+
   // tslint:disable: react-a11y-img-has-alt
   return (
     <img
@@ -106,6 +109,7 @@ const AvatarImage = (
       onDragStart={disableDrag}
       src={dataToDisplay}
       data-testid={dataTestId}
+      title={label}
     />
   );
 };
@@ -173,6 +177,7 @@ const AvatarInner = (props: Props) => {
           name={forcedName || name}
           handleImageError={handleImageError}
           dataTestId={dataTestId ? `img-${dataTestId}` : undefined}
+	  pubkey={pubkey}
         />
       ) : (
         <NoImage
