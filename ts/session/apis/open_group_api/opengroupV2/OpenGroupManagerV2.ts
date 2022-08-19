@@ -157,7 +157,7 @@ export class OpenGroupManagerV2 {
 
     if (getConversationController().get(conversationId)) {
       // Url incorrect or server not compatible
-      //throw new Error(window.i18n('publicChatExists'));
+      throw new Error(window.i18n('publicChatExists'));
     }
 
     // here, the convo does not exist. Make sure the db is clean too

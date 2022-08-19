@@ -12,7 +12,6 @@ import {
 } from '../utils/OpenGroupUtils';
 import { hasExistingOpenGroup } from './ApiUtil';
 import { getOpenGroupManager } from './OpenGroupManagerV2';
-import { OpenGroupData } from '../../../../data/opengroups';
 // tslint:disable: variable-name
 
 // Inputs that should work:
@@ -138,7 +137,7 @@ export async function joinOpenGroupV2WithUIEvents(
       if (showToasts) {
         ToastUtils.pushToastError('publicChatExists', window.i18n('publicChatExists'));
       }
-      //return false;
+      return false;
     }
     if (showToasts) {
       ToastUtils.pushToastInfo('connectingToServer', window.i18n('connectingToServer'));
@@ -146,7 +145,6 @@ export async function joinOpenGroupV2WithUIEvents(
     if (uiCallback) {
       uiCallback(true);
     }
-    await OpenGroupData.removeV2OpenGroupRoom(conversationID);
     await joinOpenGroupV2(parsedRoom, fromConfigMessage);
 
     const isConvoCreated = getConversationController().get(conversationID);
