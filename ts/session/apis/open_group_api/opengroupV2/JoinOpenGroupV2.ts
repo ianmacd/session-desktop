@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { OpenGroupV2Room } from '../../../../data/opengroups';
+import { OpenGroupData, OpenGroupV2Room } from '../../../../data/opengroups';
 import { getConversationController } from '../../../conversations';
 import { PromiseUtils, ToastUtils } from '../../../utils';
 
@@ -141,7 +141,7 @@ export async function joinOpenGroupV2WithUIEvents(
       if (showToasts) {
         ToastUtils.pushToastError('publicChatExists', window.i18n('publicChatExists'));
       }
-      return false;
+      //return false;
     }
     if (showToasts) {
       ToastUtils.pushToastInfo('connectingToServer', window.i18n('connectingToServer'));
@@ -149,6 +149,7 @@ export async function joinOpenGroupV2WithUIEvents(
     if (uiCallback) {
       uiCallback(true);
     }
+    await OpenGroupData.removeV2OpenGroupRoom(conversationID);
     await joinOpenGroupV2(parsedRoom, fromConfigMessage);
 
     const isConvoCreated = getConversationController().get(conversationID);
