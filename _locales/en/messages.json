@@ -474,7 +474,7 @@
   "hideBanner": "Hide",
   "openMessageRequestInboxDescription": "View your Message Request inbox",
   "clearAllReactions": "Are you sure you want to clear all $emoji$ ?",
-  "expandedReactionsText": "Show Less",
+  "expandedReactionsText": "Show Fewer",
   "reactionNotification": "Reacts to a message with $emoji$",
   "otherSingular": "$number$ other",
   "otherPlural": "$number$ others",
