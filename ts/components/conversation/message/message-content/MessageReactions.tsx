@@ -22,7 +22,7 @@ const StyledMessageReactionsContainer = styled(Flex)<{ x: number; y: number }>`
 `;
 
 export const StyledMessageReactions = styled(Flex)<{ inModal: boolean }>`
-  ${props => (props.inModal ? '' : 'max-width: 320px;')}
+  ${props => (props.inModal ? '' : 'max-width: 640px;')}
 `;
 
 const StyledReactionOverflow = styled.button`
@@ -85,12 +85,13 @@ const CompressedReactions = (props: ExpandReactionsProps): ReactElement => {
       alignItems={'center'}
       inModal={inModal}
     >
-      {reactions.slice(0, 4).map(([emoji, _]) => (
+      {reactions.slice(0, 7).map(([emoji, _]) => (
         <Reaction key={`${messageId}-${emoji}`} emoji={emoji} {...props} />
       ))}
       <StyledReactionOverflow onClick={handleExpand}>
+      <div>
         {reactions
-          .slice(4, 7)
+          .slice(8, 11)
           .reverse()
           .map(([emoji, _]) => {
             return (
@@ -105,6 +106,8 @@ const CompressedReactions = (props: ExpandReactionsProps): ReactElement => {
               </span>
             );
           })}
+      &nbsp;&nbsp;…
+      </div>
       </StyledReactionOverflow>
     </StyledMessageReactions>
   );
@@ -179,7 +182,7 @@ export const MessageReactions = (props: Props): ReactElement => {
   const { conversationType, sortedReacts } = msgProps;
   const inGroup = conversationType === 'group';
 
-  const reactLimit = 6;
+  const reactLimit = 10;
 
   const reactionsProps = {
     messageId,
