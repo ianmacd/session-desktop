@@ -1,6 +1,6 @@
 import { EmojiSet } from 'emoji-mart';
 
-export const reactionLimit: number = 10;
+export const reactionLimit: number = 12;
 
 export class RecentReactions {
   public items: Array<string> = [];
