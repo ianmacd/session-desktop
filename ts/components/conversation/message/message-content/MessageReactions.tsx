@@ -93,12 +93,13 @@ const CompressedReactions = (props: ExpandReactionsProps): ReactElement => {
       alignItems={'center'}
       fullWidth={true}
     >
-      {reactions.slice(0, 4).map(([emoji, _]) => (
+      {reactions.slice(0, 7).map(([emoji, _]) => (
         <Reaction key={`${messageId}-${emoji}`} emoji={emoji} {...props} />
       ))}
       <StyledReactionOverflow onClick={handleExpand}>
+      <div>
         {reactions
-          .slice(4, 7)
+          .slice(8, 11)
           .reverse()
           .map(([emoji, _]) => {
             return (
@@ -113,6 +114,8 @@ const CompressedReactions = (props: ExpandReactionsProps): ReactElement => {
               </span>
             );
           })}
+      &nbsp;&nbsp;…
+      </div>
       </StyledReactionOverflow>
     </StyledMessageReactions>
   );
@@ -190,7 +193,7 @@ export const MessageReactions = (props: Props): ReactElement => {
 
   const { sortedReacts } = msgProps;
 
-  const reactLimit = 6;
+  const reactLimit = 10;
 
   const reactionsProps = {
     messageId,
