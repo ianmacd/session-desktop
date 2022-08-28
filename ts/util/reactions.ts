@@ -8,7 +8,7 @@ import { ToastUtils, UserUtils } from '../session/utils';
 import { Action, OpenGroupReactionList, ReactionList, RecentReactions } from '../types/Reaction';
 import { getRecentReactions, saveRecentReations } from '../util/storage';
 
-const SOGSReactorsFetchCount = 5;
+const SOGSReactorsFetchCount = 20;
 const rateCountLimit = 20;
 const rateTimeLimit = 60 * 1000;
 const latestReactionTimestamps: Array<number> = [];
