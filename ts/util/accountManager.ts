@@ -175,6 +175,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Disable display of full Session id by default.
   await Storage.put(SettingsKey.settingsShowFullId, false);
 
+  // Disable message formatting by default.
+  await Storage.put(SettingsKey.settingsMessageFormatting, false);
+
   // Enable per-message timestamps by default.
   await Storage.put(SettingsKey.settingsPerMessageTimestamps, true);
 

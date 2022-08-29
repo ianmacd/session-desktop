@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import LinkifyIt from 'linkify-it';
+import MarkdownIt from 'markdown-it';
 
 import { RenderTextCallbackType } from '../../../../types/Util';
 import { getEmojiSizeClass, SizeClassType } from '../../../../util/emoji';
@@ -9,9 +10,20 @@ import { AddNewLines } from '../../AddNewLines';
 import { Emojify } from '../../Emojify';
 import { LinkPreviews } from '../../../../util/linkPreviews';
 import { showLinkVisitWarningDialog } from '../../../dialog/SessionConfirm';
-import styled from 'styled-components';
+import { PubKey } from '../../../../session/types';
+import { isUsAnySogsFromCache } from '../../../../session/apis/open_group_api/sogsv3/knownBlindedkeys';
+import { getConversationController } from '../../../../session/conversations';
 
 const linkify = LinkifyIt();
+
+const markdown = MarkdownIt('default', {
+  html: false,
+  linkify: true,
+  typographer: true,
+  // This seems not to work:
+  breaks: false
+  }
+);
 
 type Props = {
   text: string;
@@ -149,12 +161,6 @@ const Linkify = (props: LinkifyProps): JSX.Element => {
   return <>{results}</>;
 };
 
-const StyledPre = styled.pre`
-  backdrop-filter: brightness(0.8);
-  padding: var(--margins-xs);
-  user-select: text;
-`;
-
 export const MessageBody = (props: Props) => {
   const { text, disableJumbomoji, disableLinks, isGroup } = props;
   const sizeClass: SizeClassType = disableJumbomoji ? 'default' : getEmojiSizeClass(text);
@@ -171,8 +177,13 @@ export const MessageBody = (props: Props) => {
     );
   }
 
-  if (text && text.startsWith('```') && text.endsWith('```') && text.length > 6) {
-    return <StyledPre className="text-selectable">{text.substring(4, text.length - 3)}</StyledPre>;
+  if (window.getSettingValue('message-formatting')) {
+    /* tslint:disable:react-no-dangerous-html */
+    return (
+      <div className="text-selectable"
+	   dangerouslySetInnerHTML={{__html: `<span style="font-size: 1.1em;">${markdown.render(text).trim()}</span>`}}
+      />
+    );
   }
 
   return JsxSelectable(

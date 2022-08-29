@@ -57,6 +57,7 @@ declare global {
     getCallMediaPermissions: () => boolean;
     toggleMenuBar: () => void;
     toggleFullId: () => void;
+    toggleMessageFormatting: () => void;
     togglePerMessageTimestamps: () => void;
     toggleScrollOnSend: () => void;
     toggleSendOnShiftEnter: () => void;
