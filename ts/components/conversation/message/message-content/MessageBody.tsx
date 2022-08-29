@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import LinkifyIt from 'linkify-it';
+import MarkdownIt from 'markdown-it';
 
 import { RenderTextCallbackType } from '../../../../types/Util';
 import { getEmojiSizeClass, SizeClassType } from '../../../../util/emoji';
@@ -11,6 +12,15 @@ import { LinkPreviews } from '../../../../util/linkPreviews';
 import { showLinkVisitWarningDialog } from '../../../dialog/SessionConfirm';
 
 const linkify = LinkifyIt();
+
+const markdown = MarkdownIt('default', {
+  html: false,
+  linkify: true,
+  typographer: true,
+  // This seems not to work:
+  breaks: false
+  }
+);
 
 type Props = {
   text: string;
@@ -104,75 +114,18 @@ export const MessageBody = (props: Props) => {
     );
   }
 
-  if (text && text.startsWith('```') && text.endsWith('```') && text.length > 6) {
-    return <pre className="text-selectable">{text.substring(4, text.length - 3)}</pre>;
-  }
-
-  let muText = text;
   if (window.getSettingValue('message-formatting')) {
-    const em = /__([\s\S]+?)__(?!_)/g;
-    const strong = /\*\*([\s\S]+?)\*\*(?!\*)/g;
-    const del = /~~([\s\S]+?)~~(?!~)/g;
-    const u = /\^\^([\s\S]+?)\^\^(?!\^)/g;
-    const pre = /(```\n?)([\s\S]*?[^`])\1(?!```)/gm;
-    const code = /(`)([\s\S]*?[^`])\1(?!`)/g;
-
-    let preformatted = false;
-    (muText.match(strong) || []).forEach((s: string) => {
-      muText = muText.replace(s, `<strong>${s.substring(2, s.length - 2)}</strong>`);
-    });
-    (muText.match(em) || []).forEach((s: string) => {
-      muText = muText.replace(s, `<em>${s.substring(2, s.length - 2)}</em>`);
-    });
-    (muText.match(del) || []).forEach((s: string) => {
-      muText = muText.replace(s, `<del>${s.substring(2, s.length - 2)}</del>`);
-    });
-    (muText.match(u) || []).forEach((s: string) => {
-      muText = muText.replace(s, `<u>${s.substring(2, s.length - 2)}</u>`);
-    });
-    (muText.match(pre) || []).forEach((s: string) => {
-      muText = muText.replace(s, `<pre>${s.substring(4, s.length - 4)}</pre>`);
-      preformatted = true;
-    });
-    (muText.match(code) || []).forEach((s: string) => {
-      muText = muText.replace(s, `<code>${s.substring(1, s.length - 1)}</code>`);
-      preformatted = true;
-    });
-
-    if (!preformatted) {
-      // SmartyPants rendering:
-      //  https://daringfireball.net/projects/smartypants/
-      muText = muText
-        // em-dashes
-        .replace(/---/g, '\u2014')
-        // en-dashes
-        .replace(/--/g, '\u2013')
-        // opening single quotes
-        .replace(/(^|[-\u2014/(\[{"\s])'/g, '$1\u2018')
-        // closing single quotes and apostrophes
-        .replace(/'/g, '\u2019')
-        // opening double quotes
-        .replace(/(^|[-\u2014/(\[{\u2018\s])"/g, '$1\u201c')
-        // closing double quotes
-        .replace(/"/g, '\u201d')
-        // ellipses
-        .replace(/\.{3}/g, '\u2026');
-    }
-  }
-
-  const formatting = muText !== text;
-  if (formatting) {
     /* tslint:disable:react-no-dangerous-html */
     return (
       <div className="text-selectable"
-	   dangerouslySetInnerHTML={{__html: `<span style="font-size: 1.1em; user-select: inherit">${muText}</span>`}}
+	   dangerouslySetInnerHTML={{__html: `<span style="font-size: 1.1em;">${markdown.render(text).trim()}</span>`}}
       />
     );
   }
 
   return JsxSelectable(
     <Linkify
-      text={muText}
+      text={text}
       isGroup={isGroup}
       renderNonLink={({ key, text: nonLinkText }) => {
         return renderEmoji({
