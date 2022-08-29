@@ -227,6 +227,8 @@
   "showFullIdDescription": "Display author's full Session id in messages.",
   "perMessageTimestampsTitle": "Per Message Timestamps",
   "perMessageTimestampsDescription": "Timestamp every message balloon instead of using captions.",
+  "messageFormattingTitle": "Message Formatting (Experimental)",
+  "messageFormattingDescription": "Render messages using Markdown formatting.",
   "scrollOnSendTitle": "Scroll On Send",
   "scrollOnSendDescription": "Scroll to end of conversation after sending message.",
   "sendOnShiftEnterTitle": "Message Sending",

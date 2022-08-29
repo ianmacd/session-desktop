@@ -517,4 +517,6 @@ export type LocalizerKeys =
   | 'sendOnShiftEnterDescription'
   | 'sendOnShiftEnterTitle'
   | 'confirmDeletionsDescription'
-  | 'confirmDeletionsTitle';
+  | 'confirmDeletionsTitle'
+  | 'messageFormattingDescription'
+  | 'messageFormattingTitle';
