@@ -147,6 +147,11 @@ Storage.onready(async () => {
       await Storage.put('show-full-id', value);
     },
 
+    getMessageFormatting: () => Storage.get('message-formatting', true),
+    setMessageFormatting: async (value: boolean) => {
+      await Storage.put('message-formatting', value);
+    },
+
     getPerMessageTimestamps: () => Storage.get('per-message-timestamps', true),
     setPerMessageTimestamps: async (value: boolean) => {
       await Storage.put('per-message-timestamps', value);
@@ -339,6 +344,12 @@ async function start() {
     const currentValue = window.getSettingValue('show-full-id');
     const newValue = currentValue !== undefined ? !currentValue : true;
     window.Events.setShowFullId(newValue);
+  };
+
+  window.toggleMessageFormatting = () => {
+    const currentValue = window.getSettingValue('message-formatting');
+    const newValue = currentValue !== undefined ? !currentValue : true;
+    window.Events.setMessageFormatting(newValue);
   };
 
   window.togglePerMessageTimestamps= () => {

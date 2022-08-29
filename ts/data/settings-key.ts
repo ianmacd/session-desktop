@@ -11,6 +11,7 @@ const settingsNotification = 'notification-setting';
 const settingsAudioNotification = 'audio-notification-setting';
 
 const settingsShowFullId = 'show-full-id';
+const settingsMessageFormatting = 'message-formatting';
 const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsScrollOnSend = 'scroll-on-send';
 const settingsSendOnShiftEnter = 'send-on-shift-enter';
@@ -29,6 +30,7 @@ export const SettingsKey = {
   settingsNotification,
   settingsAudioNotification,
   settingsShowFullId,
+  settingsMessageFormatting,
   settingsPerMessageTimestamps,
   settingsScrollOnSend,
   settingsSendOnShiftEnter,
