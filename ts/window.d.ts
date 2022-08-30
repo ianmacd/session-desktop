@@ -61,6 +61,7 @@ declare global {
     toggleScrollOnSend: () => void;
     toggleSendOnShiftEnter: () => void;
     toggleConfirmDeletions: () => void;
+    toggleFetchMessagesSinceEpoch: () => void;
     toggleDiscardMessageRequests: () => void;
     toggleSpellCheck: any;
     setTheme: (newTheme: string) => Promise<void>;

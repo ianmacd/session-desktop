@@ -229,6 +229,8 @@
   "sendOnShiftEnterDescription": "[Enter] sends message; [Shift] + [Enter] adds new line. Enable to reverse.",
   "confirmDeletionsTitle": "Confirm Deletions",
   "confirmDeletionsDescription": "Ask before performing deletions.",
+  "fetchMessagesSinceEpochTitle": "Open Group Message Retrieval (Experimental)",
+  "fetchMessagesSinceEpochDescription": "When subscribing, fetch all messages instead of only the most recent. This may make your database large and slow down some Session operations.",
   "startConversation": "Start New Conversation",
   "invalidNumberError": "Invalid Session ID or ONS Name",
   "failedResolveOns": "Failed to resolve ONS name",

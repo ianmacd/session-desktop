@@ -15,6 +15,7 @@ const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsScrollOnSend = 'scroll-on-send';
 const settingsSendOnShiftEnter = 'send-on-shift-enter';
 const settingsConfirmDeletions = 'confirm-deletions';
+const settingsFetchMessagesSinceEpoch = 'fetch-msgs-since-epoch';
 const settingsDiscardMessageRequests = 'discard-requests';
 
 export const SettingsKey = {
@@ -33,5 +34,6 @@ export const SettingsKey = {
   settingsScrollOnSend,
   settingsSendOnShiftEnter,
   settingsConfirmDeletions,
+  settingsFetchMessagesSinceEpoch,
   settingsDiscardMessageRequests
 };
