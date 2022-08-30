@@ -183,6 +183,11 @@ Storage.onready(async () => {
       await Storage.put('confirm-deletions', value);
     },
 
+    getFetchMessagesSinceEpoch: () => Storage.get('fetch-msgs-since-epoch', true),
+    setFetchMessagesSinceEpoch: async (value: boolean) => {
+      await Storage.put('fetch-msgs-since-epoch', value);
+    },
+
     getSpellCheck: () => Storage.get('spell-check', true),
     setSpellCheck: async (value: boolean) => {
       await Storage.put('spell-check', value);
@@ -385,6 +390,12 @@ async function start() {
     const currentValue = window.getSettingValue('confirm-deletions');
     const newValue = currentValue !== undefined ? !currentValue : false;
     window.Events.setConfirmDeletions(newValue);
+  };
+
+  window.toggleFetchMessagesSinceEpoch = () => {
+    const currentValue = window.getSettingValue('fetch-msgs-since-epoch');
+    const newValue = currentValue !== undefined ? !currentValue : false;
+    window.Events.setFetchMessagesSinceEpoch(newValue);
   };
 
   window.toggleSpellCheck = () => {

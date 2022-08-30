@@ -25,6 +25,7 @@ const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsScrollOnSend = 'scroll-on-send';
 const settingsSendOnShiftEnter = 'send-on-shift-enter';
 const settingsConfirmDeletions = 'confirm-deletions';
+const settingsFetchMessagesSinceEpoch = 'fetch-msgs-since-epoch';
 
 export const SettingsKey = {
   settingsReadReceipt,
@@ -49,7 +50,8 @@ export const SettingsKey = {
   settingsPerMessageTimestamps,
   settingsScrollOnSend,
   settingsSendOnShiftEnter,
-  settingsConfirmDeletions
+  settingsConfirmDeletions,
+  settingsFetchMessagesSinceEpoch,
 } as const;
 
 export const KNOWN_BLINDED_KEYS_ITEM = 'KNOWN_BLINDED_KEYS_ITEM';

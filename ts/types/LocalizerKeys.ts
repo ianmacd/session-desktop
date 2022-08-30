@@ -519,4 +519,6 @@ export type LocalizerKeys =
   | 'confirmDeletionsDescription'
   | 'confirmDeletionsTitle'
   | 'messageFormattingDescription'
-  | 'messageFormattingTitle';
+  | 'messageFormattingTitle'
+  | 'fetchMessagesSinceEpochDescription'
+  | 'fetchMessagesSinceEpochTitle';

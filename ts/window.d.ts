@@ -64,6 +64,7 @@ declare global {
     toggleScrollOnSend: () => void;
     toggleSendOnShiftEnter: () => void;
     toggleConfirmDeletions: () => void;
+    toggleFetchMessagesSinceEpoch: () => void;
     toggleSpellCheck: any;
     primaryColor: PrimaryColorStateType;
     theme: ThemeStateType;

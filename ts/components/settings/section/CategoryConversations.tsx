@@ -103,6 +103,26 @@ const ConfirmDeletionsSetting = () => {
   );
 };
 
+const FetchMessagesSinceEpochSetting = () => {
+  const forceUpdate = useUpdate();
+
+  const isFetchMessagesSinceEpochActive =
+    window.getSettingValue(SettingsKey.settingsFetchMessagesSinceEpoch) === undefined
+      ? false
+      : window.getSettingValue(SettingsKey.settingsFetchMessagesSinceEpoch);
+  return (
+    <SessionToggleWithDescription
+      onClickToggle={() => {
+        window.toggleFetchMessagesSinceEpoch();
+        forceUpdate();
+      }}
+      title={window.i18n('fetchMessagesSinceEpochTitle')}
+      description={window.i18n('fetchMessagesSinceEpochDescription')}
+      active={isFetchMessagesSinceEpochActive}
+    />
+  );
+};
+
 const SpellCheckSetting = () => {
   const forceUpdate = useUpdate();
 
@@ -148,6 +168,7 @@ export const CategoryConversations = () => {
       <ScrollOnSendSetting/>
       <SendOnShiftEnterSetting/>
       <ConfirmDeletionsSetting/>
+      <FetchMessagesSinceEpochSetting/>
       <SpellCheckSetting />
       <AudioMessageAutoPlaySetting />
 

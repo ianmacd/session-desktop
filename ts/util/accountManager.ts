@@ -191,6 +191,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Enable deletion confirmations by default.
   await Storage.put(SettingsKey.settingsConfirmDeletions, true);
 
+  // Fetch only the most recent open group messages by default.
+  await Storage.put(SettingsKey.settingsFetchMessagesSinceEpoch, false);
+
   await setLocalPubKey(pubKeyString);
 }
 
