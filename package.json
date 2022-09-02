@@ -118,6 +118,8 @@
     "markdown-it": "^13.0.1",
     "maxmind": "^4.3.6",
     "markdown-it-highlightjs": "^4.0.1",
+    "markdown-it-sub": "^1.0.0",
+    "markdown-it-sup": "^1.0.0",
     "mic-recorder-to-mp3": "^2.2.2",
     "minimist": "^1.2.6",
     "moment": "^2.29.4",
