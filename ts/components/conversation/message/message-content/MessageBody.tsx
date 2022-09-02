@@ -23,7 +23,8 @@ const markdown = MarkdownIt('default', {
   // This seems not to work:
   breaks: false
   }
-);
+// tslint:disable-next-line:no-var-requires no-require-imports
+).use(require('markdown-it-highlightjs'), { inline: true });
 
 type Props = {
   text: string;
