@@ -117,6 +117,7 @@
     "long": "^4.0.0",
     "markdown-it": "^13.0.1",
     "maxmind": "^4.3.6",
+    "markdown-it-container": "^3.0.0",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-highlightjs": "^4.0.1",
     "markdown-it-ins": "^3.0.1",
