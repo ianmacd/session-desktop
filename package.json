@@ -119,6 +119,7 @@
     "long": "^4.0.0",
     "markdown-it": "^13.0.1",
     "maxmind": "^4.3.6",
+    "markdown-it-highlightjs": "^4.0.1",
     "mic-recorder-to-mp3": "^2.2.2",
     "minimist": "^1.2.6",
     "moment": "^2.29.4",
