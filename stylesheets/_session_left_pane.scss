@@ -26,7 +26,7 @@ $session-compose-margin: 20px;
     }
 
     &--is-selected {
-      background: var(--color-conversation-item-selected) !important;
+      background: var(--color-conversation-item-selected);
 
       .module-conversation__user__profile-number,
       .module-conversation__user__profile-name,

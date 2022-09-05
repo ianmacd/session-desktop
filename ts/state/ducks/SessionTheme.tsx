@@ -3,13 +3,11 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 const white = '#ffffff';
-//const black = '#000000';
-const oxen = '#1f1c47';
-const black = oxen;
+const black = '#000000';
 const warning = '#e7b100';
 const destructive = '#ff453a';
 const accentLightTheme = '#00e97b';
-const accentDarkTheme = '#33cdc2';
+const accentDarkTheme = '#00f782';
 const borderLightThemeColor = '#f1f1f1';
 const borderDarkThemeColor = '#ffffff0F';
 
@@ -27,8 +25,7 @@ const darkColorTextAccent = accentDarkTheme;
 const darkColorSessionShadow = `0 0 4px 0 ${white}33`;
 const darkColorComposeViewBg = '#232323';
 const darkColorSentMessageBg = accentDarkTheme;
-//const darkColorClickableHovered = '#414347';
-const darkColorClickableHovered = '#666666';
+const darkColorClickableHovered = '#414347';
 const darkColorSessionBorder = `1px solid ${borderDarkThemeColor}`;
 const darkColorSessionBorderColor = borderDarkThemeColor;
 const darkColorRecoveryPhraseBannerBg = '#1f1f1f';
@@ -37,10 +34,8 @@ const darkColorLastSeenIndicator = accentDarkTheme;
 const darkColorLastSeenIndicatorText = 'LemonChiffon';
 const darkColorMessageTimestampText = '#8e9091';
 const darkColorQuoteBottomBarBg = '#404040';
-//const darkColorCellBackground = '#1b1b1b';
-const darkColorCellBackground = oxen;
-//const darkColorReceivedMessageBg = '#2d2d2d';
-const darkColorReceivedMessageBg = '#000000';
+const darkColorCellBackground = '#1b1b1b';
+const darkColorReceivedMessageBg = '#2d2d2d';
 const darkColorReceivedMessageText = white;
 
 const darkColorPillDividerText = '#a0a0a0';
@@ -49,18 +44,14 @@ const darkFilterSessionText = 'none';
 const darkUnreadBorder = `4px solid ${accentDarkTheme}`;
 
 const darkScrollbarThumb = '#474646';
-//const darkScrollbarTrack = '#1b1b1b';
-const darkScrollbarTrack = oxen;
+const darkScrollbarTrack = '#1b1b1b';
 const darkFakeChatBubbleBg = '#212121';
 
-const darkInboxBackground = oxen;
+const darkInboxBackground = black;
 const darkLeftPaneOverlayBg = darkInboxBackground;
-//const darkConversationItemSelected = '#404040';
-const darkConversationItemSelected = '#444444';
-//const darkConversationItemHasUnread = '#2c2c2c';
-const darkConversationItemHasUnread = oxen;
-//const darkConversationList = '#1b1b1b';
-const darkConversationList = oxen;
+const darkConversationItemSelected = '#404040';
+const darkConversationItemHasUnread = '#2c2c2c';
+const darkConversationList = '#1b1b1b';
 
 const darkTextHighlight = `${white}88`;
 const darkForegroundPrimary = white;

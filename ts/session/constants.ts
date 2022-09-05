@@ -52,7 +52,7 @@ export const VALIDATION = {
 export const UI = {
   COLORS: {
     // COMMON
-    GREEN: '#33cdc2',
+    GREEN: '#00F782',
   },
 };
 
