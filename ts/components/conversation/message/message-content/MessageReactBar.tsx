@@ -20,7 +20,7 @@ const StyledMessageReactBar = styled.div`
   top: -56px;
   padding: 4px 8px;
   white-space: nowrap;
-  width: 560px;
+  width: 732px;
 
   display: flex;
   align-items: center;
