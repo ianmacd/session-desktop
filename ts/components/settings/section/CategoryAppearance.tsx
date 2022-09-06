@@ -93,6 +93,11 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? true
         : window.getSettingValue(SettingsKey.settingsConfirmDeletions);
 
+    const isFetchMessagesSinceEpochActive =
+      window.getSettingValue(SettingsKey.settingsFetchMessagesSinceEpoch) === undefined
+        ? false
+        : window.getSettingValue(SettingsKey.settingsFetchMessagesSinceEpoch);
+
     const isSpellCheckActive =
       window.getSettingValue(SettingsKey.settingsSpellCheck) === undefined
         ? true
@@ -176,6 +181,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
           title={window.i18n('confirmDeletionsTitle')}
           description={window.i18n('confirmDeletionsDescription')}
           active={isConfirmDeletionsActive}
+        />
+        <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.toggleFetchMessagesSinceEpoch();
+            forceUpdate();
+          }}
+          title={window.i18n('fetchMessagesSinceEpochTitle')}
+          description={window.i18n('fetchMessagesSinceEpochDescription')}
+          active={isFetchMessagesSinceEpochActive}
         />
          <SessionToggleWithDescription
           onClickToggle={() => {
