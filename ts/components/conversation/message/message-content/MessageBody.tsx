@@ -12,7 +12,7 @@ import { showLinkVisitWarningDialog } from '../../../dialog/SessionConfirm';
 
 const linkify = LinkifyIt();
 
-const markdown = MarkdownIt('default', {
+const markdown = MarkdownIt('commonmark', {
   html: false,
   linkify: true,
   typographer: true,
@@ -20,6 +20,7 @@ const markdown = MarkdownIt('default', {
   breaks: false
   }
 )
+  .enable(['table', 'strikethrough'])
   // tslint:disable:no-var-requires no-require-imports
   .use(require('markdown-it-abbr'))
   .use(require('markdown-it-sub'))
