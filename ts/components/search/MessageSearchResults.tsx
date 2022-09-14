@@ -39,7 +39,7 @@ const StyledSearchResulsts = styled.div`
   padding-inline-start: 16px;
   padding-inline-end: 16px;
   min-height: 64px;
-  max-width: 300px;
+  max-width: 360px;
 
   display: flex;
   flex-direction: row;

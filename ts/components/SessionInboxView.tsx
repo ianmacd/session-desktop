@@ -45,7 +45,7 @@ type State = {
 };
 
 const StyledGutter = styled.div`
-  width: 380px !important;
+  width: 440px !important;
   transition: none;
   background: var(--color-cell-background);
 `;
