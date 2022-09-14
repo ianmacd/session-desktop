@@ -16,7 +16,7 @@ import { ActionsPanel } from './ActionsPanel';
 import { LeftPaneMessageSection } from './LeftPaneMessageSection';
 import { LeftPaneSettingSection } from './LeftPaneSettingSection';
 
-export const leftPaneListWidth = 300;
+export const leftPaneListWidth = 360;
 const StyledLeftPane = styled.div`
   width: ${leftPaneListWidth}px;
 `;

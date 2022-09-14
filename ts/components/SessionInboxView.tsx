@@ -50,7 +50,7 @@ import { useHasDeviceOutdatedSyncing } from '../state/selectors/settings';
 import { getSettingsInitialState, updateAllOnStorageReady } from '../state/ducks/settings';
 
 const StyledGutter = styled.div`
-  width: 380px !important;
+  width: 440px !important;
   transition: none;
 `;
 
