@@ -15,7 +15,7 @@ import { getConversationController } from '../../../../session/conversations';
 
 const linkify = LinkifyIt();
 
-const markdown = MarkdownIt('commonmark', {
+const markdown = MarkdownIt('default', {
   html: false,
   linkify: true,
   typographer: true,
@@ -23,7 +23,6 @@ const markdown = MarkdownIt('commonmark', {
   breaks: false
   }
 )
-  .enable(['table', 'strikethrough'])
   // tslint:disable:no-var-requires no-require-imports
   .use(require('markdown-it-abbr'))
   .use(require('markdown-it-sub'))
