@@ -11,7 +11,7 @@ import { MemoMessageRequestBannerContextMenu } from '../menu/MessageRequestBanne
 const StyledMessageRequestBanner = styled.div`
   height: 64px;
   width: 100%;
-  max-width: 300px;
+  max-width: 360px;
   display: flex;
   flex-direction: row;
   padding: 8px 12px; // adjusting for unread border always being active
