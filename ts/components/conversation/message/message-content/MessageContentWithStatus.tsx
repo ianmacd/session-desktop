@@ -36,7 +36,7 @@ const StyledMessageContentContainer = styled.div<{ direction: 'left' | 'right' }
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: ${props => (props.direction === 'left' ? 'flex-start' : 'flex-end')};
+  align-items: flex-start;
   width: 100%;
 
   ${StyledMessageReactions} {
