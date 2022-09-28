@@ -491,10 +491,10 @@ async function removeAllMessagesInConversation(conversationId: string): Promise<
 
   let messages;
   do {
-    // Yes, we really want the await in the loop. We're deleting 500 at a
-    //   time so we don't use too much memory.
+    // Yes, we really want the await in the loop. We're deleting 5000 at a
+    // time so we don't use too much memory.
     // eslint-disable-next-line no-await-in-loop
-    messages = await getLastMessagesByConversation(conversationId, 1000, false);
+    messages = await getLastMessagesByConversation(conversationId, 5000, false);
     if (!messages.length) {
       return;
     }
