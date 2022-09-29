@@ -144,10 +144,24 @@ export const MessageBody = (props: Props) => {
   }
 
   if (window.getSettingValue('message-formatting')) {
+    /* Resolve mentioned ids to user names and mark them up in bold */
+    const mention = new RegExp(`@${PubKey.regexForPubkeys}`, 'g');
+    const textWithMentions = text.trim().replace(mention,
+      (_match, capture) => {
+	if (isUsAnySogsFromCache(capture)) {
+	  /* It's me. Italicise also. */
+	  return `***@${window.i18n('you')}***`;
+	}
+
+	/* It's someone else. */
+	return `**@${getConversationController().get(capture)?.getContactProfileNameOrShortenedPubKey() || PubKey.shorten(capture)}**`;
+      }
+    );
+
     /* tslint:disable:react-no-dangerous-html */
     return (
       <div className="text-selectable"
-	   dangerouslySetInnerHTML={{__html: `<span style="font-size: 1.1em;">${markdown.render(text).trim()}</span>`}}
+	   dangerouslySetInnerHTML={{__html: `<span style="font-size: 1.1em;">${markdown.render(textWithMentions)}</span>`}}
       />
     );
   }
