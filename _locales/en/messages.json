@@ -160,7 +160,7 @@
   "oceanDarkThemeTitle": "Ocean Dark",
   "oceanLightThemeTitle": "Ocean Light",
   "pruneSettingTitle": "Trim Communities",
-  "pruneSettingDescription": "Delete messages older than 6 months from Communities that have over 2,000 messages.",
+  "pruneSettingDescription": "Delete messages older than 12 months from Communities that have over 10,000 messages.",
   "enable": "Enable",
   "keepDisabled": "Keep disabled",
   "notificationSettingsDialog": "The information shown in notifications.",
