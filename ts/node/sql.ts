@@ -2154,9 +2154,9 @@ function cleanUpOldOpengroupsOnStart() {
     return;
   }
   console.info(`Count of v2 opengroup convos to clean: ${v2ConvosIds.length}`);
-  // For each open group, if it has more than 2000 messages, we remove all the messages
-  // older than 6 months. So this does not limit the size of open group history to 2000
-  // messages but to 6 months.
+  // For each open group, if it has more than 10000 messages, we remove all the messages
+  // older than 12 months. So this does not limit the size of open group history to 10000
+  // messages but to 12 months.
   //
   // This is the only way we can clean up conversations objects from users which just
   // sent messages a while ago and with whom we never interacted. This is only for open
@@ -2167,7 +2167,7 @@ function cleanUpOldOpengroupsOnStart() {
   // Another fix would be to not cache all the conversations in the redux store, but it
   // ain't going to happen any time soon as it would a pretty big change of the way we
   // do things and would break a lot of the app.
-  const maxMessagePerOpengroupConvo = 2000;
+  const maxMessagePerOpengroupConvo = 10000;
 
   // first remove very old messages for each opengroups
   const db = assertGlobalInstance();
@@ -2179,7 +2179,8 @@ function cleanUpOldOpengroupsOnStart() {
       if (messagesInConvoBefore >= maxMessagePerOpengroupConvo) {
         const minute = 1000 * 60;
         const sixMonths = minute * 60 * 24 * 30 * 6;
-        const limitTimestamp = Date.now() - sixMonths;
+        const twelveMonths = sixMonths * 2;
+        const limitTimestamp = Date.now() - twelveMonths;
         const countToRemove = assertGlobalInstance()
           .prepare(
             `SELECT count(*) from ${MESSAGES_TABLE} WHERE serverTimestamp <= $serverTimestamp AND conversationId = $conversationId;`
