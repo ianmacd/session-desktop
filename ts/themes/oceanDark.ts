@@ -27,6 +27,7 @@ export const oceanDark: ThemeColorVariables = {
   '--message-bubbles-received-text-color': 'var(--text-primary-color)',
 
   '--text-author-color': THEMES.OCEAN_DARK.HIGHLIGHT,
+  '--text-last-seen-indicator-color': THEMES.OCEAN_DARK.HIGHLIGHT,
 
   '--menu-button-background-color': 'var(--primary-color)',
   '--menu-button-background-hover-color': THEMES.OCEAN_DARK.COLOR6,
