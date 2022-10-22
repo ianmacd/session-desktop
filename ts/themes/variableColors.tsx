@@ -11,6 +11,7 @@ export type ThemeColorVariables = {
   '--text-primary-color': string;
   '--text-secondary-color': string;
   '--text-selection-color': string;
+  '--text-author-color': string;
 
   /* Borders */
   '--border-color': string;

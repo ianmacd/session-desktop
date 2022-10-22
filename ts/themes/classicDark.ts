@@ -25,6 +25,8 @@ export const classicDark: ThemeColorVariables = {
   '--message-bubbles-sent-text-color': 'var(--background-primary-color)',
   '--message-bubbles-received-text-color': 'var(--text-primary-color)',
 
+  '--text-author-color': THEMES.CLASSIC_DARK.HIGHLIGHT,
+
   '--menu-button-background-color': 'var(--primary-color)',
   '--menu-button-background-hover-color': THEMES.CLASSIC_DARK.COLOR4,
   '--menu-button-icon-color': THEMES.CLASSIC_DARK.COLOR6,
