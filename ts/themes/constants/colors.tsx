@@ -119,6 +119,7 @@ type ThemeColors = {
   PRIMARY: string;
   DANGER: string;
   DISABLED: string;
+  HIGHLIGHT: string;
   COLOR0: string;
   COLOR1: string;
   COLOR2: string;
@@ -134,6 +135,7 @@ type Themes = Record<ThemeNames, ThemeColors>;
 const classicLightPrimary = primaryGreen;
 const classicLightDanger = dangerLight;
 const classicLightDisabled = disabledLight;
+const classicLightHighlight = '#FFFFFF';
 const classicLight0 = '#000000';
 const classicLight1 = '#6D6D6D';
 const classicLight2 = '#A1A2A1';
@@ -146,6 +148,7 @@ const classicLight6 = '#FFFFFF';
 const classicDarkPrimary = primaryGreen;
 const classicDarkDanger = dangerDark;
 const classicDarkDisabled = disabledDark;
+const classicDarkHighlight = 'LightYellow';
 const classicDark0 = '#000000';
 const classicDark1 = '#1B1B1B';
 const classicDark2 = '#2D2D2D';
@@ -158,6 +161,7 @@ const classicDark6 = '#FFFFFF';
 const oceanLightPrimary = primaryBlue;
 const oceanLightDanger = dangerLight;
 const oceanLightDisabled = disabledLight;
+const oceanLightHighlight = '#FCFFFF';
 const oceanLight0 = '#000000';
 const oceanLight1 = '#19345D';
 const oceanLight2 = '#6A6E90';
@@ -171,6 +175,7 @@ const oceanLight7 = '#FCFFFF';
 const oceanDarkPrimary = primaryBlue;
 const oceanDarkDanger = dangerDark;
 const oceanDarkDisabled = disabledDark;
+const oceanDarkHighlight = 'LightYellow';
 const oceanDark0 = '#000000';
 const oceanDark1 = '#1A1C28';
 const oceanDark2 = '#252735';
@@ -185,6 +190,7 @@ const THEMES: Themes = {
     PRIMARY: classicLightPrimary,
     DANGER: classicLightDanger,
     DISABLED: classicLightDisabled,
+    HIGHLIGHT: classicLightHighlight,
     COLOR0: classicLight0,
     COLOR1: classicLight1,
     COLOR2: classicLight2,
@@ -197,6 +203,7 @@ const THEMES: Themes = {
     PRIMARY: classicDarkPrimary,
     DANGER: classicDarkDanger,
     DISABLED: classicDarkDisabled,
+    HIGHLIGHT: classicDarkHighlight,
     COLOR0: classicDark0,
     COLOR1: classicDark1,
     COLOR2: classicDark2,
@@ -209,6 +216,7 @@ const THEMES: Themes = {
     PRIMARY: oceanLightPrimary,
     DANGER: oceanLightDanger,
     DISABLED: oceanLightDisabled,
+    HIGHLIGHT: oceanLightHighlight,
     COLOR0: oceanLight0,
     COLOR1: oceanLight1,
     COLOR2: oceanLight2,
@@ -222,6 +230,7 @@ const THEMES: Themes = {
     PRIMARY: oceanDarkPrimary,
     DANGER: oceanDarkDanger,
     DISABLED: oceanDarkDisabled,
+    HIGHLIGHT: oceanDarkHighlight,
     COLOR0: oceanDark0,
     COLOR1: oceanDark1,
     COLOR2: oceanDark2,
@@ -244,6 +253,7 @@ export type StyleSessionSwitcher = {
   border: string;
   receivedBackground: string;
   sentBackground: string;
+  highlight: string;
 };
 
 export const getThemeColors = (): Array<ThemeType> => [
@@ -255,6 +265,7 @@ export const getThemeColors = (): Array<ThemeType> => [
       border: THEMES.CLASSIC_DARK.COLOR3,
       receivedBackground: THEMES.CLASSIC_DARK.COLOR2,
       sentBackground: THEMES.CLASSIC_DARK.PRIMARY,
+      highlight: THEMES.CLASSIC_DARK.HIGHLIGHT,
     },
   },
   {
@@ -265,6 +276,7 @@ export const getThemeColors = (): Array<ThemeType> => [
       border: THEMES.CLASSIC_LIGHT.COLOR3,
       receivedBackground: THEMES.CLASSIC_LIGHT.COLOR4,
       sentBackground: THEMES.CLASSIC_LIGHT.PRIMARY,
+      highlight: THEMES.CLASSIC_LIGHT.HIGHLIGHT,
     },
   },
   {
@@ -275,6 +287,7 @@ export const getThemeColors = (): Array<ThemeType> => [
       border: THEMES.OCEAN_DARK.COLOR4,
       receivedBackground: THEMES.OCEAN_DARK.COLOR4,
       sentBackground: THEMES.OCEAN_DARK.PRIMARY,
+      highlight: THEMES.OCEAN_DARK.HIGHLIGHT,
     },
   },
   {
@@ -286,6 +299,7 @@ export const getThemeColors = (): Array<ThemeType> => [
       border: THEMES.OCEAN_LIGHT.COLOR3,
       receivedBackground: THEMES.OCEAN_LIGHT.COLOR1,
       sentBackground: THEMES.OCEAN_LIGHT.PRIMARY,
+      highlight: THEMES.OCEAN_LIGHT.HIGHLIGHT,
     },
   },
 ];
