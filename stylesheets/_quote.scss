@@ -9,6 +9,7 @@
   overflow: hidden;
   border-left-width: 4px;
   border-left-style: solid;
+  border-left-color: var(--text-author-color);
 
   /* Primary */
   &__primary {
@@ -37,7 +38,7 @@
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: var(--message-bubbles-received-text-color);
+    color: var(--text-author-color);
 
     .module-contact-name {
       font-weight: bold;
