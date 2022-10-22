@@ -26,6 +26,7 @@ export const classicLight: ThemeColorVariables = {
   '--message-bubbles-received-text-color': 'var(--text-primary-color)',
 
   '--text-author-color': THEMES.CLASSIC_LIGHT.HIGHLIGHT,
+  '--text-last-seen-indicator-color': THEMES.CLASSIC_LIGHT.HIGHLIGHT,
 
   '--menu-button-background-color': THEMES.CLASSIC_LIGHT.COLOR0,
   '--menu-button-background-hover-color': THEMES.CLASSIC_LIGHT.COLOR1,
