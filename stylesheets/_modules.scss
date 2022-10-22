@@ -275,6 +275,10 @@
   }
 }
 
+.module-message__author {
+  color: var(--text-author-color);
+}
+
 .module-conversation__user__profile-name,
 .module-message__author__profile-name {
   font-style: italic;

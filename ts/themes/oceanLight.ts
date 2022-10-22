@@ -26,6 +26,8 @@ export const oceanLight: ThemeColorVariables = {
   '--message-bubbles-sent-text-color': 'var(--text-primary-color)',
   '--message-bubbles-received-text-color': 'var(--text-primary-color)',
 
+  '--text-author-color': THEMES.OCEAN_LIGHT.HIGHLIGHT,
+
   '--menu-button-background-color': 'var(--primary-color)',
   '--menu-button-background-hover-color': THEMES.OCEAN_LIGHT.COLOR3,
   '--menu-button-icon-color': THEMES.OCEAN_LIGHT.COLOR1,
