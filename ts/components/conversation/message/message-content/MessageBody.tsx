@@ -9,6 +9,10 @@ import { AddNewLines } from '../../AddNewLines';
 import { Emojify } from '../../Emojify';
 import { LinkPreviews } from '../../../../util/linkPreviews';
 import { showLinkVisitWarningDialog } from '../../../dialog/SessionConfirm';
+import styled from 'styled-components';
+import { PubKey } from '../../../../session/types';
+import { isUsAnySogsFromCache } from '../../../../session/apis/open_group_api/sogsv3/knownBlindedkeys';
+import { getConversationController } from '../../../../session/conversations';
 
 const linkify = LinkifyIt();
 
@@ -184,6 +188,12 @@ const Linkify = (props: LinkifyProps): JSX.Element => {
   return <>{results}</>;
 };
 
+const StyledPre = styled.pre`
+  backdrop-filter: brightness(0.8);
+  padding: var(--margins-xs);
+  user-select: text;
+`;
+
 export const MessageBody = (props: Props) => {
   const { text, disableJumbomoji, disableLinks, isGroup } = props;
   const sizeClass: SizeClassType = disableJumbomoji ? 'default' : getEmojiSizeClass(text);
@@ -200,29 +210,35 @@ export const MessageBody = (props: Props) => {
     );
   }
 
-  const onlyEmoji = text.match(/^((\ud83c[\udde6-\uddff]){2}|([\#\*0-9]\u20e3)|(\u00a9|\u00ae|[\u2000-\u3300]|[\u/d83c-\ud83e][\ud000-\udfff])((\ud83c[\udffb-\udfff])?(\ud83e[\uddb0-\uddb3])?(\ufe0f?\u200d([\u2000-\u3300]|[\ud83c-\ud83e][\ud000-\udfff])\ufe0f?)?)*)$/)
+  if (window.getSettingValue('message-formatting')) {
+    const onlyEmoji = text.match(/^((\ud83c[\udde6-\uddff]){2}|([\#\*0-9]\u20e3)|(\u00a9|\u00ae|[\u2000-\u3300]|[\u/d83c-\ud83e][\ud000-\udfff])((\ud83c[\udffb-\udfff])?(\ud83e[\uddb0-\uddb3])?(\ufe0f?\u200d([\u2000-\u3300]|[\ud83c-\ud83e][\ud000-\udfff])\ufe0f?)?)*)$/)
 
-  if (window.getSettingValue('message-formatting') && !onlyEmoji) {
-    /* Resolve mentioned ids to user names and mark them up in bold */
-    const mention = new RegExp(`@${PubKey.regexForPubkeys}`, 'g');
-    const textWithMentions = text.trim().replace(mention,
-      (_match, capture) => {
-	if (isUsAnySogsFromCache(capture)) {
-	  /* It's me. Italicise also. */
-	  return `***@${window.i18n('you')}***`;
-	}
+    if (!onlyEmoji) {
+      /* Resolve mentioned ids to user names and mark them up in bold */
+      const mention = new RegExp(`@${PubKey.regexForPubkeys}`, 'g');
+      const textWithMentions = text.trim().replace(mention,
+        (_match, capture) => {
+          if (isUsAnySogsFromCache(capture)) {
+            /* It's me. Italicise also. */
+            return `***@${window.i18n('you')}***`;
+          }
 
-	/* It's someone else. */
-	return `**@${getConversationController().get(capture)?.getContactProfileNameOrShortenedPubKey() || PubKey.shorten(capture)}**`;
-      }
-    );
+          /* It's someone else. */
+          return `**@${getConversationController().get(capture)?.getContactProfileNameOrShortenedPubKey() || PubKey.shorten(capture)}**`;
+        }
+      );
 
-    /* tslint:disable:react-no-dangerous-html */
-    return (
-      <div className="text-selectable"
-	   dangerouslySetInnerHTML={{__html: `<span style="font-size: 1.1em;">${markdown.render(textWithMentions)}</span>`}}
-      />
-    );
+      /* tslint:disable:react-no-dangerous-html */
+      return (
+        <div className="text-selectable"
+             dangerouslySetInnerHTML={{__html: `<span style="font-size: 1.1em;">${markdown.render(textWithMentions)}</span>`}}
+        />
+      );
+    }
+  }
+
+  if (text && text.startsWith('```') && text.endsWith('```') && text.length > 6) {
+    return <StyledPre className="text-selectable">{text.substring(4, text.length - 3)}</StyledPre>;
   }
 
   return JsxSelectable(
