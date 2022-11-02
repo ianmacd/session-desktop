@@ -14,6 +14,6 @@ export const MessageClock = (props: Props): JSX.Element => {
 		       paddingBottom: '2px',
 		       fontSize: '0.8em',
 		       float: 'right' }}>
-	   {moment(time).format('LT')}
+	   {moment(time).format('LTS')}
 	 </div>;
 };
