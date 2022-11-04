@@ -175,7 +175,7 @@ function update(forceRefresh = false) {
 
   const lastNotification = last(currentNotifications);
 
-  if (!lastNotification) {
+  if (!lastNotification || lastNotification.message === '') {
     return;
   }
 
