@@ -331,7 +331,6 @@ const _getGlobalUnreadCount = (sortedConversations: Array<ReduxConversationType>
     }
 
     if (
-      globalUnreadCount < 100 &&
       isNumber(conversation.unreadCount) &&
       isFinite(conversation.unreadCount) &&
       conversation.unreadCount > 0 &&
