@@ -25,7 +25,8 @@ import { handleHardforkResult } from './hfHandling';
 
 // ONS name can have [a-zA-Z0-9_-] except that - is not allowed as start or end
 // do not define a regex but rather create it on the fly to avoid https://stackoverflow.com/questions/3891641/regex-test-only-works-every-other-time
-export const onsNameRegex = '^\\w([\\w-]*[\\w])?$';
+//export const onsNameRegex = '^\\w([\\w-]*[\\w])?$';
+export const onsNameRegex = '';
 
 export const ERROR_CODE_NO_CONNECT = 'ENETUNREACH: No network connection.';
 

@@ -75,11 +75,12 @@ export const OverlayMessage = () => {
   }
 
   async function handleMessageButtonClick() {
-    if ((!pubkeyOrOns && !pubkeyOrOns.length) || !pubkeyOrOns.trim().length) {
+    if (!pubkeyOrOns && !pubkeyOrOns.length) {
       ToastUtils.pushToastError('invalidPubKey', window.i18n('invalidNumberError')); // or ons name
       return;
     }
-    const pubkeyorOnsTrimmed = pubkeyOrOns.trim();
+    //const pubkeyorOnsTrimmed = pubkeyOrOns.trim();
+    const pubkeyorOnsTrimmed = pubkeyOrOns;
 
     if (!PubKey.validateWithErrorNoBlinding(pubkeyorOnsTrimmed)) {
       await openConvoOnceResolved(pubkeyOrOns);
