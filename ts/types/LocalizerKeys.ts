@@ -521,4 +521,5 @@ export type LocalizerKeys =
   | 'messageFormattingDescription'
   | 'messageFormattingTitle'
   | 'fetchMessagesSinceEpochDescription'
-  | 'fetchMessagesSinceEpochTitle';
+  | 'fetchMessagesSinceEpochTitle'
+  | 'removeAll';

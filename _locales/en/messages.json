@@ -509,6 +509,7 @@
   "hideBanner": "Hide",
   "someOfYourDeviceUseOutdatedVersion": "Some of your devices are using outdated versions. Syncing may be unreliable until they are updated.",
   "openMessageRequestInboxDescription": "View your Message Request inbox",
+  "removeAll": "Clear all",
   "clearAllReactions": "Are you sure you want to clear all $emoji$ ?",
   "expandedReactionsText": "Show Fewer",
   "reactionNotification": "Reacts to a message with $emoji$",

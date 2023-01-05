@@ -360,7 +360,7 @@ export const ReactListModal = (props: Props): ReactElement => {
               </p>
               {isPublic && weAreModerator && (
                 <SessionButton
-                  text={window.i18n('clearAll')}
+                  text={window.i18n('removeAll')}
                   buttonColor={SessionButtonColor.Danger}
                   buttonType={SessionButtonType.Simple}
                   onClick={handleClearReactions}
