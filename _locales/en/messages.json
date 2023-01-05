@@ -504,6 +504,7 @@
   "discardAllConfirmationBody": "Are you sure you want to discard all message requests?",
   "hideBanner": "Hide",
   "openMessageRequestInboxDescription": "View your Message Request inbox",
+  "removeAll": "Clear all",
   "clearAllReactions": "Are you sure you want to clear all $emoji$ ?",
   "expandedReactionsText": "Show Fewer",
   "reactionNotification": "Reacts to a message with $emoji$",
