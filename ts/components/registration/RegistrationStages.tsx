@@ -194,20 +194,28 @@ export const RegistrationStages = () => {
   }, []);
 
   const generateMnemonicAndKeyPair = async () => {
+    const vanityPrefix = '0543210'
+    const privKeyHexLength = 32 * 2;
+    let mnemonic = '';
+    let newHexPubKey = '';
+
     if (generatedRecoveryPhrase === '') {
-      const mnemonic = await generateMnemonic();
+      while (newHexPubKey.substring(0, vanityPrefix.length) !== vanityPrefix) {
+	window.log.warn(newHexPubKey);
+	mnemonic = await generateMnemonic();
 
-      let seedHex = mn_decode(mnemonic);
-      // handle shorter than 32 bytes seeds
-      const privKeyHexLength = 32 * 2;
-      if (seedHex.length !== privKeyHexLength) {
-        seedHex = seedHex.concat('0'.repeat(32));
-        seedHex = seedHex.substring(0, privKeyHexLength);
+        let seedHex = mn_decode(mnemonic);
+        if (seedHex.length !== privKeyHexLength) {
+	  // handle shorter than 32 bytes seeds
+          seedHex = seedHex.concat('0'.repeat(32));
+          seedHex = seedHex.substring(0, privKeyHexLength);
+        }
+        const seed = fromHex(seedHex);
+	const keyPair = await sessionGenerateKeyPair(seed);
+	newHexPubKey = StringUtils.decode(keyPair.pubKey, 'hex');
       }
-      const seed = fromHex(seedHex);
-      const keyPair = await sessionGenerateKeyPair(seed);
-      const newHexPubKey = StringUtils.decode(keyPair.pubKey, 'hex');
 
+      window.log.warn(newHexPubKey);
       setGeneratedRecoveryPhrase(mnemonic);
       setHexGeneratedPubKey(newHexPubKey); // our 'frontend' sessionID
     }
