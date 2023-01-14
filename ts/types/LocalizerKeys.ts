@@ -390,6 +390,7 @@ export type LocalizerKeys =
   | 'closedGroupInviteSuccessMessage'
   | 'youDisabledDisappearingMessages'
   | 'updateGroupDialogTitle'
+  | 'openGroupsTitle'
   | 'surveyTitle'
   | 'userRemovedFromModerators'
   | 'timerOption_5_seconds'
