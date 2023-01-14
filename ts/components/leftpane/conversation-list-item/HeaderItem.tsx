@@ -44,6 +44,7 @@ const NotificationSettingIcon = () => {
         />
       );
     case 'mentions_only':
+    default:
       return (
         <SessionIcon
           iconType="bell"
@@ -51,8 +52,6 @@ const NotificationSettingIcon = () => {
           iconSize="small"
         />
       );
-    default:
-      return null;
   }
 };
 

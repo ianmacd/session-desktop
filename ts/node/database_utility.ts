@@ -141,7 +141,7 @@ export function formatRowOfConversation(
   }
 
   if (!convo.triggerNotificationsFor) {
-    convo.triggerNotificationsFor = 'all';
+    convo.triggerNotificationsFor = 'mentions_only';
   }
 
   if (!convo.lastJoinedTimestamp) {

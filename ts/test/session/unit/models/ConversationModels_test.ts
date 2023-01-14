@@ -149,7 +149,7 @@ describe('fillConvoAttributesWithDefaults', () => {
     it('initialize triggerNotificationsFor if not given', () => {
       expect(fillConvoAttributesWithDefaults({} as ConversationAttributes)).to.have.deep.property(
         'triggerNotificationsFor',
-        'all'
+        'mentions_only'
       );
     });
 
