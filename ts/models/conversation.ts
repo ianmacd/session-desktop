@@ -317,7 +317,7 @@ export class ConversationModel extends Backbone.Model<ConversationAttributes> {
 
     if (
       currentNotificationSetting &&
-      currentNotificationSetting !== ConversationNotificationSetting[0]
+      currentNotificationSetting !== ConversationNotificationSetting[2]
     ) {
       toRet.currentNotificationSetting = currentNotificationSetting;
     }
