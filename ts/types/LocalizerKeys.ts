@@ -523,4 +523,7 @@ export type LocalizerKeys =
   | 'fetchMessagesSinceEpochDescription'
   | 'fetchMessagesSinceEpochTitle'
   | 'removeAll'
-  | 'openGroupsTitle';
+  | 'openGroupsTitle'
+  | 'serverBanUserAndDeleteAll'
+  | 'serverBanUser'
+  | 'serverUnbanUser';

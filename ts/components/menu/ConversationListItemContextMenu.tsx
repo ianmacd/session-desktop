@@ -28,6 +28,8 @@ import {
   UnbanMenuItem,
   DeletePrivateConversationMenuItem,
   NotificationForConvoMenuItem,
+  ServerBanMenuItem,
+  ServerUnbanMenuItem
 } from './Menu';
 import { isSearching } from '../../state/selectors/search';
 
@@ -65,6 +67,8 @@ const ConversationListItemContextMenu = (props: PropsContextConversationItem) =>
         {/* Communities actions */}
         <BanMenuItem />
         <UnbanMenuItem />
+        <ServerBanMenuItem />
+        <ServerUnbanMenuItem />
         <InviteContactMenuItem />
         <DeleteMessagesMenuItem />
         <DeletePrivateConversationMenuItem />

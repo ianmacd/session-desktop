@@ -33,6 +33,8 @@ import {
   showInviteContactByConvoId,
   showLeaveGroupByConvoId,
   showRemoveModeratorsByConvoId,
+  showServerBanUserByConvoId,
+  showServerUnbanUserByConvoId,
   showUnbanUserByConvoId,
   showUpdateGroupNameByConvoId,
   unblockConvoById,
@@ -341,6 +343,44 @@ export const BanMenuItem = (): JSX.Element | null => {
         }}
       >
         {window.i18n('banUser')}
+      </Item>
+    );
+  }
+  return null;
+};
+
+export const ServerUnbanMenuItem = (): JSX.Element | null => {
+  const convoId = useConvoIdFromContext();
+  const isPublic = useIsPublic(convoId);
+  const weAreAdmin = useWeAreAdmin(convoId);
+
+  if (isPublic && weAreAdmin) {
+    return (
+      <Item
+        onClick={() => {
+          showServerUnbanUserByConvoId(convoId);
+        }}
+      >
+        {window.i18n('serverUnbanUser')}
+      </Item>
+    );
+  }
+  return null;
+};
+
+export const ServerBanMenuItem = (): JSX.Element | null => {
+  const convoId = useConvoIdFromContext();
+  const isPublic = useIsPublic(convoId);
+  const weAreAdmin = useWeAreAdmin(convoId);
+
+  if (isPublic && weAreAdmin) {
+    return (
+      <Item
+        onClick={() => {
+          showServerBanUserByConvoId(convoId);
+        }}
+      >
+        {window.i18n('serverBanUser')}
       </Item>
     );
   }
