@@ -191,6 +191,13 @@ export type SubRequestDeleteAllUserPostsType = {
   };
 };
 
+export type SubRequestDeleteAllUserServerPostsType = {
+  type: 'deleteAllUserPosts';
+  deleteAllUserPosts: {
+    sessionId: string; // can be blinded id or not
+  };
+};
+
 export type SubRequestUpdateRoomType = {
   type: 'updateRoom';
   updateRoom: {
@@ -219,6 +226,7 @@ export type OpenGroupBatchRow =
   | SubRequestAddRemoveModeratorType
   | SubRequestBanUnbanUserType
   | SubRequestDeleteAllUserPostsType
+  | SubRequestDeleteAllUserServerPostsType
   | SubRequestUpdateRoomType
   | SubRequestDeleteReactionType;
 
@@ -328,6 +336,11 @@ const makeBatchRequestPayload = (
       return {
         method: 'DELETE',
         path: `/room/${options.deleteAllPosts.roomId}/all/${options.deleteAllPosts.sessionId}`,
+      };
+    case 'deleteAllUserPosts':
+      return {
+        method: 'DELETE',
+        path: `/rooms/all/${options.deleteAllUserPosts.sessionId}`,
       };
     case 'updateRoom':
       return {

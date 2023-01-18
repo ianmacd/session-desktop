@@ -80,8 +80,8 @@ export const sogsV3ServerBanUser = async (
 
   if (deleteAllMessages) {
     sequence.push({
-      type: 'deleteAllPosts',
-      deleteAllPosts: { sessionId: userToBan.key, roomId: roomInfos.roomId },
+      type: 'deleteAllUserPosts',
+      deleteAllUserPosts: { sessionId: userToBan.key },
     });
   }
 
