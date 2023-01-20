@@ -352,7 +352,11 @@ function getById(table: string, id: string, instance?: BetterSqlite3.Database) {
       id,
     });
 
-  return row ? jsonToObject(row.json) : null;
+  if (!row) {
+    return null;
+  }
+
+  return jsonToObject(row.json);
 }
 
 function removeById(table: string, id: string) {
@@ -1040,21 +1044,6 @@ function getMessageByServerId(serverId: number) {
   const row = assertGlobalInstance()
     .prepare(`SELECT * FROM ${MESSAGES_TABLE} WHERE serverId = $serverId;`)
     .get({
-      serverId,
-    });
-
-  if (!row) {
-    return null;
-  }
-
-  return jsonToObject(row.json);
-}
-
-function getMessageByConversationIdAndServerId(conversationId: string, serverId: number) {
-  const row = assertGlobalInstance()
-    .prepare(`SELECT * FROM ${MESSAGES_TABLE} WHERE conversationId = $conversationId AND serverId = $serverId;`)
-    .get({
-      conversationId,
       serverId,
     });
 
@@ -2489,7 +2478,6 @@ export const sqlNode = {
   getMessageById,
   getMessagesBySentAt,
   getMessageByServerId,
-  getMessageByConversationIdAndServerId,
   getSeenMessagesByHashList,
   getLastHashBySnode,
   getExpiredMessages,
