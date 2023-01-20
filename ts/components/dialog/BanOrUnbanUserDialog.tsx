@@ -31,7 +31,8 @@ async function banOrUnBanUserCall(
   convo: ConversationModel,
   textValue: string,
   banType: BanType,
-  deleteAll: boolean
+  deleteAll: boolean,
+  isGlobal: boolean
 ) {
   // if we don't have valid data entered by the user
   const pubkey = PubKey.from(textValue);
@@ -45,45 +46,12 @@ async function banOrUnBanUserCall(
     const roomInfos = convo.toOpenGroupV2();
     const isChangeApplied =
       banType === 'ban'
-        ? await sogsV3BanUser(pubkey, roomInfos, deleteAll)
-        : await sogsV3UnbanUser(pubkey, roomInfos);
-
-    if (!isChangeApplied) {
-      window?.log?.warn(`failed to ${banType} user: ${isChangeApplied}`);
-
-      banType === 'ban' ? ToastUtils.pushUserBanFailure() : ToastUtils.pushUserUnbanSuccess();
-      return false;
-    }
-    window?.log?.info(`${pubkey.key} user ${banType}ned successfully...`);
-    banType === 'ban' ? ToastUtils.pushUserBanSuccess() : ToastUtils.pushUserUnbanSuccess();
-    return true;
-  } catch (e) {
-    window?.log?.error(`Got error while ${banType}ning user:`, e);
-
-    return false;
-  }
-}
-
-async function serverBanOrUnBanUserCall(
-  convo: ConversationModel,
-  textValue: string,
-  banType: BanType,
-  deleteAll: boolean
-) {
-  // if we don't have valid data entered by the user
-  const pubkey = PubKey.from(textValue);
-  if (!pubkey) {
-    window.log.info(`invalid pubkey for ${banType} user:${textValue}`);
-    ToastUtils.pushInvalidPubKey();
-    return false;
-  }
-  try {
-    // this is a v2 opengroup
-    const roomInfos = convo.toOpenGroupV2();
-    const isChangeApplied =
-      banType === 'ban'
-        ? await sogsV3ServerBanUser(pubkey, roomInfos, deleteAll)
-        : await sogsV3ServerUnbanUser(pubkey, roomInfos);
+        ? isGlobal
+	  ? await sogsV3ServerBanUser(pubkey, roomInfos, deleteAll)
+	  : await sogsV3BanUser(pubkey, roomInfos, deleteAll)
+        : isGlobal
+	  ? await sogsV3ServerUnbanUser(pubkey, roomInfos)
+	  : await sogsV3UnbanUser(pubkey, roomInfos);
 
     if (!isChangeApplied) {
       window?.log?.warn(`failed to ${banType} user: ${isChangeApplied}`);
@@ -135,7 +103,7 @@ export const BanOrUnBanUserDialog = (props: {
 
     window?.log?.info(`asked to ${banType} user: ${castedPubkey}, banAndDeleteAll:${deleteAll}`);
     setInProgress(true);
-    const isBanned = await banOrUnBanUserCall(convo, castedPubkey, banType, deleteAll);
+    const isBanned = await banOrUnBanUserCall(convo, castedPubkey, banType, deleteAll, false);
     if (isBanned) {
       // clear input box
       setInputBoxValue('');
@@ -242,7 +210,7 @@ export const ServerBanOrUnBanUserDialog = (props: {
 
     window?.log?.info(`asked to ${banType} user: ${castedPubkey}, banAndDeleteAll:${deleteAll}`);
     setInProgress(true);
-    const isBanned = await serverBanOrUnBanUserCall(convo, castedPubkey, banType, deleteAll);
+    const isBanned = await banOrUnBanUserCall(convo, castedPubkey, banType, deleteAll, true);
     if (isBanned) {
       // clear input box
       setInputBoxValue('');
