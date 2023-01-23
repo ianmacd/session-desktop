@@ -526,4 +526,6 @@ export type LocalizerKeys =
   | 'openGroupsTitle'
   | 'serverBanUserAndDeleteAll'
   | 'serverBanUser'
-  | 'serverUnbanUser';
+  | 'serverUnbanUser'
+  | 'reportIssue'
+  | 'launchingCommunityBrowser';

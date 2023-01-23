@@ -28,11 +28,11 @@ import { editProfileModal, onionPathModal } from '../../state/ducks/modalDialog'
 
 // tslint:disable-next-line: no-import-side-effect no-submodule-imports
 
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, shell } from 'electron';
 import { loadDefaultRooms } from '../../session/apis/open_group_api/opengroupV2/ApiUtil';
 import { getOpenGroupManager } from '../../session/apis/open_group_api/opengroupV2/OpenGroupManagerV2';
 import { getSwarmPollingInstance } from '../../session/apis/snode_api';
-import { UserUtils } from '../../session/utils';
+import { ToastUtils, UserUtils } from '../../session/utils';
 import { Avatar, AvatarSize } from '../avatar/Avatar';
 import { ActionPanelOnionStatusLight } from '../dialog/OnionStatusPathDialog';
 import { SessionIconButton } from '../icon';
@@ -75,6 +75,9 @@ const Section = (props: { type: SectionType }) => {
         usePrimaryColor: true,
         dispatch,
       });
+    } else if (type === SectionType.Communities) {
+      void shell.openExternal('https://sessioncommunities.online');
+      ToastUtils.pushToastSuccess('launch', window.i18n('launchingCommunityBrowser'))
     } else if (type === SectionType.PathIndicator) {
       // Show Path Indicator Modal
       dispatch(onionPathModal({}));
@@ -117,6 +120,16 @@ const Section = (props: { type: SectionType }) => {
           iconSize="medium"
           dataTestId="settings-section"
           iconType={'gear'}
+          onClick={handleClick}
+          isSelected={isSelected}
+        />
+      );
+    case SectionType.Communities:
+      return (
+        <SessionIconButton
+          iconSize="medium"
+          dataTestId="communities-section"
+          iconType={'communities'}
           onClick={handleClick}
           isSelected={isSelected}
         />
@@ -293,6 +306,7 @@ export const ActionsPanel = () => {
         <Section type={SectionType.Profile} />
         <Section type={SectionType.Message} />
         <Section type={SectionType.Settings} />
+        <Section type={SectionType.Communities} />
         <Section type={SectionType.PathIndicator} />
         <Section type={SectionType.ColorMode} />
       </LeftPaneSectionContainer>
