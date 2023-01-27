@@ -528,4 +528,6 @@ export type LocalizerKeys =
   | 'serverBanUser'
   | 'serverUnbanUser'
   | 'reportIssue'
-  | 'launchingCommunityBrowser';
+  | 'launchingCommunityBrowser'
+  | 'globalUserBanFailed'
+  | 'globalUserUnbanFailed';
