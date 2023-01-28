@@ -229,8 +229,7 @@ export const ServerBanOrUnBanUserDialog = (props: {
     setInProgress(false);
   };
 
-  const serverUrl = convo.toOpenGroupV2().serverUrl.match(/[^/]+/g);
-  const serverHost = serverUrl ? serverUrl[1] : 'server-wide';
+  const serverHost = new window.URL(convo.toOpenGroupV2().serverUrl).host;
   const title = `${isBan ? window.i18n('banUser') : window.i18n('unbanUser')} @ ${serverHost}`;
 
   const onPubkeyBoxChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
