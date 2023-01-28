@@ -10,7 +10,7 @@ import { fetchCapabilitiesAndUpdateRelatedRoomsOfServerUrl } from './sogsV3Capab
 export const getAllRoomInfos = async (roomInfos: OpenGroupV2Room) => {
   const result = await OnionSending.sendJsonViaOnionV4ToSogs({
     blinded: true,
-    endpoint: '/rooms',
+    endpoint: '/rooms?all=1',
     method: 'GET',
     serverPubkey: roomInfos.serverPublicKey,
     stringifiedBody: null,
