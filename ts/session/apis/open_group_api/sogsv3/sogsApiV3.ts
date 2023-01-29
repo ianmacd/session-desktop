@@ -81,6 +81,7 @@ async function handlePollInfoResponse(
       admins?: Array<string>;
       image_id: number;
       name?: string;
+      description?: string;
       moderators?: Array<string>;
       hidden_admins?: Array<string>;
       hidden_moderators?: Array<string>;
@@ -127,7 +128,8 @@ async function handlePollInfoResponse(
       'moderators',
       'hidden_admins',
       'hidden_moderators',
-      'name'
+      'name',
+      'description'
     ),
   });
 }

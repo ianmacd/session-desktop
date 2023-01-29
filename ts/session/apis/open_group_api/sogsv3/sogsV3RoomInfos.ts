@@ -44,13 +44,13 @@ const parseRooms = (jsonResult?: Record<string, any>): undefined | Array<OpenGro
   return compact(
     rooms.map(room => {
       // check that the room is correctly filled
-      const { token: id, name, image_id: imageId } = room;
+      const { token: id, name, description, image_id: imageId } = room;
       if (!id || !name) {
         window?.log?.info('getAllRoomInfos: Got invalid room details, skipping');
         return null;
       }
 
-      return { id, name, imageId } as OpenGroupV2Info;
+      return { id, name, description, imageId } as OpenGroupV2Info;
     })
   );
 };
@@ -92,7 +92,7 @@ export async function openGroupV2GetRoomInfoViaOnionV4({
   });
   const room = result?.body as Record<string, any> | undefined;
   if (room) {
-    const { token: id, name, image_id: imageId } = room;
+    const { token: id, name, description, image_id: imageId } = room;
 
     if (!id || !name) {
       window?.log?.warn('getRoominfo Parsing failed');
@@ -102,6 +102,7 @@ export async function openGroupV2GetRoomInfoViaOnionV4({
     const info: OpenGroupV2Info = {
       id,
       name,
+      description,
       imageId,
       capabilities: caps ? uniq(caps) : undefined,
     };

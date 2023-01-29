@@ -16,6 +16,7 @@ import { H3 } from '../../basic/Text';
 export type JoinableRoomProps = {
   completeUrl: string;
   name: string;
+  description: string;
   roomId: string;
   imageId?: string;
   onClick?: (completeUrl: string) => void;
@@ -91,7 +92,7 @@ const SessionJoinableRoomName = (props: JoinableRoomProps) => {
 };
 
 const SessionJoinableRoomRow = (props: JoinableRoomProps) => {
-  const { onClick, completeUrl } = props;
+  const { description, onClick, completeUrl } = props;
   const onClickWithUrl = onClick
     ? () => {
         onClick?.(completeUrl);
@@ -99,12 +100,14 @@ const SessionJoinableRoomRow = (props: JoinableRoomProps) => {
     : undefined;
 
   return (
-    <StyledPillContainerHoverable>
-      <PillContainerHoverable onClick={onClickWithUrl} margin="5px" padding="5px">
-        <SessionJoinableRoomAvatar {...props} />
-        <SessionJoinableRoomName {...props} />
-      </PillContainerHoverable>
-    </StyledPillContainerHoverable>
+    <span title={description}>
+      <StyledPillContainerHoverable>
+        <PillContainerHoverable onClick={onClickWithUrl} margin="5px" padding="5px">
+          <SessionJoinableRoomAvatar {...props} />
+          <SessionJoinableRoomName {...props} />
+        </PillContainerHoverable>
+      </StyledPillContainerHoverable>
+    </span>
   );
 };
 
@@ -122,6 +125,7 @@ const JoinableRooms = (props: {
             key={r.id}
             completeUrl={r.completeUrl}
             name={r.name}
+            description={r.description}
             roomId={r.id}
             imageId={r.imageId}
             base64Data={r.base64Data}
