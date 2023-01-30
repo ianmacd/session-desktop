@@ -99,8 +99,11 @@ const SessionJoinableRoomRow = (props: JoinableRoomProps) => {
       }
     : undefined;
 
+  const serverHost = new window.URL(completeUrl).host;
+  const label = `${name} @ ${serverHost}\n\n${description}`;
+
   return (
-    <span title={description}>
+    <span title={label}>
       <StyledPillContainerHoverable>
         <PillContainerHoverable onClick={onClickWithUrl} margin="5px" padding="5px">
           <SessionJoinableRoomAvatar {...props} />
