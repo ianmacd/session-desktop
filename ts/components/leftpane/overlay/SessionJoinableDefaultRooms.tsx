@@ -18,6 +18,7 @@ export type JoinableRoomProps = {
   name: string;
   description: string;
   subscriberCount: number;
+  created: number;
   roomId: string;
   imageId?: string;
   onClick?: (completeUrl: string) => void;
@@ -93,7 +94,7 @@ const SessionJoinableRoomName = (props: JoinableRoomProps) => {
 };
 
 const SessionJoinableRoomRow = (props: JoinableRoomProps) => {
-  const { name, description, subscriberCount, onClick, completeUrl } = props;
+  const { name, description, subscriberCount, created, onClick, completeUrl } = props;
   const onClickWithUrl = onClick
     ? () => {
         onClick?.(completeUrl);
@@ -101,8 +102,10 @@ const SessionJoinableRoomRow = (props: JoinableRoomProps) => {
     : undefined;
 
   const serverHost = new window.URL(completeUrl).host;
+  const createdDate = new Date(created * 1000);
   // tslint:disable: prefer-template
-  const label = `${name} @ ${serverHost}\nUsers: ${subscriberCount}` +
+  const label = `${name} @ ${serverHost}\nUsers: ${subscriberCount}\n` +
+		`Created: ${createdDate.toLocaleString()}` +
 		(description ? `\n\n${description}` : '');
   // tslint:enable: prefer-template
 
@@ -134,6 +137,7 @@ const JoinableRooms = (props: {
             name={r.name}
             description={r.description}
             subscriberCount={r.subscriberCount}
+            created={r.created}
             roomId={r.id}
             imageId={r.imageId}
             base64Data={r.base64Data}

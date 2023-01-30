@@ -29,6 +29,7 @@ export type OpenGroupV2Info = {
   name: string;
   description: string;
   subscriberCount: number;
+  created: number;
   imageId?: string;
   capabilities?: Array<string>;
 };
