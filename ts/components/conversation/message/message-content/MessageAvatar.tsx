@@ -99,19 +99,24 @@ export const MessageAvatar = (props: Props) => {
         );
 
         privateConvoToOpen = foundRealSessionId || privateConvoToOpen;
+
+	if (foundRealSessionId) {
+	  // We know this user's real id. Go to private conversation.
+	  await getConversationController()
+	    .get(privateConvoToOpen)
+	    .setOriginConversationID(selectedConvoKey);
+
+	  await openConversationWithMessages({ conversationKey: privateConvoToOpen, messageId: null });
+
+	  return;
+	}
+	// Public and blinded key for this message. Fall through to asking if we
+	// should start a conversation, which will send SOGS blinded message request.
       }
-
-      await getConversationController()
-        .get(privateConvoToOpen)
-        .setOriginConversationID(selectedConvoKey);
-
-      // public and blinded key for that message, we should open the convo as is and see if the user wants
-      // to send a sogs blinded message request.
-      await openConversationWithMessages({ conversationKey: privateConvoToOpen, messageId: null });
-
-      return;
     }
-    //not public, i.e. closed group. Just open dialog for the user to do what he wants
+
+    // Public and blinded key, or not public, i.e. closed group.
+    // Just open dialog for the user to do what he wants.
     dispatch(
       updateUserDetailsModal({
         conversationId: sender,
