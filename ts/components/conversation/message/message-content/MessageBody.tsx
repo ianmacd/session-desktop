@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import LinkifyIt from 'linkify-it';
 import MarkdownIt from 'markdown-it';
+import katex from 'katex';
 import { RenderTextCallbackType } from '../../../../types/Util';
 import { getEmojiSizeClass, SizeClassType } from '../../../../util/emoji';
 import { AddMentions } from '../../AddMentions';
@@ -45,6 +46,21 @@ const markdown = MarkdownIt('default', {
         // closing tag
         return '</details>\n';
       }
+    }
+  })
+  .use(require('markdown-it-container'), 'latex', {
+    validate: (params: string) => {
+      return params.trim().match(/^latex\s+(.*)$/);
+    },
+
+    render: (tokens: Array<any>, idx: number) => {
+      const m = tokens[idx].info.trim().match(/^latex\s+(.*)$/);
+
+      if (tokens[idx].nesting === 1) {
+        // We don't call escapeHtml, so LaTeX must contain no Markdown.
+        return katex.renderToString(m[1], {throwOnError: false});
+      }
+      return '\n';
     }
   })
   .use(require('markdown-it-footnote'))
