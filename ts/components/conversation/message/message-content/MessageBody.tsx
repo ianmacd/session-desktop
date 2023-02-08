@@ -17,6 +17,17 @@ import { getConversationController } from '../../../../session/conversations';
 
 const linkify = LinkifyIt();
 
+// tslint:disable:no-var-requires no-require-imports
+const markdownAbbr = require('markdown-it-abbr');
+const markdownSub = require('markdown-it-sub');
+const markdownSup = require('markdown-it-sup');
+const markdownIns = require('markdown-it-ins');
+const markdownMark = require('markdown-it-mark');
+const markdownContainer = require('markdown-it-container');
+const markdownFootnote = require('markdown-it-footnote');
+const markdownHighlightjs = require('markdown-it-highlightjs');
+// tslint:enable:no-var-requires no-require-imports
+
 const markdown = MarkdownIt('default', {
   html: false,
   linkify: true,
@@ -25,13 +36,12 @@ const markdown = MarkdownIt('default', {
   breaks: false
   }
 )
-  // tslint:disable:no-var-requires no-require-imports
-  .use(require('markdown-it-abbr'))
-  .use(require('markdown-it-sub'))
-  .use(require('markdown-it-sup'))
-  .use(require('markdown-it-ins'))
-  .use(require('markdown-it-mark'))
-  .use(require('markdown-it-container'), 'spoiler', {
+  .use(markdownAbbr)
+  .use(markdownSub)
+  .use(markdownSup)
+  .use(markdownIns)
+  .use(markdownMark)
+  .use(markdownContainer, 'spoiler', {
     validate: (params: string) => {
       return params.trim().match(/^spoiler\s+(.*)$/);
     },
@@ -42,13 +52,12 @@ const markdown = MarkdownIt('default', {
       if (tokens[idx].nesting === 1) {
         // opening tag
         return `<details><summary>${markdown.utils.escapeHtml(m[1])}</summary>\n`;
-      } else {
-        // closing tag
-        return '</details>\n';
       }
+      // closing tag
+      return '</details>\n';
     }
   })
-  .use(require('markdown-it-container'), 'latex', {
+  .use(markdownContainer, 'latex', {
     validate: (params: string) => {
       return params.trim().match(/^latex\s+(.*)$/);
     },
@@ -58,14 +67,13 @@ const markdown = MarkdownIt('default', {
 
       if (tokens[idx].nesting === 1) {
         // We don't call escapeHtml, so LaTeX must contain no Markdown.
-        return katex.renderToString(m[1], {throwOnError: false});
+        return katex.renderToString(m[1], { throwOnError: false });
       }
       return '\n';
     }
   })
-  .use(require('markdown-it-footnote'))
-  .use(require('markdown-it-highlightjs'), { inline: true }
-  // tslint:enable:no-var-requires no-require-imports
+  .use(markdownFootnote)
+  .use(markdownHighlightjs, { inline: true }
 );
 
 type Props = {
