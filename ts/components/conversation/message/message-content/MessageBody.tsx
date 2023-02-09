@@ -67,7 +67,11 @@ const markdown = MarkdownIt('default', {
 
       if (tokens[idx].nesting === 1) {
         // We don't call escapeHtml, so LaTeX must contain no Markdown.
-        return katex.renderToString(m[1], { throwOnError: false });
+        return katex.renderToString(m[1],
+	  { throwOnError: false,
+	    output: 'html'
+	  }
+	);
       }
       return '\n';
     }
