@@ -256,6 +256,7 @@ export const MessageBody = (props: Props) => {
         }
       );
 
+      markdown.options.typographer = window.getSettingValue('message-typography');
       /* tslint:disable:react-no-dangerous-html */
       return (
         <div className="text-selectable"

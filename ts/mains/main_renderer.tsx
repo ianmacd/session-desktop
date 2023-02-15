@@ -163,6 +163,11 @@ Storage.onready(async () => {
       await Storage.put('message-formatting', value);
     },
 
+    getMessageTypography: () => Storage.get('message-typography', true),
+    setMessageTypography: async (value: boolean) => {
+      await Storage.put('message-typography', value);
+    },
+
     getPerMessageTimestamps: () => Storage.get('per-message-timestamps', true),
     setPerMessageTimestamps: async (value: boolean) => {
       await Storage.put('per-message-timestamps', value);
@@ -366,6 +371,13 @@ async function start() {
     const currentValue = window.getSettingValue('message-formatting');
     const newValue = currentValue !== undefined ? !currentValue : true;
     window.Events.setMessageFormatting(newValue);
+    window.Events.setMessageTypography(false);
+  };
+
+  window.toggleMessageTypography = () => {
+    const currentValue = window.getSettingValue('message-typography');
+    const newValue = currentValue !== undefined ? !currentValue : true;
+    window.Events.setMessageTypography(newValue);
   };
 
   window.togglePerMessageTimestamps= () => {

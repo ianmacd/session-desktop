@@ -27,6 +27,11 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
         ? false
         : window.getSettingValue(SettingsKey.settingsMessageFormatting);
 
+    const isMessageTypographyActive =
+      window.getSettingValue(SettingsKey.settingsMessageTypography) === undefined
+        ? false
+        : window.getSettingValue(SettingsKey.settingsMessageTypography) && window.getSettingValue(SettingsKey.settingsMessageFormatting);
+
     const isPerMessageTimestampsActive =
       window.getSettingValue(SettingsKey.settingsPerMessageTimestamps) === undefined
         ? true
@@ -52,6 +57,15 @@ export const SettingsCategoryAppearance = (props: { hasPassword: boolean | null 
           title={window.i18n('messageFormattingTitle')}
           description={window.i18n('messageFormattingDescription')}
           active={isMessageFormattingActive}
+        />
+        <SessionToggleWithDescription
+          onClickToggle={() => {
+            window.toggleMessageTypography();
+            forceUpdate();
+          }}
+          title={window.i18n('messageTypographyTitle')}
+          description={window.i18n('messageTypographyDescription')}
+          active={isMessageTypographyActive}
         />
         <SessionToggleWithDescription
           onClickToggle={() => {

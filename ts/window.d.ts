@@ -60,6 +60,7 @@ declare global {
     toggleMenuBar: () => void;
     toggleFullId: () => void;
     toggleMessageFormatting: () => void;
+    toggleMessageTypography: () => void;
     togglePerMessageTimestamps: () => void;
     toggleScrollOnSend: () => void;
     toggleSendOnShiftEnter: () => void;

@@ -530,4 +530,6 @@ export type LocalizerKeys =
   | 'reportIssue'
   | 'launchingCommunityBrowser'
   | 'globalUserBanFailed'
-  | 'globalUserUnbanFailed';
+  | 'globalUserUnbanFailed'
+  | 'messageTypographyDescription'
+  | 'messageTypographyTitle';

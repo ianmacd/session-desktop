@@ -179,6 +179,9 @@ async function createAccount(identityKeyPair: SessionKeyPair) {
   // Disable message formatting by default.
   await Storage.put(SettingsKey.settingsMessageFormatting, false);
 
+  // Disable message typography by default.
+  await Storage.put(SettingsKey.settingsMessageTypography, false);
+
   // Enable per-message timestamps by default.
   await Storage.put(SettingsKey.settingsPerMessageTimestamps, true);
 

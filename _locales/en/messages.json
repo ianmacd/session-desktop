@@ -229,6 +229,8 @@
   "perMessageTimestampsDescription": "Timestamp every message balloon instead of using captions.",
   "messageFormattingTitle": "Message Formatting (Experimental)",
   "messageFormattingDescription": "Render messages using Markdown formatting.",
+  "messageTypographyTitle": "Message Typography (Experimental)",
+  "messageTypographyDescription": "Typographically enhance quotation marks, etc.",
   "scrollOnSendTitle": "Scroll On Send",
   "scrollOnSendDescription": "Scroll to end of conversation after sending message.",
   "sendOnShiftEnterTitle": "Message Sending",

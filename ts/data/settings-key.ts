@@ -21,6 +21,7 @@ const latestUserContactsEnvelopeTimestamp = 'latestUserContactsEnvelopeTimestamp
 
 const settingsShowFullId = 'show-full-id';
 const settingsMessageFormatting = 'message-formatting';
+const settingsMessageTypography = 'message-typography';
 const settingsPerMessageTimestamps = 'per-message-timestamps';
 const settingsScrollOnSend = 'scroll-on-send';
 const settingsSendOnShiftEnter = 'send-on-shift-enter';
@@ -47,6 +48,7 @@ export const SettingsKey = {
   latestUserContactsEnvelopeTimestamp,
   settingsShowFullId,
   settingsMessageFormatting,
+  settingsMessageTypography,
   settingsPerMessageTimestamps,
   settingsScrollOnSend,
   settingsSendOnShiftEnter,
