@@ -14,6 +14,7 @@ interface SProps extends SessionIconProps {
   dataTestId?: string;
   id?: string;
   style?: object;
+  title?: string;
 }
 
 const StyledSessionIconButton = styled.div<{ color?: string; isSelected?: boolean }>`
@@ -55,6 +56,7 @@ const SessionIconButtonInner = React.forwardRef<HTMLDivElement, SProps>((props, 
     id,
     dataTestId,
     style,
+    title
   } = props;
   const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     if (props.onClick) {
@@ -73,6 +75,7 @@ const SessionIconButtonInner = React.forwardRef<HTMLDivElement, SProps>((props, 
       id={id}
       onClick={clickHandler}
       style={{ ...style, display: isHidden ? 'none' : 'flex', margin: margin ? margin : '' }}
+      title={title}
       data-testid={dataTestId}
     >
       <SessionIcon

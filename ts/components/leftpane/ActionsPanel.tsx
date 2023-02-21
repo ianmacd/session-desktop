@@ -106,6 +106,7 @@ const Section = (props: { type: SectionType }) => {
     case SectionType.Message:
       return (
         <SessionIconButton
+	  title={window.i18n('messagesHeader')}
           iconSize="medium"
           dataTestId="message-section"
           iconType={'chatBubble'}
@@ -117,6 +118,7 @@ const Section = (props: { type: SectionType }) => {
     case SectionType.Settings:
       return (
         <SessionIconButton
+	  title={window.i18n('settingsHeader')}
           iconSize="medium"
           dataTestId="settings-section"
           iconType={'gear'}
@@ -127,6 +129,7 @@ const Section = (props: { type: SectionType }) => {
     case SectionType.Communities:
       return (
         <SessionIconButton
+	  title={window.i18n('openGroupsTitle')}
           iconSize="medium"
           dataTestId="communities-section"
           iconType={'communities'}
