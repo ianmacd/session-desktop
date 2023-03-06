@@ -392,22 +392,6 @@ export class SessionConversation extends React.Component<Props, State> {
       return;
     }
 
-    const haveNonImage = _.some(
-      stagedAttachments,
-      attachment => !MIME.isImage(attachment.contentType)
-    );
-    // You can't add another attachment if you already have a non-image staged
-    if (haveNonImage) {
-      ToastUtils.pushMultipleNonImageError();
-      return;
-    }
-
-    // You can't add a non-image attachment if you already have attachments staged
-    if (!MIME.isImage(contentType) && stagedAttachments.length > 0) {
-      ToastUtils.pushCannotMixError();
-      return;
-    }
-
     let blob = null;
 
     try {
