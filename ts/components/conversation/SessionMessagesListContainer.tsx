@@ -146,6 +146,7 @@ class SessionMessagesListContainerInner extends React.Component<Props> {
         <SessionScrollButton
           onClickScrollBottom={this.props.scrollToNow}
           key="scroll-down-button"
+	  unreadCount={conversation.unreadCount || 0}
         />
       </StyledMessagesContainer>
     );
