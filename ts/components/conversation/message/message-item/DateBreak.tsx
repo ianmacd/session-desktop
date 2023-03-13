@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components';
+import { sync as osLocaleSync } from 'os-locale';
 
 const DateBreakContainer = styled.div``;
 
@@ -26,7 +27,7 @@ export const MessageDateBreak = (props: { timestamp: number; messageId: string }
       sameElse: 'LL',
     }
   } else {
-    moment.locale('en-gb'); // for 24-hour clock
+    moment.locale(osLocaleSync().replace(/_/g, '-'));
     dateFormat = {
       sameElse: 'llll',
     }
