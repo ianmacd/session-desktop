@@ -5,6 +5,7 @@ import moment from 'moment';
 import useInterval from 'react-use/lib/useInterval';
 import styled from 'styled-components';
 import useUpdate from 'react-use/lib/useUpdate';
+import { sync as osLocaleSync } from 'os-locale';
 
 type Props = {
   timestamp?: number;
@@ -19,7 +20,6 @@ const TimestampContainerNotListItem = styled.div`
   font-size: var(--font-size-xs);
   line-height: 16px;
   letter-spacing: 0.3px;
-  text-transform: uppercase;
   user-select: none;
 `;
 
@@ -42,14 +42,26 @@ export const Timestamp = (props: Props) => {
   }
 
   const momentValue = moment(timestamp);
-  // this is a hack to make the date string shorter, looks like moment does not have a localized way of doing this for now.
+  let dateString: string = '';
+  // Set the locale for the timestamps.
+  moment.locale(osLocaleSync().replace(/_/g, '-'));
 
-  const dateString = momentFromNow
-    ? momentValue
-        .fromNow()
-        .replace('minutes', 'mins')
-        .replace('minute', 'min')
-    : momentValue.format('lll');
+  if (momentFromNow) {
+    const now = moment();
+
+    if (momentValue.isSame(now, 'day')) {
+      // Today: Use the time only.
+      dateString = momentValue.format('LT');
+    } else if (now.diff(momentValue, 'days') < 6) {
+      // Less than a week old: Use the day only.
+      dateString = momentValue.format('ddd');
+    } else {
+      // More than a week old: Use the full date.
+      dateString = momentValue.format('L');
+    }
+  } else {
+    dateString = momentValue.format('lll');
+  }
 
   const title = moment(timestamp).format('llll');
   if (props.isConversationListItem) {
