@@ -99,7 +99,7 @@ const CompressedReactions = (props: ExpandReactionsProps): ReactElement => {
       <StyledReactionOverflow onClick={handleExpand}>
       <div>
         {reactions
-          .slice(8, 11)
+          .slice(7, 11)
           .reverse()
           .map(([emoji, _]) => {
             return (
