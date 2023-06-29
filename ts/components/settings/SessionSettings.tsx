@@ -85,7 +85,7 @@ const SessionInfo = () => {
       <StyledSpanSessionInfo
         onClick={() => {
           void shell.openExternal(
-            `https://github.com/oxen-io/session-desktop/releases/tag/v${window.versionInfo.version}`
+            'https://github.com/ianmacd/session-desktop'
           );
         }}
       >
