@@ -13,7 +13,6 @@ import {
   showUpdateDialog,
 } from './common';
 import { gt as isVersionGreaterThan, parse as parseVersion } from 'semver';
-import { getLastestRelease } from '../node/latest_desktop_release';
 
 let isUpdating = false;
 let downloadIgnored = false;
@@ -85,26 +84,6 @@ async function checkForUpdates(
   isUpdating = true;
 
   try {
-    const latestVersionFromFsFromRenderer = getLastestRelease();
-
-    logger.info('[updater] latestVersionFromFsFromRenderer', latestVersionFromFsFromRenderer);
-    if (!latestVersionFromFsFromRenderer || !latestVersionFromFsFromRenderer?.length) {
-      logger.info(
-        '[updater] testVersionFromFsFromRenderer was not updated yet by renderer. Skipping update check'
-      );
-      return;
-    }
-
-    const currentVersion = autoUpdater.currentVersion.toString();
-    const isMoreRecent = isVersionGreaterThan(latestVersionFromFsFromRenderer, currentVersion);
-    logger.info('[updater] checkForUpdates isMoreRecent', isMoreRecent);
-    if (!isMoreRecent) {
-      logger.info(
-        `Fileserver has no update so we are not looking for an update from github current:${currentVersion} fromFileServer:${latestVersionFromFsFromRenderer}`
-      );
-      return;
-    }
-
     // Get the update using electron-updater, this fetches from github
     const result = await autoUpdater.checkForUpdates();
 
