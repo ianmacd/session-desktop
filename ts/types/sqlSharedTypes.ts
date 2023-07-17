@@ -243,7 +243,7 @@ export function getLegacyGroupInfoFromDBValues({
  * This function can be used to make sure all the possible values as input of a switch as taken care off, without having a default case.
  *
  */
-export function assertUnreachable(_x: never, message: string): never {
+export function assertUnreachable(_x: string, message: string): never {
   const msg = `assertUnreachable: Didn't expect to get here with "${message}"`;
   // tslint:disable: no-console
   console.info(msg);
