@@ -31,6 +31,7 @@ export const StyledMessageReactionsContainer = styled(Flex)<{
 
 export const StyledMessageReactions = styled(Flex)<{ fullWidth: boolean }>`
   ${props => (props.fullWidth ? '' : 'max-width: 640px;')}
+  font-size: var(--font-size-emo);
 `;
 
 const StyledReactionOverflow = styled.button`
@@ -114,7 +115,7 @@ const CompressedReactions = (props: ExpandReactionsProps): ReactElement => {
               </span>
             );
           })}
-      &nbsp;&nbsp;…
+        &nbsp;&nbsp;<SessionIcon iconType="chevron" iconSize="small" />
       </div>
       </StyledReactionOverflow>
     </StyledMessageReactions>

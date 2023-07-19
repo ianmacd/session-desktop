@@ -15,6 +15,7 @@ export type ThemeGlobals = {
   '--font-size-h2': string;
   '--font-size-h3': string;
   '--font-size-h4': string;
+  '--font-size-emo': string;
 
   /* Margins */
   '--margins-xxs': string;
@@ -97,6 +98,7 @@ export const THEME_GLOBALS: ThemeGlobals = {
   '--font-size-h2': '24px',
   '--font-size-h3': '20px',
   '--font-size-h4': '16px',
+  '--font-size-emo': '12px',
 
   '--margins-xxs': '2.5px',
   '--margins-xs': '5px',
