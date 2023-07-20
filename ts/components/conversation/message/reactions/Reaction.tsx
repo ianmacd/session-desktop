@@ -22,7 +22,7 @@ const StyledReaction = styled.button<{ selected: boolean; inModal: boolean; show
   border-radius: 9px;
   box-sizing: border-box;
   padding: 0 2px;
-  margin: 0 4px var(--margins-sm);
+  margin: 0 2px var(--margins-sm);
   height: 24px;
   min-width: ${props => (props.showCount ? '48px' : '24px')};
 
