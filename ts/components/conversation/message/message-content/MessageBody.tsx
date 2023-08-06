@@ -10,6 +10,7 @@ import markdownMark from 'markdown-it-mark';
 import markdownContainer from 'markdown-it-container';
 import markdownFootnote from 'markdown-it-footnote';
 import markdownHighlightjs from 'markdown-it-highlightjs';
+import MarkdownItMermaid from 'markdown-it-mermaid';
 import katex from 'katex';
 import { RenderTextCallbackType } from '../../../../types/Util';
 import { getEmojiSizeClass, SizeClassType } from '../../../../util/emoji';
@@ -31,8 +32,21 @@ const markdown = MarkdownIt('default', {
   typographer: true,
   // This seems not to work:
   breaks: false
-  }
-)
+  })
+  .use(MarkdownItMermaid, {
+    startOnLoad: false,
+    securityLevel: true,
+    theme: "default",
+    flowchart: {
+      htmlLabels: false,
+      useMaxWidth: true,
+    },
+    dictionary: {
+      token: "mermaid",
+      graph:"graph",
+      sequenceDiagram: "sequenceDiagram",
+    }
+  })
   .use(markdownAbbr)
   .use(markdownSub)
   .use(markdownSup)
