@@ -2,6 +2,14 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import LinkifyIt from 'linkify-it';
 import MarkdownIt from 'markdown-it';
+import markdownAbbr from 'markdown-it-abbr';
+import markdownSub from 'markdown-it-sub';
+import markdownSup from 'markdown-it-sup';
+import markdownIns from 'markdown-it-ins';
+import markdownMark from 'markdown-it-mark';
+import markdownContainer from 'markdown-it-container';
+import markdownFootnote from 'markdown-it-footnote';
+import markdownHighlightjs from 'markdown-it-highlightjs';
 import katex from 'katex';
 import { RenderTextCallbackType } from '../../../../types/Util';
 import { getEmojiSizeClass, SizeClassType } from '../../../../util/emoji';
@@ -16,17 +24,6 @@ import { isUsAnySogsFromCache } from '../../../../session/apis/open_group_api/so
 import { getConversationController } from '../../../../session/conversations';
 
 const linkify = LinkifyIt();
-
-// tslint:disable:no-var-requires no-require-imports
-const markdownAbbr = require('markdown-it-abbr');
-const markdownSub = require('markdown-it-sub');
-const markdownSup = require('markdown-it-sup');
-const markdownIns = require('markdown-it-ins');
-const markdownMark = require('markdown-it-mark');
-const markdownContainer = require('markdown-it-container');
-const markdownFootnote = require('markdown-it-footnote');
-const markdownHighlightjs = require('markdown-it-highlightjs');
-// tslint:enable:no-var-requires no-require-imports
 
 const markdown = MarkdownIt('default', {
   html: false,
