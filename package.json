@@ -116,7 +116,6 @@
     "markdown-it-ins": "^3.0.1",
     "markdown-it-latex": "^0.2.0",
     "markdown-it-mark": "^3.0.1",
-    "markdown-it-mermaid": "^0.2.5",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "maxmind": "^4.3.6",
