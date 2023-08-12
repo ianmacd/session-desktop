@@ -12,6 +12,7 @@ import markdownFootnote from 'markdown-it-footnote';
 import markdownHighlightjs from 'markdown-it-highlightjs';
 import MarkdownItMermaid from 'markdown-it-mermaid';
 import katex from 'katex';
+import markdownItLatex from 'markdown-it-latex'
 import { RenderTextCallbackType } from '../../../../types/Util';
 import { getEmojiSizeClass, SizeClassType } from '../../../../util/emoji';
 import { AddMentions } from '../../AddMentions';
@@ -52,6 +53,7 @@ const markdown = MarkdownIt('default', {
   .use(markdownSup)
   .use(markdownIns)
   .use(markdownMark)
+  .use(markdownItLatex)
   .use(markdownContainer, 'spoiler', {
     validate: (params: string) => {
       return params.trim().match(/^spoiler\s+(.*)$/);
