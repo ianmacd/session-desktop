@@ -75,7 +75,7 @@ const markdown = MarkdownIt('default', {
     }
   })
   .use(markdownFootnote)
-  .use(markdownHighlightjs, { inline: true }
+  .use(markdownHighlightjs, { inline: false }
 );
 
 type Props = {
