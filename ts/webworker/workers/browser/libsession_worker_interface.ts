@@ -115,6 +115,17 @@ export const UserConfigWrapperActions: UserConfigWrapperActionsCalls = {
       profilePic,
       // expireSeconds,
     ]) as Promise<ReturnType<UserConfigWrapperActionsCalls['setUserInfo']>>,
+
+  getEnableBlindedMsgRequest: async () =>
+    callLibSessionWorker(['UserConfig', 'getEnableBlindedMsgRequest']) as Promise<
+      ReturnType<UserConfigWrapperActionsCalls['getEnableBlindedMsgRequest']>
+    >,
+  setEnableBlindedMsgRequest: async (blindedMsgRequests: boolean) =>
+    callLibSessionWorker([
+      'UserConfig',
+      'setEnableBlindedMsgRequest',
+      blindedMsgRequests,
+    ]) as Promise<ReturnType<UserConfigWrapperActionsCalls['setEnableBlindedMsgRequest']>>,
 };
 
 export const ContactsWrapperActions: ContactsWrapperActionsCalls = {
