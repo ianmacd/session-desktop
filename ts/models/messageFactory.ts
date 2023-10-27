@@ -88,7 +88,7 @@ function getSharedAttributesForPublicMessage({
 function getSharedAttributesForOutgoingMessage() {
   return {
     source: UserUtils.getOurPubKeyStrFromCache(),
-    unread: READ_MESSAGE_STATE.unread,
+    unread: READ_MESSAGE_STATE.read,
     sent_to: [],
     sent: true,
     type: 'outgoing' as MessageModelType,

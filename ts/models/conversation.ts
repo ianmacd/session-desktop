@@ -928,7 +928,7 @@ export class ConversationModel extends Backbone.Model<ConversationAttributes> {
       source: sender,
       type: 'outgoing',
       direction: 'outgoing',
-      unread: READ_MESSAGE_STATE.unread, // an outgoing message must be already read
+      unread: READ_MESSAGE_STATE.read, // an outgoing message must be already read
       received_at: messageAttributes.sent_at, // make sure to set a received_at timestamp for an outgoing message, so the order are right.
     });
   }
